@@ -5,7 +5,7 @@
 * Players
 
 ### Controllers
-Api::PlayersController (create, destroy, index, show)
+* Api::PlayersController (create, destroy, index, show, add, drop)
 
 ### Views
 
@@ -18,5 +18,4 @@ Api::PlayersController (create, destroy, index, show)
 
 ### Views
 * PlayersIndex (composite view, contains PlayersIndexItem subview)
-
-## Gems/Libraries
+* PlayerShow

@@ -42,29 +42,27 @@ backbone views. Data will be served by api controllers in JSON.
 
 [Details][phase-two]
 
-### Phase 3: Viewing the available player pool (~2 Days)
+### Phase 3: Viewing the available player pool, add, drop players (~2 Days)
 This will allow users to view all of the players that are not currently on a
 team in their league. This pool will be searchable and sortable by a number
-of relevant criteria.
+of relevant criteria. Users can drop players from their teams as well as adding
+players from the pool of unowned players. These can be done in a single
+step, which is important.
 
 [Details][phase-three]
 
-### Phase 4: Adding/Dropping players (~1 Day)
-Users can drop players from their teams as well as adding players from the
-pool of unowned players. These can be done in a single step, which is important.
-
-[Details][phase-four]
-
-### Phase 5: Setting Lineups (~2 Days)
+### Phase 4: Setting Lineups (~2 Days)
 Functionality will be implemented so that users can set their lineups. These
 are subject to restrictions based on league rules as well as timelines. For
 instance, users cannot move players into slots that are designated for other
 positions. They also are not allowed to move players into or out of the lineup
 after games have started.
 
-[Details][phase-five]
+[Details][phase-four]
 
-### Phase 6: Creating and responding to trade offers
+### Phase 5: Creating and responding to trade offers
+
+[Details][phase-five]
 
 ## Bonus Features
 

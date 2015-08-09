@@ -21,6 +21,13 @@ id          | integer   | not null, primary key
 league_id   | integer   | not null, foreign key (references leagues)
 member_id   | integer   | not null, foreign key (references users)
 
+## team_memberships
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+team_id     | integer   | not null, foreign key (references teams)
+player_id   | integer   | not null, foreign key (references players)
+
 ## teams
 column name | data type | details
 ------------|-----------|-----------------------
@@ -46,6 +53,7 @@ id            | integer   | not null, primary key
 player_id     | integer   | not null, foreign key (references players)
 home_team     | string    | not null
 away_team     | string    | not null
+week          | integer   | not null
 rush_yds      | integer   | not null
 rush_tds      | integer   | not null
 rush_attempts | integer   | not null
