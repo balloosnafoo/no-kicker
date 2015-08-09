@@ -18,6 +18,11 @@ No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:
 - [ ] Determine starting lineups
 
 ## Design Docs
+* [View Wireframes][views]
+* [DB schema][schema]
+
+[views]: ./docs/views.md
+[schema]: ./docs/schema.md
 
 ## Implementation Timeline
 

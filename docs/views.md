@@ -4,10 +4,10 @@
 ![new-session]
 
 ## League Index (landing page)
-![league-show]
+![leagues-index]
 
 ## League Show
-![blog-show]
+![league-show]
 
 ## News Feed
 ![news_feed]
