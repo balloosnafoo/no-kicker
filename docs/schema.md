@@ -35,6 +35,8 @@ id          | integer   | not null, primary key
 owner_id    | integer   | not null, foreign key (references users)
 league_id   | string    | not null, foreign key (references leagues)
 name        | string    | not null
+wins        | integer   | not null
+losses      | integer   | not null
 
 ## players
 column name | data type | details
@@ -65,6 +67,28 @@ targets       | integer   | not null
 receptions    | integer   | not null
 interceptions | integer   | not null
 fumbles       | integer   | not null
+
+## starting_slot
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+player_id   | integer   | not null, foreign key (references players)
+week        | integer   | not null
+position    | string    | not null
+
+## trade_offers
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+trader_id   | integer   | not null, foreign key (references players)
+tradee_id   | integer   | not null, foreign key (references players)
+
+## trade_items
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+player_id      | integer   | not null, foreign key (references players)
+trade_offer_id | integer   | not null, foreign key (references trade offers)
 
 ## users
 column name     | data type | details

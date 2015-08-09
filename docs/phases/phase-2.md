@@ -4,8 +4,7 @@
 ### Models
 
 ### Controllers
-Api::LeaguesController (create, destroy, index, show)
-Api::TeamsController (create, destroy, show, update)
+* Api::LeaguesController (create, destroy, index, show)
 
 ### Views
 * leagues/show.json.jbuilder
@@ -23,6 +22,6 @@ Api::TeamsController (create, destroy, show, update)
 * LeagueForm
 * LeagueShow (composite view, contains TeamsIndex subview)
 * TeamsIndex
-* TeamsShow 
+* TeamsShow
 
 ## Gems/Libraries
