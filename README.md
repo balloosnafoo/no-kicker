@@ -21,8 +21,38 @@ No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, league creation
+### Phase 1: User Authentication, league creation (~1 Day)
+I will implement a user authentication system based on the practices taught at
+App Academy. By the end of this phase users will be able to create accounts,
+log in, and create or join leagues that are open to them. The app will be
+pushed to Heroku in order to begin ensuring functionality early on and
+throughout development.
 
-### Phase: 2
+### Phase 2: Viewing Leagues and teams (~2 Days)
+During this phase I will implement viewing functionality so that users can
+see all of their leagues and teams, as well as other teams in the league in
+backbone views. Data will be served by api controllers in JSON.
 
-### Phase: 3
+### Phase 3: Viewing the available player pool (~2 Days)
+This will allow users to view all of the players that are not currently on a
+team in their league. This pool will be searchable and sortable by a number
+of relevant criteria.
+
+### Phase 4: Adding/Dropping players (~1 Day)
+Users can drop players from their teams as well as adding
+
+### Phase 5: Setting Lineups (~2 Days)
+Functionality will be implemented so that users can set their lineups. These
+are subject to restrictions based on league rules as well as timelines. For
+instance, users cannot move players into slots that are designated for other
+positions. They also are not allowed to move players into or out of the lineup
+after games have started.
+
+### Phase 5: Creating and responding to trade offers
+
+## Bonus Features
+
+- [ ] Users can set up warning systems, so that they are notified of dramatic
+      changes in ownership of players that they are watching.
+- [ ] Users can set up and enter drafts.
+- [ ] Commissioners can appoint trade arbiters.
