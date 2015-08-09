@@ -59,7 +59,7 @@ after games have started.
 
 [Details][phase-five]
 
-### Phase 5: Creating and responding to trade offers
+### Phase 6: Creating and responding to trade offers
 
 ## Bonus Features
 

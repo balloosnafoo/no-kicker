@@ -4,9 +4,15 @@
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-commissioner_id | integer   | not null, foreign key (references users)
 name            | string    | not null
 rule_set_id     | integer   | not null
+
+## commissionerships
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+commissioner_id | integer   | not null, foreign key (references users)
+league_id       | integer   | not null, foreign key (references leagues)
 
 ## league_memberships
 column name | data type | details
@@ -37,7 +43,7 @@ team_name   | string    | not null (refers to real life team)
 column name   | data type | details
 --------------|-----------|-----------------------
 id            | integer   | not null, primary key
-player_id     | integer   | not null, foreign key (references posts)
+player_id     | integer   | not null, foreign key (references players)
 home_team     | string    | not null
 away_team     | string    | not null
 rush_yds      | integer   | not null
