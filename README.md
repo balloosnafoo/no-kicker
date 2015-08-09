@@ -7,15 +7,14 @@ No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:
 
 - [ ] Create accounts and login
 - [ ] Create new leagues
-- [ ] Create teams in leagues to which they have access
 - [ ] View teams in their own league
-- [ ] Create and respond to trade offers
+- [ ] Create teams in leagues to which they have access
 - [ ] Add and drop players
-- [ ] Create and comment on threads in their leagues
 - [ ] See player stats
 - [ ] Search for players by name/position/points
-- [ ] Add players to watch lists
 - [ ] Determine starting lineups
+- [ ] Create and respond to trade offers
+- [ ] Create and comment on threads in their leagues
 
 ## Design Docs
 * [View Wireframes][views]
@@ -26,18 +25,20 @@ No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, league creation (~1 Day)
+### Phase 1: User Authentication, league creation (~1.5 Days)
 I will implement a user authentication system based on the practices taught at
 App Academy. By the end of this phase users will be able to create accounts,
-log in, and create. The app will be pushed to Heroku in order to begin ensuring
-functionality early on and throughout development.
+log in, and create leagues. The app will be pushed to Heroku in order to begin
+ensuring functionality early on and throughout development. League creation
+will offer reasonable defaults for league rules.
 
 [Details][phase-one]
 
 ### Phase 2: Viewing Leagues and teams (~2 Days)
 During this phase I will implement viewing functionality so that users can
-see all of their leagues and teams, as well as other teams in the league in
-backbone views. Data will be served by api controllers in JSON.
+see all of their leagues, and the names of the teams in the league in
+backbone views. Data will be served by api controllers in JSON, which will
+be made during this phase.
 
 [Details][phase-two]
 
@@ -60,15 +61,30 @@ after games have started.
 [Details][phase-four]
 
 ### Phase 5: Creating and responding to trade offers
-
+This will require a new trade backbone view, which should list all of the
+players on the user's team along with those on the trading partner's team.
+There will also be an index view in which a user can look at the open trades
+relevant to him and accept, reject or cancel them (if they were offered to
+or by him respectively).
 
 [Details][phase-five]
 
+### Phase 6: Creating threads and commenting (~1 Day)
+This will require creating Thread and Comment objects as well as backbone views
+for each of those. Each league should have a thread index page and each thread
+should have a show page where all of the comments are listed and new comments
+can be created.
+
+[Details][phase-six]
+
 ## Bonus Features
 
+- [ ] Add players to watch lists
 - [ ] Users can set up warning systems, so that they are notified of dramatic
       changes in ownership of players that they are watching.
 - [ ] Users can set up and enter drafts.
+- [ ] Trades are subject to review by either commissioner, league voting, or
+      trade arbiters.
 - [ ] Commissioners can appoint trade arbiters.
 - [ ] Adds requests made after games have started go through the waiver wire
 
@@ -77,3 +93,4 @@ after games have started.
 [phase-three]: ./docs/phases/phase-3.md
 [phase-four]: ./docs/phases/phase-4.md
 [phase-five]: ./docs/phases/phase-5.md
+[phase-six]: ./docs/phases/phase-6.md
