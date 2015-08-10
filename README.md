@@ -60,7 +60,7 @@ after games have started.
 
 [Details][phase-four]
 
-### Phase 5: Creating and responding to trade offers
+### Phase 5: Creating and responding to trade offers (~1.5 Days)
 This will require a new trade backbone view, which should list all of the
 players on the user's team along with those on the trading partner's team.
 There will also be an index view in which a user can look at the open trades
