@@ -6,6 +6,14 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  # has_many :leagues
+  has_many(
+    :commissioned_leagues,
+    class_name: "League",
+    foreign_key: :commissioner_id,
+    primary_key: :id
+  )
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     if user.is_password?(password)

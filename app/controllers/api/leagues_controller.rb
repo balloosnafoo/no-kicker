@@ -20,6 +20,13 @@ class Api::LeaguesController < ApplicationController
   end
 
   def index
+    if params[:user_leagues] && current_user
+      # Update when league_memberships exist!
+      @leagues = current_user.commissioned_leagues
+    else
+      @leagues = League.all
+    end
+    render json: @leagues
   end
 
   def show

@@ -4,6 +4,12 @@ class League < ActiveRecord::Base
   validates :num_divisions, numericality: { less_than: 4 }
 
   has_many :teams
-  # has_one :commissioner
   # has_one :rule_set
+
+  belongs_to(
+    :commissioner,
+    class_name: "User",
+    foreign_key: :commissioner_id,
+    primary_key: :id
+  )
 end
