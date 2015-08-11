@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    # fail
     @user = User.new
     render :new
   end
@@ -20,5 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     current_user && logout!
+    @user = User.new
+    redirect_to new_session_url
   end
 end
