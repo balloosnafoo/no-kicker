@@ -1,0 +1,10 @@
+<h1>Sign up!</h1>
+
+<%= render partial: "shared/user_form",
+           locals: {
+             target_url: users_url,
+             user: @user,
+             submit_verb: "Sign up!",
+             patch: false,
+             new_user: true
+           } %>

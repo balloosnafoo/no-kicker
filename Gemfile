@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt'
 gem 'pry-rails'
 gem 'backbone-on-rails'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'
