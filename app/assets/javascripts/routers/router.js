@@ -12,7 +12,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
   newLeague: function () {
     var league = new NoKicker.Models.League();
     var newView = new NoKicker.Views.LeagueNew({
-      model: league
+      model: league,
+      collection: this.collection
     });
 
     this._swapView(newView);

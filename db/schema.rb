@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150811162600) do
     t.integer  "num_divisions",                   null: false
     t.boolean  "public",          default: true,  null: false
     t.boolean  "redraft",         default: true,  null: false
-    t.string   "type",            default: "h2h", null: false
+    t.string   "match_type",      default: "h2h", null: false
     t.string   "name",                            null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false

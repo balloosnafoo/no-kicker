@@ -7,8 +7,8 @@ class CreateLeagues < ActiveRecord::Migration
 
       t.boolean :public, null: false, default: true
       t.boolean :redraft, null: false, default: true
-      
-      t.string :type, null: false, default: :h2h
+
+      t.string :match_type, null: false, default: :h2h
       t.string :name, null: false
 
       t.timestamps null: false

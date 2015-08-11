@@ -31,7 +31,7 @@ class Api::LeaguesController < ApplicationController
   private
   def league_params
     params.require(:league).permit(
-      :name, :public, :redraft,
+      :name, :public, :redraft, :match_type,
       :num_teams, :num_divisions
     )
   end

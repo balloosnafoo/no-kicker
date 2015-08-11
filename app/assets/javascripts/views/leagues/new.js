@@ -1,7 +1,13 @@
 NoKicker.Views.LeagueNew = Backbone.View.extend({
   template: JST['leagues/new'],
 
-  tagName: "form",
+  tagName: "div",
+
+  className: "container",
+
+  events: {
+    "submit form": "create"
+  },
 
   render: function () {
     var renderedContent = this.template({
@@ -10,5 +16,17 @@ NoKicker.Views.LeagueNew = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  create: function (event) {
+    event.preventDefault();
+    var leagueData = $(event.currentTarget).serializeJSON().league;
+    this.model.set(leagueData);
+    this.model.save({}, {
+      success: function () {
+        this.collection.add(this.model, { merge: true });
+        Backbone.history.navigate("", { trigger: true });
+      }.bind(this)
+    });
   }
 });

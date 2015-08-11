@@ -1,90 +1,93 @@
-<div class="container">
-  <div class="jumbotron">
-    <form>
-      <div class="form-group">
-        <label for="league-name">League Name</label>
-        <input type="text"
-               name="league[name]"
-               class="form-control"
-               value="<%= league.escape("name") %>">
-      </div>
+<div class="jumbotron">
+  <form>
+    <div class="form-group">
+      <label for="league-name">League Name</label>
+      <input type="text"
+             name="league[name]"
+             class="form-control"
+             value="<%= league.escape("name") %>">
+    </div>
 
-      <div class="form-group">
-        <label for="league[eligibility]">League Eligibility</label><br>
-        <label>
-          <input type="radio"
-                 name="league[public]"
-                 value="true">
-          Public
-        </label><br>
+    <div class="form-group">
+      <label for="league[eligibility]">League Eligibility</label><br>
+      <label>
+        <input type="radio"
+               name="league[public]"
+               value="true"
+               checked>
+        Public
+      </label><br>
 
-        <label>
-          <input type="radio"
-                 name="league[public]"
-                 value="false">
-          Private
-        </label>
-      </div>
+      <label>
+        <input type="radio"
+               name="league[public]"
+               value="false">
+        Private
+      </label>
+    </div>
 
-      <div class="form-group">
-        <label for="league-num-teams">Number of Teams</label>
-        <select name="league[num_teams]" id="league-num-teams">
-          <option value="14">14</option>
-          <option value="12" selected>12</option>
-          <option value="10">10</option>
-          <option value="8" > 8</option>
-        </select>
-      </div>
+    <div class="form-group">
+      <label for="league-num-teams">Number of Teams</label>
+      <select name="league[num_teams]" id="league-num-teams">
+        <option value="14">14</option>
+        <option value="12" selected>12</option>
+        <option value="10">10</option>
+        <option value="8" > 8</option>
+      </select>
+    </div>
 
-      <div class="form-group">
-        <label for="league-num-divisions">Number of Teams</label>
-        <select name="league[num_divisions]" id="league-num-divisions">
-          <option value="3" selected>3</option>
-          <option value="2">2</option>
-          <option value="1">1</option>
-        </select>
-      </div>
+    <div class="form-group">
+      <label for="league-num-divisions">Number of Teams</label>
+      <select name="league[num_divisions]" id="league-num-divisions">
+        <option value="3" selected>3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </select>
+    </div>
 
-      <div class="form-group">
-        <label for="league[type]">League Type</label><br>
-        <label>
-          <input type="radio"
-                 name="league[type]"
-                 value="h2h">
-          H2H
-        </label><br>
+    <div class="form-group">
+      <label for="league[match_type]">League Type</label><br>
+      <label>
+        <input type="radio"
+               name="league[match_type]"
+               value="h2h"
+               checked>
+        H2H
+      </label><br>
 
-        <label>
-          <input type="radio"
-                 name="league[type]"
-                 value="total">
-          Total Points
-        </label><br>
+      <label>
+        <input type="radio"
+               name="league[match_type]"
+               value="total">
+        Total Points
+      </label><br>
 
-        <label>
-          <input type="radio"
-                 name="league[type]"
-                 value="roto">
-          Total Points
-        </label>
-      </div>
+      <label>
+        <input type="radio"
+               name="league[match_type]"
+               value="roto">
+        Total Points
+      </label>
+    </div>
 
-      <div class="form-group">
-        <label for="league[redraft]">Lifetime</label><br>
-        <label>
-          <input type="radio"
-                 name="league[redraft]"
-                 value="true">
-          Redraft
-        </label><br>
+    <div class="form-group">
+      <label for="league[redraft]">Lifetime</label><br>
+      <label>
+        <input type="radio"
+               name="league[redraft]"
+               value="true"
+               checked>
+        Redraft
+      </label><br>
 
-        <label>
-          <input type="radio"
-                 name="league[redraft]"
-                 value="false">
-          Keeper
-        </label>
-      </div>
-    </form>
-  </div>
+      <label>
+        <input type="radio"
+               name="league[redraft]"
+               value="false">
+        Keeper
+      </label>
+    </div>
+
+    <input type="submit" name="Create League">
+  </form>
 </div>

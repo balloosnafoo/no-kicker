@@ -1,3 +1,3 @@
 NoKicker.Models.League = Backbone.Model.extend({
-  urlRoot: "/api/leagus"
+  urlRoot: "/api/leagues"
 });
