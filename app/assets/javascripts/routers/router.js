@@ -1,10 +1,12 @@
 NoKicker.Routers.Router = Backbone.Router.extend({
-  initialize: function () {
+  initialize: function (options) {
     this.collection = new NoKicker.Collections.Leagues();
-  }
+    this.$rootEl = options.$rootEl;
+  },
 
   routes: {
-    "leagues/new" : "newLeague",
+    "": "newLeague",
+    "leagues/new" : "newLeague"
   },
 
   newLeague: function () {

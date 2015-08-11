@@ -4,7 +4,10 @@ window.NoKicker = {
   Views: {},
   Routers: {},
   initialize: function() {
-    // alert('Hello from Backbone!');
+    new NoKicker.Routers.Router({
+      $rootEl: $('#content')
+    });
+    Backbone.history.start();
   }
 };
 
