@@ -42,7 +42,6 @@ losses      | integer   | not null
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-team_id     | integer   | foreign_key (references teams)
 fname       | string    | not null
 lname       | string    | not null
 position    | string    | not null
@@ -95,5 +94,6 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 email           | string    | not null, unique
+username        | string    | not null, unique
 password_digest | string    | not null
 session_token   | string    | not null, unique
