@@ -3,17 +3,27 @@
 ## Rails
 ### Models
 * User
-* League
-* Team
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* LeaguesController (create, new, show)
-* TeamsController (create, new, show)
+* Api::LeaguesController (create, new, show)
+* Api::TeamsController (create, new, show)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* league/new.html.erb
-* teams/show.html.erb
+
+## Backbone
+
+### Collections
+* Leagues
+* Teams
+
+### Models
+* League
+* Team
+
+### Views
+* Leagues (new, index)
+* Teams (new, index)
