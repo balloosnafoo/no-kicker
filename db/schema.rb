@@ -18,9 +18,14 @@ ActiveRecord::Schema.define(version: 20150811162600) do
 
   create_table "leagues", force: :cascade do |t|
     t.integer  "commissioner_id"
-    t.string   "name",            null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "num_teams",                       null: false
+    t.integer  "num_divisions",                   null: false
+    t.boolean  "public",          default: true,  null: false
+    t.boolean  "redraft",         default: true,  null: false
+    t.string   "type",            default: "h2h", null: false
+    t.string   "name",                            null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "teams", force: :cascade do |t|
