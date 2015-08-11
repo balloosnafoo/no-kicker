@@ -1,10 +1,19 @@
-<h1>Sign up!</h1>
+<div class="container">
+  <div class="jumbotron row">
+    <div class="col-xs-6">
+      <h1>Sign Up</h1>
 
-<%= render partial: "shared/user_form",
-           locals: {
-             target_url: users_url,
-             user: @user,
-             submit_verb: "Sign up!",
-             patch: false,
-             new_user: true
-           } %>
+      <%= render partial: "shared/user_form",
+                 locals: {
+                   target_url: users_url,
+                   user: @user,
+                   submit_verb: "Sign up!",
+                   patch: false,
+                   new_user: true
+                 } %>
+    </div>
+    <div class="col-xs-6">
+
+    </div>
+  </div>
+</div>
