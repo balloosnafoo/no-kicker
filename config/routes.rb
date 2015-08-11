@@ -2,5 +2,10 @@ Rails.application.routes.draw do
   root :to => "users#new"
 
   resources :users
-  resource :session
+  resource :session, only: [:new, :create, :destroy]
+
+  namespace :api, defaults: { format: :json } do
+    resources :leagues
+    resources :teams
+  end
 end

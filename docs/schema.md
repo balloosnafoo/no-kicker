@@ -6,7 +6,16 @@ column name     | data type | details
 id              | integer   | not null, primary key
 commissioner_id | integer   | not null, foreign key
 name            | string    | not null
-rule_set_id     | integer   | not null
+
+## rule_sets
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+league_id       | integer   | not null, foreign key
+rush_ppy        | integer   | not null
+rec_ppy         | integer   | not null
+rec_ppr         | integer   | not null
+...             | ...       | ...
 
 ## league_memberships
 column name | data type | details
