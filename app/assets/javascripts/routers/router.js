@@ -6,7 +6,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "newLeague",
-    "leagues/new" : "newLeague"
+    "leagues/new": "newLeague",
+    "leagues/:id": "showLeague"
   },
 
   newLeague: function () {
@@ -17,6 +18,14 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(newView);
+  },
+
+  showLeague: function (id) {
+    var league = this.collection.getOrFetch(id);
+    var showView = new NoKicker.Views.LeagueShow({
+      model: league
+    });
+    this._swapView(showView);
   },
 
   _swapView: function (view) {

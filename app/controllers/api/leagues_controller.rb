@@ -23,6 +23,12 @@ class Api::LeaguesController < ApplicationController
   end
 
   def show
+    @league = League.find(params[:id])
+    if @league
+      render :show
+    else
+      render json: @league, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -8,7 +8,7 @@ commissioner_id | integer   | not null, foreign key
 num_teams       | integer   | not null
 num_divisions   | integer   | not null
 name            | string    | not null
-type            | string    | not null, default "h2h"
+match_type      | string    | not null, default "h2h"
 public          | boolean   | not null, default true
 redraft         | boolean   | not null, default true
 

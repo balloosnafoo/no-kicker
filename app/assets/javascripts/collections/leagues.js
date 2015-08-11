@@ -12,7 +12,7 @@ NoKicker.Collections.Leagues = Backbone.Collection.extend({
       widget.fetch();
     } else {
       widget = new collection.model({ id: id });
-      collection.fetch({
+      widget.fetch({
         error: function () { collection.remove(widget); }
       });
     }

@@ -25,7 +25,9 @@ NoKicker.Views.LeagueNew = Backbone.View.extend({
     this.model.save({}, {
       success: function () {
         this.collection.add(this.model, { merge: true });
-        Backbone.history.navigate("", { trigger: true });
+        Backbone.history.navigate(
+          "leagues/" + this.model.id, 
+          { trigger: true });
       }.bind(this)
     });
   }
