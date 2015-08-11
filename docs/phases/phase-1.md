@@ -9,6 +9,7 @@
 * SessionsController (create, new, destroy)
 * Api::LeaguesController (create, new, show)
 * Api::TeamsController (create, new, show)
+* Api::LeagueMemberships (create, destroy)
 
 ### Views
 * users/new.html.erb

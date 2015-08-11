@@ -6,7 +6,15 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  # has_many :leagues
+  has_many(
+    :league_memberships
+    class_name: "LeagueMembership",
+    foreign_key: :member_id,
+    primary_key: :id
+  )
+
+  has_many :leagues, through: :league_memberships, source: :league
+
   has_many(
     :commissioned_leagues,
     class_name: "League",

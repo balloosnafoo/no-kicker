@@ -1,12 +1,14 @@
 # No Kicker
 
-\[link goes here\]
+[nokicker.co][site-link]
+
+[nokicker.co]: www.nokicker.co
 
 ## Minimum Viable Product
 No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:
 
-- [ ] Create accounts and login
-- [ ] Create new leagues
+- [X] Create accounts and login
+- [X] Create new leagues
 - [ ] View teams in their own league
 - [ ] Create teams in leagues to which they have access
 - [ ] Add and drop players
@@ -25,7 +27,7 @@ No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, league creation (~1.5 Days)
+### Phase 1: User Authentication, league creation (~1 Days)
 I will implement a user authentication system based on the practices taught at
 App Academy. By the end of this phase users will be able to create accounts,
 log in, and create leagues. The app will be pushed to Heroku in order to begin
@@ -34,11 +36,11 @@ will offer reasonable defaults for league rules.
 
 [Details][phase-one]
 
-### Phase 2: Viewing Leagues and teams (~2 Days)
+### Phase 2: Viewing/Joining Leagues and creating teams (~2 Days)
 During this phase I will implement viewing functionality so that users can
 see all of their leagues, and the names of the teams in the league in
 backbone views. Data will be served by api controllers in JSON, which will
-be made during this phase.
+be made during this phase. This phase will also require implementing
 
 [Details][phase-two]
 

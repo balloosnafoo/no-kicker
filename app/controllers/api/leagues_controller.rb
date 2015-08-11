@@ -5,7 +5,7 @@ class Api::LeaguesController < ApplicationController
   end
 
   def create
-    @league = League.new(league_params)
+    @league = current_user.commissioned_leagues.new(league_params)
     if @league.save
       render :show
     else
