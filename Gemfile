@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem 'pry-rails'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'byebug'
