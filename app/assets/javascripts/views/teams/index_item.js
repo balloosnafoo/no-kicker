@@ -3,9 +3,14 @@ NoKicker.Views.TeamIndexItem = Backbone.View.extend({
 
   tagName: 'tr',
 
+  initialize: function (options) {
+    this.league = options.league;
+  },
+
   render: function () {
     var renderedContent = this.template({
-      team: this.model
+      team: this.model,
+      league: this.league
     });
 
     this.$el.html(renderedContent);

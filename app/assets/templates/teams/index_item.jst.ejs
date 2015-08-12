@@ -1,5 +1,9 @@
 <% if (!!team.escape("name")) { %>
-  <td><%= team.escape("name") %></td>
+  <td>
+    <a href="/leagues/<%= league.id %>/teams/<%= team.id %>">
+      <%= team.escape("name") %>
+    </a>
+  </td>
 <% } else { %>
   <td>
     <button type="button" class="join-league">

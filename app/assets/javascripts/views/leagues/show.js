@@ -19,7 +19,8 @@ NoKicker.Views.LeagueShow = Backbone.CompositeView.extend({
 
   addTeam: function (team) {
     var teamView = new NoKicker.Views.TeamIndexItem({
-      model: team
+      model: team,
+      league: this.model
     });
 
     this.addSubview('.teams-table', teamView);
