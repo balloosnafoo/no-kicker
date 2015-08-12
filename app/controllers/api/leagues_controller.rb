@@ -6,7 +6,7 @@ class Api::LeaguesController < ApplicationController
 
   def create
     @league = current_user.commissioned_leagues.new(league_params)
-    @league.rule_set = RuleSet.new
+    @league.score_rule = ScoreRule.new
     if @league.save
       LeagueMembership.create({
         member_id: current_user.id,

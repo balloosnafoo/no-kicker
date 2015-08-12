@@ -12,7 +12,7 @@ match_type      | string    | not null, default "h2h"
 public          | boolean   | not null, default true
 redraft         | boolean   | not null, default true
 
-## rule_sets
+## score_rules
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
@@ -26,6 +26,17 @@ Note: due to the size of this table many values have been
 excluded from the readme. Please see schema.rb for full info.
 point values are represented as actual_points * 100 in order
 to avoid using floats.
+
+## team_parameters
+column name  | data type | details
+----- -------|-----------|-----------------------
+id           | integer   | not null, primary key
+num_rbs      | integer   | not null, default 2
+num_wrs      | integer   | not null, default 2
+num_qbs      | integer   | not null, default 1
+num_flex     | integer   | not null, default 1
+num_dst      | integer   | not null, default 1
+num_bench    | integer   | not null, default 6
 
 ## league_memberships
 column name | data type | details
@@ -102,6 +113,14 @@ id             | integer   | not null, primary key
 player_id      | integer   | not null, foreign key (references players)
 owner_id       | integer   | not null, foreign key (references users)
 trade_offer_id | integer   | not null, foreign key (references trade offers)
+
+## matchup
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+team_1_id      | integer   | not null, foreign key (references users)
+team_2_id      | integer   | not null, foreign key (references users)
+week           | integer   | not null
 
 ## users
 column name     | data type | details

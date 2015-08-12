@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :leagues
     resources :teams
+    resources :league_memberships, only: [:create, :destroy]
+    resources :score_rules, only: [:edit, :update]
   end
 end

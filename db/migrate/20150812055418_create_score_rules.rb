@@ -1,6 +1,6 @@
-class CreateRuleSets < ActiveRecord::Migration
+class CreateScoreRules < ActiveRecord::Migration
   def change
-    create_table :rule_sets do |t|
+    create_table :score_rules do |t|
       t.integer :league_id, null: false
 
       # Rushing points

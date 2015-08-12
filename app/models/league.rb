@@ -5,8 +5,8 @@ class League < ActiveRecord::Base
 
   has_many :teams
   has_one(
-    :rule_set,
-    class_name: "RuleSet",
+    :score_rule,
+    class_name: "ScoreRule",
     foreign_key: :league_id,
     primary_key: :id
   )

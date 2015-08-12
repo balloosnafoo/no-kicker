@@ -7,7 +7,7 @@
 * League
 * Team
 * LeagueMemberships
-* RuleSet
+* ScoreRule
 
 ### Controllers
 * UsersController (create, new)
@@ -15,7 +15,7 @@
 * Api::LeaguesController (create, new, show)
 * Api::TeamsController (create, new, show)
 * Api::LeagueMembershipsController (create, destroy)
-* Api::RuleSetsController (edit)
+* Api::ScoreRulesController (edit)
 
 ### Views
 * users/new.html.erb
