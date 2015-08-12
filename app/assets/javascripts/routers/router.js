@@ -8,7 +8,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     "": "leagueIndex",
     "leagues/new": "leagueNew",
     "leagues/:id": "leagueShow",
-    "leagues/:league_id/teams/new": "teamNew"
+    "leagues/:league_id/teams/new": "teamNew",
+    "leagues/:league_id/teams/:team_id": "teamShow"
   },
 
   leagueIndex: function () {
@@ -48,6 +49,16 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(formView);
+  },
+
+  teamShow: function (league_id, team_id) {
+    var teams = new NoKicker.Collections.Teams();
+    var team = teams.getOrFetch(team_id);
+    var showView = new NoKicker.Views.TeamShow({
+      model: team
+    });
+
+    this._swapView(showView);
   },
 
   _swapView: function (view) {
