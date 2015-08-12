@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :league_memberships, only: [:create, :destroy]
     resources :score_rules, only: [:edit, :update]
     resources :roster_rules, only: [:edit, :update]
+    resources :players, only: [:index, :show]
   end
 end

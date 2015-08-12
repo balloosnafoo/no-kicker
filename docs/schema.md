@@ -46,7 +46,7 @@ id          | integer   | not null, primary key
 league_id   | integer   | not null, foreign key (references leagues)
 member_id   | integer   | not null, foreign key (references users)
 
-## team_memberships
+## player_contracts
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
