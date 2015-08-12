@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :teams
     resources :league_memberships, only: [:create, :destroy]
     resources :score_rules, only: [:edit, :update]
+    resources :roster_rules, only: [:edit, :update]
   end
 end

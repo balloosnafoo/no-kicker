@@ -27,12 +27,13 @@ excluded from the readme. Please see schema.rb for full info.
 point values are represented as actual_points * 100 in order
 to avoid using floats.
 
-## team_parameters
+## roster_rules
 column name  | data type | details
 ----- -------|-----------|-----------------------
 id           | integer   | not null, primary key
 num_rbs      | integer   | not null, default 2
 num_wrs      | integer   | not null, default 2
+num_tes      | integer   | not null, default 1
 num_qbs      | integer   | not null, default 1
 num_flex     | integer   | not null, default 1
 num_dst      | integer   | not null, default 1

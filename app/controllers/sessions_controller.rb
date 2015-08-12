@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    # fail
     @user = User.new
     render :new
   end

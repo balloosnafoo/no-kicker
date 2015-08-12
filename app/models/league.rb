@@ -11,6 +11,8 @@ class League < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_one :roster_rule
+
   belongs_to(
     :commissioner,
     class_name: "User",
