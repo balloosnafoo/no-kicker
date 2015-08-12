@@ -4,7 +4,6 @@
 ### Models
 
 ### Controllers
-* Api::LeaguesController (create, destroy, index, show)
 
 ### Views
 * leagues/show.json.jbuilder

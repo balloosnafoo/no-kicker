@@ -8,6 +8,10 @@ class Api::LeaguesController < ApplicationController
     @league = current_user.commissioned_leagues.new(league_params)
     @league.rule_set = RuleSet.new
     if @league.save
+      LeagueMembership.create({
+        member_id: current_user.id,
+        league_id: @league.id
+      })
       render :show
     else
       render json: @league, status: :uprocessable_entity
@@ -23,7 +27,7 @@ class Api::LeaguesController < ApplicationController
   def index
     if params[:user_leagues] && current_user
       # Update when league_memberships exist!
-      @leagues = current_user.commissioned_leagues
+      @leagues = current_user.leagues
     else
       @leagues = League.all
     end

@@ -1,8 +1,6 @@
 # No Kicker
 
-[nokicker.co][site-link]
-
-[nokicker.co]: www.nokicker.co
+[nokicker.co](www.nokicker.co)
 
 ## Minimum Viable Product
 No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:

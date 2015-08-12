@@ -1,7 +1,35 @@
 <h1>Leagues</h1>
 
-<ul>
-  <% leagues.forEach(function(league) { %>
-    <li><%= league.escape("name") %></li>
+<table>
+  <tr>
+    <th>Fantasy</th>
+    <th>Standings</th>
+    <th>Games</th>
+  </tr>
+  <tr>
+    <th>League</th>
+    <th>Team</th>
+    <th>W</th>
+    <th>L</th>
+    <th>T</th>
+    <th>%</th>
+    <th>Strk</th>
+    <th>Rank</th>
+    <th>Previous</th>
+    <th>Current</th>
+  </tr>
+  <% leagues.each( function (league) { %>
+    <tr>
+      <td><%= league.escape("name") %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
   <% }); %>
-</ul>
+</table>
