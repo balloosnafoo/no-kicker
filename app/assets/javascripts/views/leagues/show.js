@@ -3,6 +3,10 @@ NoKicker.Views.LeagueShow = Backbone.CompositeView.extend({
 
   className: "container",
 
+  events: {
+    "click .join-league": "newTeam"
+  },
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.teams(), "add", this.addTeam);
@@ -37,13 +41,20 @@ NoKicker.Views.LeagueShow = Backbone.CompositeView.extend({
     this.model.teams().each(this.addTeam.bind(this));
   },
 
-  // Unintegrated
   renderBlankRows: function () {
-    debugger;
     var blanks = this.model.escape("num_teams") - this.model.teams().length;
     var nullTeam = NoKicker.Models.nullTeam;
     for (var i = 0; i < blanks; i++) {
       this.addTeam(nullTeam);
     }
+  },
+
+  newTeam: function (event) {
+    event.preventDefault();
+    debugger;
+    Backbone.history.navigate(
+      "leagues/" + this.model.id + "/teams/new",
+      { trigger: true }
+    );
   }
 });
