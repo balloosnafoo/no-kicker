@@ -6,6 +6,7 @@ class Api::LeaguesController < ApplicationController
 
   def create
     @league = current_user.commissioned_leagues.new(league_params)
+    @league.rule_set = RuleSet.new
     if @league.save
       render :show
     else

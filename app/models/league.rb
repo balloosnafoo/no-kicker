@@ -4,7 +4,11 @@ class League < ActiveRecord::Base
   validates :num_divisions, numericality: { less_than: 4 }
 
   has_many :teams
-  # has_one :rule_set
+  has_one :rule_set(
+    class_name: "RuleSet",
+    foreign_key: :league_id,
+    primary_key: :id
+  )
 
   belongs_to(
     :commissioner,
