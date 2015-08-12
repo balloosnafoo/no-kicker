@@ -8,6 +8,7 @@ NoKicker.Views.LeagueIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    debugger;
     var renderedContent = this.template({
       leagues: this.collection
     });

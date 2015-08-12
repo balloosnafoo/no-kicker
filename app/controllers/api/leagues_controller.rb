@@ -28,10 +28,12 @@ class Api::LeaguesController < ApplicationController
     if params[:user_leagues] && current_user
       # Update when league_memberships exist!
       @leagues = current_user.leagues
+                    .includes(:teams)
+                    .where(teams: { manager_id: current_user.id })
     else
       @leagues = League.all
     end
-    render json: @leagues
+    render :index
   end
 
   def show

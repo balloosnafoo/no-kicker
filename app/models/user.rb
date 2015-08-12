@@ -16,6 +16,13 @@ class User < ActiveRecord::Base
   has_many :leagues, through: :league_memberships, source: :league
 
   has_many(
+    :teams,
+    class_name: "Team",
+    foreign_key: :manager_id,
+    primary_key: :id
+  )
+
+  has_many(
     :commissioned_leagues,
     class_name: "League",
     foreign_key: :commissioner_id,

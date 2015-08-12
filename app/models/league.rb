@@ -17,4 +17,7 @@ class League < ActiveRecord::Base
     foreign_key: :commissioner_id,
     primary_key: :id
   )
+
+  def current_user_team
+  end
 end

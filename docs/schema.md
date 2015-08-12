@@ -17,10 +17,15 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 league_id       | integer   | not null, foreign key
-rush_ppy        | integer   | not null
-rec_ppy         | integer   | not null
-rec_ppr         | integer   | not null
+rush_ppy        | integer   | not null, default 10
+rec_ppy         | integer   | not null, default 10
+rec_ppr         | integer   | not null, default 0
 ...             | ...       | ...
+
+Note: due to the size of this table many values have been
+excluded from the readme. Please see schema.rb for full info.
+point values are represented as actual_points * 100 in order
+to avoid using floats.
 
 ## league_memberships
 column name | data type | details
@@ -95,6 +100,7 @@ column name    | data type | details
 ---------------|-----------|-----------------------
 id             | integer   | not null, primary key
 player_id      | integer   | not null, foreign key (references players)
+owner_id       | integer   | not null, foreign key (references users)
 trade_offer_id | integer   | not null, foreign key (references trade offers)
 
 ## users

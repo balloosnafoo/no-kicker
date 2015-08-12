@@ -1,10 +1,10 @@
 <h1>Leagues</h1>
 
-<table>
+<table class="table">
   <tr>
-    <th>Fantasy</th>
-    <th>Standings</th>
-    <th>Games</th>
+    <th colspan="2">Fantasy</th>
+    <th colspan="6">Standings</th>
+    <th colspan="2">Games</th>
   </tr>
   <tr>
     <th>League</th>
@@ -21,7 +21,7 @@
   <% leagues.each( function (league) { %>
     <tr>
       <td><%= league.escape("name") %></td>
-      <td></td>
+      <td><%= league.user_team().escape("name") %></td>
       <td></td>
       <td></td>
       <td></td>
