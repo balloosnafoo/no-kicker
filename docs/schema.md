@@ -46,6 +46,17 @@ id          | integer   | not null, primary key
 league_id   | integer   | not null, foreign key (references leagues)
 member_id   | integer   | not null, foreign key (references users)
 
+## league_invites
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+league_id   | integer   | not null, foreign_key (references leagues)
+username    | string    |
+email       | string    |
+
+Note: an invite should have an email or a username, but this is currently
+not validated on the db level.
+
 ## player_contracts
 column name | data type | details
 ------------|-----------|-----------------------
