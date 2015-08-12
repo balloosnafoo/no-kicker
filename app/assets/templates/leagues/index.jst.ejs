@@ -25,7 +25,9 @@
   </tr>
   <% leagues.each( function (league) { %>
     <tr>
-      <td><%= league.escape("name") %></td>
+      <td>
+        <a href="#leagues/<%= league.id %>"><%= league.escape("name") %></a>
+      </td>
       <td><%= league.user_team().escape("name") %></td>
       <td></td>
       <td></td>

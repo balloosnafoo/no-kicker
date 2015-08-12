@@ -1,6 +1,6 @@
 <h1><%= league.escape("name") %></h1>
 
-<table class="table">
+<table class="table teams-table">
   <tr>
     <th colspan="2">Fantasy</th>
     <th colspan="6">Standings</th>
@@ -30,29 +30,4 @@
     <th>Previous</th>
     <th>Current</th>
   </tr>
-
-  <% for (var i = 0; i < teams.length; i++) { %>
-    <tr>
-      <th><%= teams.models[i].escape("name") %></th>
-      <th></th>
-
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-
-      <th></th>
-      <th></th>
-
-      <th></th>
-      <th></th>
-    </tr>
-  <% } %>
 </table>
