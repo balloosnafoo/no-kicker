@@ -3,13 +3,19 @@
 ## Rails
 ### Models
 * User
+* Session
+* League
+* Team
+* LeagueMemberships
+* RuleSet
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
 * Api::LeaguesController (create, new, show)
 * Api::TeamsController (create, new, show)
-* Api::LeagueMemberships (create, destroy)
+* Api::LeagueMembershipsController (create, destroy)
+* Api::RuleSetsController (edit)
 
 ### Views
 * users/new.html.erb
