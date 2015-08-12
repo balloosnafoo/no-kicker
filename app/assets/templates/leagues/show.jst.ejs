@@ -1,5 +1,58 @@
 <h1><%= league.escape("name") %></h1>
 
-<p>
-  [Teams will go here!]
-</p>
+<table class="table">
+  <tr>
+    <th colspan="2">Fantasy</th>
+    <th colspan="6">Standings</th>
+    <th colspan="4">Stats</th>
+    <th colspan="2">Misc</th>
+    <th colspan="2">Games</th>
+  </tr>
+  <tr>
+    <th>Team</th>
+    <th>Owner</th>
+
+    <th>W</th>
+    <th>L</th>
+    <th>%</th>
+    <th>GB</th>
+    <th>Div</th>
+    <th>Strk</th>
+
+    <th>PF</th>
+    <th>Avg</th>
+    <th>PA</th>
+    <th>Avg</th>
+
+    <th>Rank</th>
+    <th>Draft</th>
+
+    <th>Previous</th>
+    <th>Current</th>
+  </tr>
+
+  <% for (var i = 0; i < teams.length; i++) { %>
+    <tr>
+      <th><%= teams.models[i].escape("name") %></th>
+      <th></th>
+
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+
+      <th></th>
+      <th></th>
+
+      <th></th>
+      <th></th>
+    </tr>
+  <% } %>
+</table>

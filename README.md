@@ -38,7 +38,8 @@ will offer reasonable defaults for league rules.
 During this phase I will implement viewing functionality so that users can
 see all of their leagues, and the names of the teams in the league in
 backbone views. Data will be served by api controllers in JSON, which will
-be made during this phase. This phase will also require implementing
+be made during this phase. I will also implement a method on the League model
+that generates the seasons matchups.
 
 [Details][phase-two]
 

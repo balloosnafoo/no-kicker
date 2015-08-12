@@ -2,6 +2,7 @@
 
 ## Rails
 ### Models
+* League#generate_schedule
 
 ### Controllers
 

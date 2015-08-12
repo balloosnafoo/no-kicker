@@ -9,7 +9,8 @@ NoKicker.Views.LeagueShow = Backbone.CompositeView.extend({
 
   render: function () {
     var renderedContent = this.template({
-      league: this.model
+      league: this.model,
+      teams: this.model.teams()
     });
 
     this.$el.html(renderedContent);
