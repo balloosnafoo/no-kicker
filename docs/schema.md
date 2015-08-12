@@ -29,7 +29,7 @@ to avoid using floats.
 
 ## roster_rules
 column name  | data type | details
------ -------|-----------|-----------------------
+-------------|-----------|-----------------------
 id           | integer   | not null, primary key
 num_rbs      | integer   | not null, default 2
 num_wrs      | integer   | not null, default 2
