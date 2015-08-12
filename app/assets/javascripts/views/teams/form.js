@@ -3,6 +3,10 @@ NoKicker.Views.TeamForm = Backbone.View.extend({
 
   className: "container",
 
+  events: {
+    "submit form": "newTeam"
+  },
+
   render: function () {
     var renderedContent = this.template({
       team: this.model
@@ -10,5 +14,23 @@ NoKicker.Views.TeamForm = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  newTeam: function (event) {
+    event.preventDefault();
+    debugger;
+    var formData = $(event.currentTarget).serializeJSON();
+    var team = new NoKicker.Models.Team()
+
+    team.set(formData.team);
+    team.save({}, {
+      success: function () {
+        // this.collection.add(team, { merge: true });
+        Backbone.history.navigate(
+          "leagues/" + team.escape("league_id"),
+          { trigger: true }
+        );
+      }.bind(this)
+    });
   }
 });

@@ -27,7 +27,7 @@ class Api::LeaguesController < ApplicationController
 
   def index
     if params[:user_leagues] && current_user
-      # Update when league_memberships exist!
+      # Update when league_memberships and public exist!
       @leagues = current_user.leagues
                     .includes(:teams)
                     .where(teams: { manager_id: current_user.id })

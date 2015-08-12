@@ -35,14 +35,16 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     var showView = new NoKicker.Views.LeagueShow({
       model: league
     });
-    
+
     this._swapView(showView);
   },
 
   teamNew: function (league_id) {
-    var team = new NoKicker.Models.Team();
+    var team = new NoKicker.Models.Team({league_id: league_id});
+    // var teams = this.collection.getOrFetch(league_id).teams();
     var formView = new NoKicker.Views.TeamForm({
       model: team
+      // , collection: teams
     });
 
     this._swapView(formView);

@@ -1,10 +1,13 @@
-<form class="" action="index.html" method="post">
+<form class="new-team" action="index.html" method="post">
   <div class="form-group">
     <label for="team-name">Team Name</label>
     <input type="text" id="team-name"
+           name="team[name]"
            class="form-control"
            value="<%= team.escape("name") %>">
   </div>
+
+  <input type="hidden" name="team[league_id]" value="<%= team.escape("league_id") %>">
 
   <input type="submit" value="Save">
 </form>
