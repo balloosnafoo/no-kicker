@@ -23,6 +23,7 @@ class Api::LeaguesController < ApplicationController
 
   def index
     if params[:user_leagues] && current_user
+      @user_leagues = true
       @leagues = current_user.leagues
                     .includes(:teams)
                     .where(teams: { manager_id: current_user.id })
