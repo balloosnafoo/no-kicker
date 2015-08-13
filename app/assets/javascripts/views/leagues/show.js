@@ -52,7 +52,6 @@ NoKicker.Views.LeagueShow = Backbone.CompositeView.extend({
 
   newTeam: function (event) {
     event.preventDefault();
-    debugger;
     Backbone.history.navigate(
       "leagues/" + this.model.id + "/teams/new",
       { trigger: true }

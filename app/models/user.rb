@@ -6,14 +6,12 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  has_many(
-    :league_memberships,
-    class_name: "LeagueMembership",
-    foreign_key: :member_id,
-    primary_key: :id
-  )
-
-  has_many :leagues, through: :league_memberships, source: :league
+  # has_many(
+  #   :league_memberships,
+  #   class_name: "LeagueMembership",
+  #   foreign_key: :member_id,
+  #   primary_key: :id
+  # )
 
   has_many(
     :teams,
@@ -21,6 +19,8 @@ class User < ActiveRecord::Base
     foreign_key: :manager_id,
     primary_key: :id
   )
+
+  has_many :leagues, through: :teams, source: :league
 
   has_many(
     :commissioned_leagues,

@@ -1,5 +1,6 @@
 class League < ActiveRecord::Base
-  validates :name, :public, :redraft, :match_type, presence: true
+  validates :name, :match_type, presence: true
+  validates :public, :redraft, inclusion: { in: [ true, false ] }
   validates :num_teams, numericality: { greater_than: 8 }
   validates :num_divisions, numericality: { less_than: 4 }
 
@@ -19,6 +20,8 @@ class League < ActiveRecord::Base
     foreign_key: :commissioner_id,
     primary_key: :id
   )
+
+  has_many :league_invites
 
   def current_user_team
   end
