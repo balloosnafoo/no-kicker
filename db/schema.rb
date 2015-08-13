@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(version: 20150812225043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "league_memberships", force: :cascade do |t|
-    t.integer  "league_id",  null: false
-    t.integer  "member_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "league_memberships", ["league_id", "member_id"], name: "index_league_memberships_on_league_id_and_member_id", unique: true, using: :btree
-
   create_table "leagues", force: :cascade do |t|
     t.integer  "commissioner_id"
     t.integer  "num_teams",                       null: false

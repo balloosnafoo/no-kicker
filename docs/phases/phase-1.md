@@ -6,7 +6,6 @@
 * Session
 * League
 * Team
-* LeagueMemberships
 * ScoreRule
 
 ### Controllers
@@ -14,7 +13,6 @@
 * SessionsController (create, new, destroy)
 * Api::LeaguesController (create, new, show)
 * Api::TeamsController (create, new, show)
-* Api::LeagueMembershipsController (create, destroy)
 * Api::ScoreRulesController (edit)
 
 ### Views

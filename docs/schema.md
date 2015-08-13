@@ -39,13 +39,6 @@ num_flex     | integer   | not null, default 1
 num_dst      | integer   | not null, default 1
 num_bench    | integer   | not null, default 6
 
-## league_memberships
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-league_id   | integer   | not null, foreign key (references leagues)
-member_id   | integer   | not null, foreign key (references users)
-
 ## league_invites
 column name | data type | details
 ------------|-----------|-----------------------

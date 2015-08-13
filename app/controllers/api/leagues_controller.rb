@@ -9,10 +9,6 @@ class Api::LeaguesController < ApplicationController
     @league.score_rule = ScoreRule.new
     @league.roster_rule = RosterRule.new
     if @league.save
-      LeagueMembership.create({
-        member_id: current_user.id,
-        league_id: @league.id
-      })
       render :show
     else
       render json: @league, status: :uprocessable_entity
@@ -27,7 +23,6 @@ class Api::LeaguesController < ApplicationController
 
   def index
     if params[:user_leagues] && current_user
-      # Update when league_memberships and public exist!
       @leagues = current_user.leagues
                     .includes(:teams)
                     .where(teams: { manager_id: current_user.id })
