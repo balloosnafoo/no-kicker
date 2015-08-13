@@ -8,6 +8,7 @@ No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:
 - [X] Create accounts and login
 - [X] Create new leagues
 - [X] View teams in their own league
+- [X] Browse leagues
 - [X] Create teams in leagues to which they have access
 - [ ] Add and drop players
 - [ ] See player stats
@@ -38,8 +39,8 @@ will offer reasonable defaults for league rules.
 During this phase I will implement viewing functionality so that users can
 see all of their leagues, and the names of the teams in the league in
 backbone views. Data will be served by api controllers in JSON, which will
-be made during this phase. I will also implement a method on the League model
-that generates the seasons matchups.
+be made during this phase. This requires creation of league invitations and
+validations to check that the league is public or the user is invited.
 
 [Details][phase-two]
 

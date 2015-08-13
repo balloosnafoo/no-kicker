@@ -1,6 +1,7 @@
 NoKicker.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
-    this.collection = new NoKicker.Collections.Leagues();
+    this.leagues = new NoKicker.Collections.Leagues();
+    this.players = new NoKicker.Collections.Players();
     this.$rootEl = options.$rootEl;
   },
 
@@ -10,22 +11,23 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     "leagues/new": "leagueNew",
     "leagues/:id": "leagueShow",
     "leagues/:league_id/teams/new": "teamNew",
-    "leagues/:league_id/teams/:team_id": "teamShow"
+    "leagues/:league_id/teams/:team_id": "teamShow",
+    "players": "playerIndex"
   },
 
   userLeagueIndex: function () {
-    this.collection.fetch({ data: { user_leagues: true } });
+    this.leagues.fetch({ data: { user_leagues: true } });
     var indexView = new NoKicker.Views.LeagueIndex({
-      collection: this.collection
+      collection: this.leagues
     });
 
     this._swapView(indexView);
   },
 
   leagueIndex: function () {
-    this.collection.fetch();
+    this.leagues.fetch();
     var indexView = new NoKicker.Views.LeagueAllIndex({
-      collection: this.collection
+      collection: this.leagues
     });
 
     this._swapView(indexView);
@@ -35,14 +37,14 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     var league = new NoKicker.Models.League();
     var newView = new NoKicker.Views.LeagueNew({
       model: league,
-      collection: this.collection
+      collection: this.leagues
     });
 
     this._swapView(newView);
   },
 
   leagueShow: function (id) {
-    var league = this.collection.getOrFetch(id);
+    var league = this.leagues.getOrFetch(id);
     var showView = new NoKicker.Views.LeagueShow({
       model: league
     });
@@ -52,10 +54,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
 
   teamNew: function (league_id) {
     var team = new NoKicker.Models.Team({league_id: league_id});
-    // var teams = this.collection.getOrFetch(league_id).teams();
     var formView = new NoKicker.Views.TeamForm({
       model: team
-      // , collection: teams
     });
 
     this._swapView(formView);
@@ -69,6 +69,15 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(showView);
+  },
+
+  playerIndex: function () {
+    this.players.fetch();
+    var indexView = new NoKicker.Views.PlayerIndex({
+      collection: this.players
+    });
+
+    this._swapView(indexView);
   },
 
   _swapView: function (view) {
