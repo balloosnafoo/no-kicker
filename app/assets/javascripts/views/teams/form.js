@@ -29,7 +29,10 @@ NoKicker.Views.TeamForm = Backbone.View.extend({
           "leagues/" + team.escape("league_id"),
           { trigger: true }
         );
-      }.bind(this)
+      }.bind(this),
+      error: function (object, response) {
+        debugger;
+      }
     });
   }
 });

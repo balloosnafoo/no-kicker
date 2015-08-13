@@ -1,0 +1,6 @@
+        player.passing_yds,
+        player.passing_tds,
+        player.passing_att,
+        player.passing_int,
+        player.rushing_yds,
+        player.rushing_tds,
