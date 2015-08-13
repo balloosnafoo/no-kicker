@@ -11,4 +11,14 @@
 <td></td>
 <td></td>
 <td></td>
-<td><button type="button" class="action-button" name="button">Add Player</button></td>
+<td>
+  <% if ( player.isContracted() ) { %>
+    <button type="button" class="add-button" name="button">
+      Drop Player
+    </button>
+  <% } else { %>
+    <button type="button" class="drop-button" name="button">
+      Add Player
+    </button>
+  <% } %>
+</td>
