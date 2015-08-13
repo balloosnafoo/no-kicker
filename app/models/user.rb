@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  ##### Auth stuff #####
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     if user.is_password?(password)
@@ -44,6 +46,12 @@ class User < ActiveRecord::Base
     self.session_token = generate_session_token
     save!
     self.session_token
+  end
+
+  ##### League Stuff #####
+
+  def team_in_league(id)
+    teams.where(teams: { league_id: id })[0]
   end
 
   private
