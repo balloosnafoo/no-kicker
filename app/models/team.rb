@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-  validates :league, :name, presence: true
+  validates :league, :name, :division, presence: true
   validate :user_invited_or_public
   validate :league_has_opening
   validate :user_has_no_team_in_league

@@ -22,6 +22,7 @@ NoKicker.Views.TeamForm = Backbone.View.extend({
     var team = new NoKicker.Models.Team()
 
     team.set(formData.team);
+    team.set({division: 1})
     team.save({}, {
       success: function () {
         Backbone.history.navigate(

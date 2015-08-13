@@ -5,6 +5,8 @@ class League < ActiveRecord::Base
   validates :num_divisions, numericality: { less_than: 4 }
 
   has_many :teams
+  has_many :members, through: :teams, source: :manager
+
   has_one(
     :score_rule,
     class_name: "ScoreRule",
@@ -23,6 +25,17 @@ class League < ActiveRecord::Base
 
   has_many :league_invites
 
-  def current_user_team
+  def generate_matchups
+    # Assuming only one division for now
+    num_teams.times do |i|
+      games = []
+      counter = 0
+      while games.length < 14 # later should be num_weeks
+        opp_idx = (i + counter + 1) % num_teams
+        counter += 1
+        next if opp_idx == i
+        games << [i, opp_idx]
+      end
+    end
   end
 end

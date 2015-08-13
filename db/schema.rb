@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20150812225043) do
 
   create_table "teams", force: :cascade do |t|
     t.integer  "league_id",  null: false
+    t.integer  "division",   null: false
     t.integer  "manager_id"
     t.string   "name",       null: false
     t.datetime "created_at", null: false
