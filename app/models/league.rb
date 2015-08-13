@@ -25,6 +25,13 @@ class League < ActiveRecord::Base
 
   has_many :league_invites
 
+  def self.users_leagues_and_teams(id)
+    User.find(id)
+        .leagues
+        .includes(:teams)
+        .where(teams: { manager_id: id })
+  end
+
   def generate_matchups
     # Assuming only one division for now
     num_teams.times do |i|
