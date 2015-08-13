@@ -54,6 +54,12 @@ class User < ActiveRecord::Base
     teams.where(teams: { league_id: id })[0]
   end
 
+  def players_in_league(id)
+    # requires pre-fetching teams => players
+    teams = self.teams.where(teams: { league_id: id }).includes(:players)
+    teams[0].players
+  end
+
   private
   def ensure_session_token
     self.session_token ||= generate_session_token
