@@ -3,14 +3,16 @@ NoKicker.Views.PlayerIndex = Backbone.CompositeView.extend({
 
   className: "container players-index",
 
-  initialize: function () {
+  initialize: function (options) {
+    this.league = options.league;
     this.listenTo(this.collection, "add", this.addPlayer);
     this.listenTo(this.collection, "sync", this.render)
   },
 
   addPlayer: function (player) {
     var playerView = new NoKicker.Views.PlayerIndexItem({
-      model: player
+      model: player,
+      league: this.league
     });
 
     this.addSubview('.players-table', playerView);

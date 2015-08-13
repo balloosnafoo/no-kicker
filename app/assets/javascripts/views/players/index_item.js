@@ -5,7 +5,12 @@ NoKicker.Views.PlayerIndexItem = Backbone.View.extend({
 
   className: "player-listing",
 
-  initialize: function () {
+  events: {
+    "click .action-button": "addPlayer"
+  },
+
+  initialize: function (options) {
+    this.league = options.league;
     this.listenTo(this.model, "sync", this.render);
   },
 
@@ -16,5 +21,23 @@ NoKicker.Views.PlayerIndexItem = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  addPlayer: function (event) {
+    event.preventDefault();
+    var newContract = new NoKicker.Models.PlayerContract();
+    newContract.set({
+      player_id: this.model.id,
+      league_id: this.league.id
+    });
+
+    newContract.save({}, {
+      success: function () {
+        debugger;
+      },
+      error: function () {
+        debugger;
+      }
+    });
   }
 });
