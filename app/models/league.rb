@@ -6,6 +6,7 @@ class League < ActiveRecord::Base
 
   has_many :teams
   has_many :members, through: :teams, source: :manager
+  has_many :player_contracts, through: :teams, source: :player_contracts
 
   has_one(
     :score_rule,
@@ -30,6 +31,12 @@ class League < ActiveRecord::Base
         .leagues
         .includes(:teams)
         .where(teams: { manager_id: id })
+  end
+
+  def player_contract(player_id)
+    player_contracts.find do |contract|
+      contract.id if contract.player_id == player_id
+    end
   end
 
   def generate_matchups
