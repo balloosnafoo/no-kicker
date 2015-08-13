@@ -10,11 +10,6 @@ NoKicker.Views.LeagueShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.teams(), "add", this.addTeam);
-
-    //   wow
-    //                               very confuse
-    //        such reexamine later
-    // this.model.teams().listenTo(this.model.teams(), "add", this.addTeam.bind(this));
   },
 
   addTeam: function (team) {

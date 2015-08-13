@@ -31,7 +31,7 @@ class Team < ActiveRecord::Base
 
   def user_has_no_team_in_league
     if manager.leagues.include?(league)
-      errors[:user] << "cannot create multiple teams in the same league"
+      errors[:manager] << "cannot create multiple teams in the same league"
     end
   end
 end

@@ -1,0 +1,9 @@
+<td>
+  <a href="#/leagues/<%= league.id %>">
+    <%= league.escape("name") %>
+  </a>
+</td>
+<td><%= league.escape("redraft") ? "Redraft" : "Keeper" %></td>
+<td><%= league.escape("num_teams") %></td>
+<td><%= league.escape("public") ? "Public" : "Private" %></td>
+<td></td>

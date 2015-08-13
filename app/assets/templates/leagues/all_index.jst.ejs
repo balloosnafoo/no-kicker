@@ -1,6 +1,11 @@
-all index
-<ul>
-<% leagues.each(function (league) { %>
-  <li><%= league.escape("name") %></li>
-<% }); %>
-</ul>
+<h1>Leagues</h1>
+
+<table class="table leagues-table">
+  <tr>
+    <th>League</th>
+    <th>Lifetime</th>
+    <th>Members</th>
+    <th>Membership</th>
+    <th>Draft</th>
+  </tr>
+</table>
