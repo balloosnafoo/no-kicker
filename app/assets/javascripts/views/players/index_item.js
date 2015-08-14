@@ -35,7 +35,6 @@ NoKicker.Views.PlayerIndexItem = Backbone.View.extend({
     });
     this.model.contract().save({}, {
       error: function (contract, response) {
-        debugger;
         Backbone.history.navigate(
           "leagues/" + this.league.id + "/add/" + contract.escape("player_id"),
           { trigger: true }

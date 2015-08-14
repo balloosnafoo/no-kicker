@@ -24,4 +24,34 @@ File.foreach("./python/players.csv") do |line|
   end
 end
 
-User.create(username: "Baloo", password: "password", email: "baloo@butts.com")
+
+User.create(username: "baloo", password: "password", email: "baloo@butts.com")
+League.create(
+  commissioner_id: 1,
+  num_teams: 1,
+  num_divisions: 1,
+  public: true,
+  redraft: true,
+  match_type: "h2h",
+  name: "Doge Leauge"
+)
+Team.create(
+  league_id: 1,
+  division: 1,
+  manager_id: 1,
+  name: "Straight Cache Homey"
+)
+11.times do |i|
+  User.create(
+    username: Faker::Internet.user_name,
+    password: "password",
+    email: Faker::Internet.free_email
+  )
+
+  User.find(i + 2).teams.new(
+    league_id: 1,
+    division: 1,
+    manager_id: i + 2,
+    name: Faker::Book.title
+  )
+end

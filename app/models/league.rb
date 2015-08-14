@@ -7,6 +7,7 @@ class League < ActiveRecord::Base
   has_many :teams
   has_many :members, through: :teams, source: :manager
   has_many :player_contracts, through: :teams, source: :player_contracts
+  has_many :matchups, through: :teams, source: :matchups
 
   has_one(
     :score_rule,
@@ -43,17 +44,25 @@ class League < ActiveRecord::Base
     roster_rule.total_slots
   end
 
+  # currently using indices 0...num_teams which are not actual indices of teams.
   def generate_matchups
-    # Assuming only one division for now
-    num_teams.times do |i|
-      games = []
-      counter = 0
-      while games.length < 14 # later should be num_weeks
-        opp_idx = (i + counter + 1) % num_teams
-        counter += 1
-        next if opp_idx == i
-        games << [i, opp_idx]
+    return if matchups
+    a1 = (0...num_teams / 2).to_a
+    a2 = (num_teams / 2...num_teams).to_a.reverse
+    14.times do |week|
+      a1.each_with_index do |_, idx|
+        Matchup.create!(
+          team_1_id: a1[idx],
+          team_2_id: a2[idx],
+          week: week
+        )
       end
+      a1.insert(1, a2.shift())
+      a2.push(a1.pop)
     end
+  end
+
+  def team_ids
+    teams.select(:id)
   end
 end

@@ -13,6 +13,7 @@ gem 'pry-rails'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'newrelic_rpm'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'
