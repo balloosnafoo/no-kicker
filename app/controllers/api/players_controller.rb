@@ -8,6 +8,11 @@ class Api::PlayersController < ApplicationController
     end
     render :index
   end
+
+  def show
+    @player = Player.find(params[:id])
+    render json: @player
+  end
 end
 
 # Ryan's notes about active record subqueries

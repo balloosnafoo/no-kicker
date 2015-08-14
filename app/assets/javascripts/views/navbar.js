@@ -17,3 +17,7 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     return this;
   }
 });
+
+
+
+// On logout set window.location = "/"
