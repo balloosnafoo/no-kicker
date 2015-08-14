@@ -96,7 +96,7 @@ receptions    | integer   | not null
 interceptions | integer   | not null
 fumbles       | integer   | not null
 
-## starting_slot
+## player_slot
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key

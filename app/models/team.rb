@@ -15,6 +15,10 @@ class Team < ActiveRecord::Base
     primary_key: :id
   )
 
+  def is_full?
+    league.team_size_limit <= player_contracts.length
+  end
+
   private
   def user_invited_or_public
     return if league.public || league.commissioner == manager

@@ -39,6 +39,10 @@ class League < ActiveRecord::Base
     end
   end
 
+  def team_size_limit
+    roster_rule.total_slots
+  end
+
   def generate_matchups
     # Assuming only one division for now
     num_teams.times do |i|
