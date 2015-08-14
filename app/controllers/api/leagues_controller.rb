@@ -33,7 +33,7 @@ class Api::LeaguesController < ApplicationController
 
   def show
     @league = League.find(params[:id])
-    @team = Team.includes(:players).find(params[:team])
+    @team = current_user.team_in_league(params[:id]) if params[:user_team] # Maybe add parameter to allow for prefetching players
     if @league
       render :show
     else

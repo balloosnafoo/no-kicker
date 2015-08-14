@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
 
   # Not in use currently
   def players_in_league(id)
-    # requires pre-fetching teams => players
+    # Ryan: requires pre-fetching teams => players
     teams = self.teams.where(teams: { league_id: id }).includes(:players)
     teams[0].players
   end

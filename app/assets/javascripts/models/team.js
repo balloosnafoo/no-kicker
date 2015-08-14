@@ -18,6 +18,7 @@ NoKicker.Models.Team = Backbone.Model.extend({
   }
 });
 
+// For use in partially filled leagues, where rows should still exist
 NoKicker.Models.nullTeam = new NoKicker.Models.Team({
   name: ""
 })
