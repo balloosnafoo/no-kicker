@@ -6,7 +6,7 @@ json.extract!(
 )
 
 if @team
-  json.team do
+  json.user_team do
     json.extract! @team, :id, :name
     json.players do
       json.array! @team.players, :fname, :lname, :team_name, :position

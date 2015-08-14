@@ -14,7 +14,7 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
   },
 
   addPlayerAddDropItem: function (toAdd, player) {
-    debugger;
+    // debugger;
     var appendSelector = toAdd ? ".to-add-table" : ".to-drop-table";
     var playerAddDropItem = new NoKicker.Views.PlayerAddDropItem({
       model: player

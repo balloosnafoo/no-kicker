@@ -2,6 +2,7 @@ NoKicker.Models.League = Backbone.Model.extend({
   urlRoot: "/api/leagues",
 
   user_team: function () {
+    // debugger;
     if (!this._user_team) {
       this._user_team = new NoKicker.Models.Team({ league: this });
     }
