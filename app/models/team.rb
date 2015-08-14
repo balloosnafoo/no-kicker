@@ -4,7 +4,7 @@ class Team < ActiveRecord::Base
   validate :league_has_opening
   validate :user_has_no_team_in_league
 
-  has_many :player_contracts
+  has_many :player_contracts, dependent: :destroy
   has_many :players, through: :player_contracts, source: :player
 
   belongs_to :league

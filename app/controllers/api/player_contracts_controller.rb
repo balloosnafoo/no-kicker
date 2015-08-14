@@ -10,6 +10,12 @@ class Api::PlayerContractsController < ApplicationController
     end
   end
 
+  def destroy
+    @player_contract = PlayerContract.find(params[:id])
+    @player_contract.destroy()
+    render json: @player_contract
+  end
+
   private
   def player_contract_params
     params.require(:player_contract).permit(:player_id)
