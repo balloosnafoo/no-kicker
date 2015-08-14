@@ -17,6 +17,7 @@ NoKicker.Models.League = Backbone.Model.extend({
   },
 
   parse: function (response) {
+    debugger;
     if (response.user_team) {
       this.user_team().set(response.user_team, { parse: true });
       delete response.user_team;

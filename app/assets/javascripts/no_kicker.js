@@ -4,12 +4,15 @@ window.NoKicker = {
   Views: {},
   Routers: {},
   initialize: function() {
+    var leagues = new NoKicker.Collections.Leagues();
     var router = new NoKicker.Routers.Router({
-      $rootEl: $('#content')
+      $rootEl: $('#content'),
+      leagues: leagues
     });
 
     var nav = new NoKicker.Views.Navbar({
-      router: router
+      router: router,
+      leagues: leagues
       // There was a passed in collection in the demo
     });
 

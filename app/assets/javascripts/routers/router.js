@@ -1,6 +1,6 @@
 NoKicker.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
-    this.leagues = new NoKicker.Collections.Leagues();
+    this.leagues = options.leagues;
     this.players = new NoKicker.Collections.Players();
     this.$rootEl = options.$rootEl;
   },
@@ -83,9 +83,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
   },
 
   addPlayer: function (league_id, player_id) {
-    var league = this.leagues.getOrFetch(league_id, {
-      data: { user_team: true }
-    });
+    var league = this.leagues.getOrFetch(league_id, { user_team: true });
     var player = this.players.getOrFetch(player_id);
     var addView = new NoKicker.Views.TeamAddDrop({
       league: league,

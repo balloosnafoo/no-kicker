@@ -9,6 +9,7 @@ NoKicker.Models.Team = Backbone.Model.extend({
   },
 
   parse: function (response) {
+    debugger;
     if (response.players) {
       this.players().set(response.players, { parse: true });
       delete response.user_team;
