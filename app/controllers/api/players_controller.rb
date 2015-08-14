@@ -10,8 +10,6 @@ class Api::PlayersController < ApplicationController
   end
 end
 
+# Ryan's notes about active record subqueries
 # subquery = # some activerecord relation
-
 # Model.select(stuff).from(subquery).joins(other_table)
-
-# @player.contract_id

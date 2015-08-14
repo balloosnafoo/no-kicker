@@ -12,9 +12,13 @@
 <td></td>
 <td></td>
 <td>
-  <% if ( player.isContracted() ) { %>
+  <% if ( player.isContracted() && player.contract().escape('user_player') ) { %>
     <button type="button" class="add-button" name="button">
       Drop Player
+    </button>
+  <% } else if ( player.isContracted() ) { %>
+    <button type="button" class="trade-button" name="button">
+      Trade
     </button>
   <% } else { %>
     <button type="button" class="drop-button" name="button">

@@ -6,7 +6,7 @@ NoKicker.Views.PlayerIndexItem = Backbone.View.extend({
   className: "player-listing",
 
   events: {
-    "click .action-button": "addPlayer"
+    "click .trade-button": "addPlayer"
   },
 
   initialize: function (options) {
@@ -24,6 +24,7 @@ NoKicker.Views.PlayerIndexItem = Backbone.View.extend({
   },
 
   addPlayer: function (event) {
+    debugger;
     event.preventDefault();
     var newContract = new NoKicker.Models.PlayerContract();
     newContract.set({
