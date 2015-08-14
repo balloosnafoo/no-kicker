@@ -12,7 +12,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     "leagues/:id": "leagueShow",
     "leagues/:league_id/teams/new": "teamNew",
     "leagues/:league_id/teams/:team_id": "teamShow",
-    "leagues/:league_id/players": "playerIndex"
+    "leagues/:league_id/players": "playerIndex",
+    "leagues/:league_id/add/:player_id": "addPlayer"
   },
 
   userLeagueIndex: function () {
@@ -79,6 +80,17 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(indexView);
+  },
+
+  addPlayer: function (league_id, player_id) {
+    var league = this.leagues.getOrFetch(league_id);
+    var player = this.players.getOrFetch(player_id);
+    var addView = new NoKicker.Views.TeamAddDrop({
+      league: league,
+      player: player
+    });
+
+    this._swapView(addView);
   },
 
   _swapView: function (view) {

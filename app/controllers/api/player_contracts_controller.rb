@@ -6,7 +6,8 @@ class Api::PlayerContractsController < ApplicationController
     if @player_contract.save
       render json: @player_contract
     else
-      render json: @player_contract.errors.full_messages
+      render json: @player_contract.errors.full_messages,
+                   status: :unprocessable_entity
     end
   end
 
