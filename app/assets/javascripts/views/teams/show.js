@@ -5,15 +5,16 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.players(), "add", this.addTeam);
   },
 
-  addPlayer: function (team) {
+  addPlayer: function (player) {
     var playersView = new NoKicker.Views.PlayerTeamIndexItem({
-      model: players,
+      model: player,
       league: this.model
     });
 
-    this.addSubview('.player-table', playersView);
+    this.addSubview('.roster-table', playersView);
   },
 
   render: function () {
@@ -22,6 +23,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     });
 
     this.$el.html(renderedContent);
+    this.renderPlayers();
     return this;
   },
 

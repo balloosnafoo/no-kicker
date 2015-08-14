@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
-    if user.is_password?(password)
+    if user && user.is_password?(password)
       user
     else
       flash[:errors] = ["Invalid credentials"]
@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
     teams.where(teams: { league_id: id })[0]
   end
 
+  # Not in use currently
   def players_in_league(id)
     # requires pre-fetching teams => players
     teams = self.teams.where(teams: { league_id: id }).includes(:players)

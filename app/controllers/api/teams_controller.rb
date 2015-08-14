@@ -19,8 +19,8 @@ class Api::TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
-    render json: @team
+    @team = Team.includes(:players).find(params[:id])
+    render :show
   end
 
   def destroy

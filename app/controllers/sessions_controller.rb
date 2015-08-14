@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       params[:user][:username],
       params[:user][:password]
     )
-    if @user
+    if @user && @user
       login!(@user)
       redirect_to root_url
     else
