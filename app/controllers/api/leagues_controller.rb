@@ -33,6 +33,7 @@ class Api::LeaguesController < ApplicationController
 
   def show
     @league = League.find(params[:id])
+    @team = Team.includes(:players).find(params[:team])
     if @league
       render :show
     else
