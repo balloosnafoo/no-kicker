@@ -28,7 +28,10 @@
       <td>
         <a href="#leagues/<%= league.id %>"><%= league.escape("name") %></a>
       </td>
-      <td><%= league.user_team().escape("name") %></td>
+      <td>
+        <a href="#leagues/<%= league.id %>/teams/<%= league.user_team().id %>">
+          <%= league.user_team().escape("name") %></td>
+        </a>
       <td></td>
       <td></td>
       <td></td>

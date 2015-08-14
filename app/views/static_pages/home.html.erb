@@ -1,1 +1,17 @@
+<div id="navbar"></div>
+
 <div id="content"></div>
+
+<script>
+  $(function () {
+    NoKicker.CURRENT_USER = {
+      username: "<%= current_user.username %>",
+      id: "<%= current_user.id %>"
+    };
+
+    // You could also do something like this (careful, the ERB tag has been escaped):
+    // BackboneDemo.CURRENT_USER = JSON.parse("<%%= current_user.to_json %>");
+
+    NoKicker.initialize();
+  });
+</script>
