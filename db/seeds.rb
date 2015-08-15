@@ -28,7 +28,7 @@ end
 User.create(username: "baloo", password: "password", email: "baloo@butts.com")
 League.create(
   commissioner_id: 1,
-  num_teams: 1,
+  num_teams: 12,
   num_divisions: 1,
   public: true,
   redraft: true,
@@ -48,10 +48,10 @@ Team.create(
     email: Faker::Internet.free_email
   )
 
-  User.find(i + 2).teams.new(
+  User.find(i + 2).teams.create(
     league_id: 1,
     division: 1,
     manager_id: i + 2,
-    name: Faker::Book.title
+    name: Faker::Lorem.words(2).join(" ")
   )
 end
