@@ -26,7 +26,7 @@ end
 
 
 User.create(username: "baloo", password: "password", email: "baloo@butts.com")
-League.create(
+league = League.create(
   commissioner_id: 1,
   num_teams: 12,
   num_divisions: 1,
@@ -35,6 +35,8 @@ League.create(
   match_type: "h2h",
   name: "Doge Leauge"
 )
+league.score_rule = ScoreRule.new
+league.roster_rule = RosterRule.new
 Team.create(
   league_id: 1,
   division: 1,

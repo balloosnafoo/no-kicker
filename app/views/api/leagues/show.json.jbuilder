@@ -9,7 +9,7 @@ if @team
   json.user_team do
     json.extract! @team, :id, :name
     json.players do
-      json.array! @team.players, :fname, :lname, :team_name, :position
+      json.array! @team.players, :id, :fname, :lname, :team_name, :position
     end
   end
 else

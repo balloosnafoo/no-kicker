@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :roster_rules, only: [:edit, :update]
     resources :players, only: [:index, :show]
     resources :player_contracts, only: [:create, :destroy]
+    resources :matchups, only: [:create, :index]
   end
 end

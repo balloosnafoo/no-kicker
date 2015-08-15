@@ -89,6 +89,7 @@ can be created.
       trade arbiters.
 - [ ] Commissioners can appoint trade arbiters.
 - [ ] Adds requests made after games have started go through the waiver wire
+- [ ] User show page shows user stats (% overall wins)
 
 [phase-one]: ./docs/phases/phase-1.md
 [phase-two]: ./docs/phases/phase-2.md

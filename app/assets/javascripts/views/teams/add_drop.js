@@ -3,6 +3,10 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
 
   className: "container add-drop-form",
 
+  events: {
+    "submit form": "makeRequest"
+  },
+
   initialize: function (options) {
     this.toAddPlayer = options.toAddPlayer;
     this.league = options.league;
@@ -21,8 +25,8 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
   },
 
   addPlayerAddDropItem: function (toAdd, player) {
-    // var appendSelector = toAdd ? ".to-add-table" : ".to-drop-table";
-    var appendSelector = toAdd ? ".to-add-rows" : ".to-drop-rows";
+    var appendSelector = toAdd ? ".to-add-table" : ".to-drop-table";
+    // var appendSelector = toAdd ? ".to-add-rows" : ".to-drop-rows";
     var playerAddDropItem = new NoKicker.Views.PlayerAddDropItem({
       model: player
     });
@@ -41,5 +45,31 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     this.collection && this.collection.each( function (player) {
       this.addPlayerAddDropItem(false, player);
     }.bind(this));
+  },
+
+  makeRequest: function (event) {
+    event.preventDefault();
+    debugger;
+    // Drop request must be made first to pass validation checks
+    var toDropId = $(event.currentTarget).serializeJSON().to_drop_id
+    var toDropPlayer = this.collection.get(toDropId);
+    toDropPlayer.contract().destroy();
+    toDropPlayer.contract().clear(); // This line might not be necessary
+
+    // Then add request can be made
+    this.toAddPlayer.contract().set({
+      player_id: this.toAddPlayer.id,
+      league_id: this.league.id,
+      user_player: true
+    });
+    this.toAddPlayer.contract().save({}, {
+      success: function () {
+        this.collection.add(this.toAddPlayer)
+      }.bind(this),
+      error: function () { debugger; }.bind(this)
+    });
+
+    // Redirect doesn't need to wait for success; it can go straight home
+    Backbone.history.navigate("", { trigger: true });
   }
 });

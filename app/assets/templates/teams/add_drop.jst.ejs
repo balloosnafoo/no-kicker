@@ -1,6 +1,6 @@
 <h1>Add Player</h1>
 
-<form class="" action="index.html" method="post">
+<form class="">
   <h3>Added Player</h3>
   <table class="table to-add-table">
     <%= JST['players/_header_row']({
@@ -10,23 +10,6 @@
 
   <h3>Dropped Player</h3>
   <table class="table to-drop-table">
-  </table>
-
-  <input type="submit" name="name" value="Submit">
-</form>
-
-
-<h1>Add Player</h1>
-
-<form class="" action="index.html" method="post">
-  <table class="table add-drop-table">
-  <tr> <h3>Added Player</h3> </tr>
-    <%= JST['players/_header_row']({
-          col1: "radio"
-        }) %>
-  <section class="to-add-rows"></section>
-  <tr> <h3>Dropped Player</h3> </tr>
-  <div class="to-drop-rows"></div>
   </table>
 
   <input type="submit" name="name" value="Submit">
