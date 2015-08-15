@@ -4,7 +4,6 @@ NoKicker.Views.Navbar = Backbone.View.extend({
   initialize: function (options) {
     this.router = options.router;
     this.collection = options.leagues;
-    this.$subEl = $('page-specific-links');
 
     this.listenTo(this.router, "route", this.handleRoute);
   },
@@ -21,15 +20,13 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     this.$el.find(".active").removeClass("active");
     this.$el.find("." + routeName).addClass("active");
 
-    // This seems really dumb and convoluted... halp.
     if (this.LEAGUE_ROUTES[routeName]) {
       var league = this.collection.getOrFetch(params[0]);
       this.subnav = new NoKicker.Views.LeagueNav({
         collection: this.collection,
-        model: league,
-        $el: this.$('.page-specific-links')
+        model: league
       });
-      this.$subEl.html(this.subnav.render().$el);
+      this.$(".page-specific-links").html(this.subnav.render().$el);
     } else {
       this.subnav && this.subnav.remove();
     }

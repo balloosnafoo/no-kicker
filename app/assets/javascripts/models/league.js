@@ -4,7 +4,8 @@ NoKicker.Models.League = Backbone.Model.extend({
   user_team: function () {
     // debugger;
     if (!this._user_team) {
-      this._user_team = new NoKicker.Collections.Teams([], { league: this });
+      this._user_team = new NoKicker.Models.Team();
+      // this._user_team = new NoKicker.Collections.Teams([], { league: this });
     }
     return this._user_team;
   },
@@ -18,7 +19,8 @@ NoKicker.Models.League = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.user_team) {
-      this.user_team().set(response.user_team, { parse: true });
+      var attrs = this.user_team().parse(response.user_team);
+      this.user_team().set(attrs);
       delete response.user_team;
     }
 

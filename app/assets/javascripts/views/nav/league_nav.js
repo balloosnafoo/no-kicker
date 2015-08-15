@@ -1,9 +1,9 @@
 NoKicker.Views.LeagueNav = Backbone.View.extend({
   template: JST ['nav/league_nav'],
 
-  initialize: function (options) {
-    this.$el = options.$el;
-  },
+  tagName: "ul",
+
+  className: "nav navbar-nav",
 
   render: function () {
     var renderedContent = this.template({

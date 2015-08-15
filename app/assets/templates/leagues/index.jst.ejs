@@ -23,14 +23,14 @@
     <th>Previous</th>
     <th>Current</th>
   </tr>
-  <% leagues.each( function (league) { %>
+  <% leagues.each(function (league) { %>
     <tr>
       <td>
         <a href="#leagues/<%= league.id %>"><%= league.escape("name") %></a>
       </td>
       <td>
-        <a href="#leagues/<%= league.id %>/teams/<%= league.user_team().models[0].id %>">
-          <%= league.user_team().models[0].escape("name") %></td>
+        <a href="#leagues/<%= league.id %>/teams/<%= league.user_team().id %>">
+          <%= league.user_team().escape("name") %></td>
         </a>
       <td></td>
       <td></td>
