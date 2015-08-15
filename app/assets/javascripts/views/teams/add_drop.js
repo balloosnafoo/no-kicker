@@ -10,20 +10,17 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
       this.collection = options.league.user_team().models[0].players();
     }
 
-    this.listenTo(this.collection, "sync", this.render);
-    this.listenTo(this.collection, "add", this.addPlayerAddDropItem.bind(this, false));
-    this.listenTo(this.league.user_team(), "change", this.setPlayerCollection);
     this.listenTo(this.toAddPlayer, "sync", this.render);
+    this.listenTo(this.league.user_team(), "update", this.setPlayerCollection);
   },
 
-  // setPlayerCollection: function () {
-  //   this.listenTo(this.collection, "sync", this.render);
-  //   this.listenTo(this.collection, "add", this.addPlayerAddDropItem.bind(this, false));
-  //   this.collection = this.league.user_team().players();
-  // },
+  setPlayerCollection: function () {
+    this.collection = this.league.user_team().models[0].players();
+    this.listenTo(this.collection, "sync", this.render);
+    this.listenTo(this.collection, "add", this.addPlayerAddDropItem.bind(this, false));
+  },
 
   addPlayerAddDropItem: function (toAdd, player) {
-    // debugger;
     var appendSelector = toAdd ? ".to-add-table" : ".to-drop-table";
     var playerAddDropItem = new NoKicker.Views.PlayerAddDropItem({
       model: player
