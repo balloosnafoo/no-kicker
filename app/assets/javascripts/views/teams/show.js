@@ -29,5 +29,10 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
   renderPlayers: function () {
     this.model.players().each(this.addPlayer.bind(this));
+  },
+
+  // Unintegrated, for switching subviews to roster slots
+  renderPlayersRS: function () {
+    this.model.players().each(this.addPlayer.bind(this));
   }
 });

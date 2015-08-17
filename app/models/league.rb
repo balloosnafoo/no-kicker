@@ -7,7 +7,7 @@ class League < ActiveRecord::Base
   has_many :teams
   has_many :members, through: :teams, source: :manager
   has_many :player_contracts, through: :teams, source: :player_contracts
-  has_many :matchups, through: :teams, source: :matchups
+  has_many :matchups
 
   has_one(
     :score_rule,
@@ -44,9 +44,8 @@ class League < ActiveRecord::Base
     roster_rule.total_slots
   end
 
-  # currently using indices 0...num_teams which are not actual indices of teams.
   def generate_matchups
-    # return if matchups # League should never run this without detroying old schedule first.
+    return if matchups
     team_id_arr = team_ids
     a1 = team_id_arr[0...num_teams / 2]
     a2 = team_id_arr[num_teams / 2...num_teams].reverse
@@ -55,7 +54,8 @@ class League < ActiveRecord::Base
         Matchup.create!(
           team_1_id: a1[idx],
           team_2_id: a2[idx],
-          week: week
+          week: week,
+          league_id: id
         )
       end
       a1.insert(1, a2.shift())

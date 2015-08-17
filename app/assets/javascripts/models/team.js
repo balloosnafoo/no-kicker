@@ -8,10 +8,22 @@ NoKicker.Models.Team = Backbone.Model.extend({
     return this._players;
   },
 
+  roster_slots: function () {
+    if (!this._roster_slots) {
+      this._roster_slots = new NoKicker.Collections.RosterSlots([], { team: this });
+    }
+    return this._roster_slots;
+  },
+
   parse: function (response) {
     if (response.players) {
       this.players().set(response.players, { parse: true });
-      delete response.user_team;
+      delete response.players;
+    }
+
+    if (response.roster_slots) {
+      this.roster_slots().set(response.roster_slots, { parse: true });
+      delete response.roster_slots;
     }
 
     return response;

@@ -57,3 +57,10 @@ Team.create(
     name: Faker::Lorem.words(2).join(" ")
   )
 end
+
+12.times do |i|
+  t = Team.find(i + 1)
+  t.league.generate_roster_slots(t)
+end
+
+League.first.generate_matchups

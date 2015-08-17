@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150817170239) do
     t.integer  "team_2_id",    null: false
     t.integer  "team_1_score"
     t.integer  "team_2_score"
+    t.integer  "league_id",    null: false
     t.integer  "week",         null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

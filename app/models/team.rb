@@ -29,10 +29,6 @@ class Team < ActiveRecord::Base
     primary_key: :id
   )
 
-  # def matchups
-  #   home_matchups + away_matchups
-  # end
-
   def matchups
     Matchup.where("team_1_id = ? OR team_2_id = ?", id, id)
   end
