@@ -66,4 +66,8 @@ class League < ActiveRecord::Base
   def team_ids
     teams.pluck(:id)
   end
+
+  def generate_roster_slots(team)
+    roster_rule.generate_roster_slots(team)
+  end
 end

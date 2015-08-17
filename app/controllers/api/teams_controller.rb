@@ -1,8 +1,8 @@
 class Api::TeamsController < ApplicationController
   def create
-    # fail
     @team = current_user.teams.new(team_params)
     if @team && @team.save
+      @team.league.generate_roster_slots(@team)
       render json: @team
     else
       render json: @team.errors.full_messages, status: :unprocessable_entity
