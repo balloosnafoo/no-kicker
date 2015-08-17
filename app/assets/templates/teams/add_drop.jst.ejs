@@ -1,15 +1,13 @@
-<h1>Add Player</h1>
-
 <form class="">
-  <h3>Added Player</h3>
-  <table class="table to-add-table">
+  <table class="table add-drop-table">
+    <tr>
+      <td colspan="13">
+        <h3>Added Player</h3>
+      </td>
+    </tr>
     <%= JST['players/_header_row']({
           col1: "radio"
         }) %>
-  </table>
-
-  <h3>Dropped Player</h3>
-  <table class="table to-drop-table">
   </table>
 
   <input type="submit" name="name" value="Submit">

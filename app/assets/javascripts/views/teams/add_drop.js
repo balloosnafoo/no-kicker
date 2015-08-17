@@ -22,16 +22,17 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     this.collection = this.league.user_team().players();
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addPlayerAddDropItem.bind(this, false));
+    this.render();
   },
 
   addPlayerAddDropItem: function (toAdd, player) {
-    var appendSelector = toAdd ? ".to-add-table" : ".to-drop-table";
+    // var appendSelector = toAdd ? ".to-add-table" : ".to-drop-table";
     // var appendSelector = toAdd ? ".to-add-rows" : ".to-drop-rows";
     var playerAddDropItem = new NoKicker.Views.PlayerAddDropItem({
       model: player
     });
 
-    this.addSubview(appendSelector, playerAddDropItem);
+    this.addSubview('.add-drop-table', playerAddDropItem);
   },
 
   render: function () {
@@ -42,19 +43,22 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
 
   renderAddDropItems: function () {
     this.addPlayerAddDropItem(true, this.toAddPlayer);
+    this.$('.add-drop-table')
+        .append("<tr><td colspan='13'><h3>Dropped Player</h3></td></tr>");
     this.collection && this.collection.each( function (player) {
       this.addPlayerAddDropItem(false, player);
     }.bind(this));
   },
 
+  // I think that there are some buggy things going on here.
   makeRequest: function (event) {
     event.preventDefault();
-    debugger;
+    // debugger;
     // Drop request must be made first to pass validation checks
     var toDropId = $(event.currentTarget).serializeJSON().to_drop_id
     var toDropPlayer = this.collection.get(toDropId);
     toDropPlayer.contract().destroy();
-    toDropPlayer.contract().clear(); // This line might not be necessary
+    toDropPlayer.contract().clear();
 
     // Then add request can be made
     this.toAddPlayer.contract().set({
@@ -70,6 +74,9 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     });
 
     // Redirect doesn't need to wait for success; it can go straight home
-    Backbone.history.navigate("", { trigger: true });
+    Backbone.history.navigate(
+      "leagues/" + this.league.id + "/teams/" + this.league.user_team().id,
+      { trigger: true }
+    );
   }
 });
