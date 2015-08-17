@@ -46,9 +46,10 @@ class League < ActiveRecord::Base
 
   # currently using indices 0...num_teams which are not actual indices of teams.
   def generate_matchups
-    return if matchups
-    a1 = (0...num_teams / 2).to_a
-    a2 = (num_teams / 2...num_teams).to_a.reverse
+    # return if matchups # League should never run this without detroying old schedule first.
+    team_id_arr = team_ids
+    a1 = team_id_arr[0...num_teams / 2]
+    a2 = team_id_arr[num_teams / 2...num_teams].reverse
     14.times do |week|
       a1.each_with_index do |_, idx|
         Matchup.create!(
@@ -63,6 +64,6 @@ class League < ActiveRecord::Base
   end
 
   def team_ids
-    teams.select(:id)
+    teams.pluck(:id)
   end
 end

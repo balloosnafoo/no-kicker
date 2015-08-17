@@ -3,6 +3,8 @@ class CreateMatchups < ActiveRecord::Migration
     create_table :matchups do |t|
       t.integer :team_1_id, null: false
       t.integer :team_2_id, null: false
+      t.integer :team_1_score
+      t.integer :team_2_score
       t.integer :week, null: false
 
       t.timestamps null: false

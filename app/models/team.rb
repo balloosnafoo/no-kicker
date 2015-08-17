@@ -6,6 +6,7 @@ class Team < ActiveRecord::Base
 
   has_many :player_contracts, dependent: :destroy
   has_many :players, through: :player_contracts, source: :player
+  has_many :roster_slots
 
   has_many(
     :home_matchups,
@@ -28,13 +29,13 @@ class Team < ActiveRecord::Base
     primary_key: :id
   )
 
-  def matchups
-    home_matchups + away_matchups
-  end
-
   # def matchups
-  #   Matchup.select().where("team_1_id = ? OR team_2_id = ?", [id, id])
+  #   home_matchups + away_matchups
   # end
+
+  def matchups
+    Matchup.where("team_1_id = ? OR team_2_id = ?", id, id)
+  end
 
   def is_full?
     league.team_size_limit <= player_contracts.length
