@@ -19,6 +19,8 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
   },
 
   setPlayerCollection: function () {
+    this.stopListening(this.league.user_team(), "all", this.setPlayerCollection);
+
     this.collection = this.league.user_team().players();
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addPlayerAddDropItem.bind(this, false));
@@ -26,8 +28,6 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
   },
 
   addPlayerAddDropItem: function (toAdd, player) {
-    // var appendSelector = toAdd ? ".to-add-table" : ".to-drop-table";
-    // var appendSelector = toAdd ? ".to-add-rows" : ".to-drop-rows";
     var playerAddDropItem = new NoKicker.Views.PlayerAddDropItem({
       model: player
     });
@@ -50,7 +50,7 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     }.bind(this));
   },
 
-  // I think that there are some buggy things going on here.
+  // There are some buggy things going on here.
   makeRequest: function (event) {
     event.preventDefault();
     // debugger;

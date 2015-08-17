@@ -14,4 +14,23 @@
 
 <td>Average</td>
 
-<td>Status</td>
+<td>
+  <!-- <div class="dropdown roster-dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="glyphicon glyphicon-cog"></span>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="#">Cut</a></li>
+      <li><a href="#">Trade</a></li>
+    </ul>
+  </div> -->
+  <select class="action-selection" name="">
+    <option value="<%= roster_slot.escape("position") %>">
+      <%= roster_slot.escape("position") %>
+    </option>
+    <option value="bench">
+      Bench
+    </option>
+  </select>
+</td>

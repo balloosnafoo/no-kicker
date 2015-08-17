@@ -11,6 +11,7 @@ NoKicker.Collections.Players = Backbone.Collection.extend({
       widget.fetch();
     } else {
       widget = new collection.model({ id: id });
+      collection.add(widget);
       widget.fetch({
         error: function () { collection.remove(widget); }
       });

@@ -47,6 +47,11 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def remove_player_from_starting_slot(player)
+    empty_slot = roster_slots.where(roster_slots: { player_id: player.id })
+    empty_slot[0].update({ player_id: nil })
+  end
+
   private
   def user_invited_or_public
     return if league.public || league.commissioner == manager

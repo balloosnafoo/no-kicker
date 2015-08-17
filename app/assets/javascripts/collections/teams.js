@@ -12,9 +12,10 @@ NoKicker.Collections.Teams = Backbone.Collection.extend({
     } else {
       widget = new collection.model({ id: id });
       widget.fetch({
-        error: function () { collection.remove(widget); }
+        success: function () { collection.add(widget); }
       });
     }
+    
     return widget;
   }
 });

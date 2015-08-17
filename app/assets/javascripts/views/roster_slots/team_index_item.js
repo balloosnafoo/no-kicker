@@ -6,7 +6,7 @@ NoKicker.Views.RosterSlotTeamIndexItem = Backbone.View.extend({
   className: "player-row",
 
   render: function () {
-    debugger;
+    // debugger;
     var renderedContent = this.template({
       player: this.model.player(),
       roster_slot: this.model

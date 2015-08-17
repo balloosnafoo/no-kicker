@@ -14,6 +14,8 @@ class Api::PlayerContractsController < ApplicationController
 
   def destroy
     @player_contract = PlayerContract.find(params[:id])
+    team = current_user.team_in_league(@player_contract.league)
+    team.remove_player_from_starting_slot(@player_contract.player)
     @player_contract.destroy()
     render json: @player_contract
   end

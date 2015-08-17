@@ -10,6 +10,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    debugger
     this.listenTo(this.model.roster_slots(), "add", this.addItem);
   },
 
@@ -53,7 +54,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   },
 
   addItem: function (roster_slot) {
-    debugger;
+    // debugger;
     if (roster_slot.escape("position") === "bench" && !this._rendered_bench) {
       // render line break
       this.$('.roster-table').append("<tr><td colspan='12'><h3>Bench</h3></td></tr>")
