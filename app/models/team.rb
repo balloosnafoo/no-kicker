@@ -37,6 +37,16 @@ class Team < ActiveRecord::Base
     league.team_size_limit <= player_contracts.length
   end
 
+  def assign_or_create_roster_slot(player)
+    starting_slots = find_starting_slots(player.position)
+    unless starting_slots.empty?
+      starting_slots[0].update(player_id: player.id)
+    else
+      bench_slots = find_bench_slot
+      bench_slots[0].update(player_id: player.id)
+    end
+  end
+
   private
   def user_invited_or_public
     return if league.public || league.commissioner == manager
@@ -55,5 +65,32 @@ class Team < ActiveRecord::Base
     if manager.leagues.include?(league)
       errors[:manager] << "cannot create multiple teams in the same league"
     end
+  end
+
+  def find_starting_slots(position)
+    slots = roster_slots.where(
+      roster_slots: {
+        position: position.downcase,
+        player_id: nil
+      }
+    )
+    if slots.empty? && ["wr", "rb", "te"].include?(position.downcase)
+      slots = roster_slots.where(
+        roster_slots: {
+          position: "flex",
+          player_id: nil
+        }
+      )
+    end
+    slots
+  end
+
+  def find_bench_slot
+    bench_slots = roster_slots.where(
+      roster_slots: {
+        position: "bench",
+        player_id: nil
+      }
+    )
   end
 end

@@ -4,6 +4,7 @@ class Api::PlayerContractsController < ApplicationController
     team = current_user.team_in_league(params[:league_id])
     @player_contract.team_id = team.id
     if @player_contract.save
+      team.assign_or_create_roster_slot(@player_contract.player)
       render json: @player_contract
     else
       render json: @player_contract.errors.full_messages,
