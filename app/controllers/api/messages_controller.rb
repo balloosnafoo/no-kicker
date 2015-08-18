@@ -6,6 +6,8 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
+    @message = current_user.authored_messages.create(message_params)
+    render json: @message
   end
 
   private
