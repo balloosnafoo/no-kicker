@@ -84,10 +84,10 @@ ActiveRecord::Schema.define(version: 20150818052758) do
 
   create_table "roster_rules", force: :cascade do |t|
     t.integer  "league_id",              null: false
-    t.integer  "num_qbs",    default: 1, null: false
-    t.integer  "num_rbs",    default: 2, null: false
-    t.integer  "num_wrs",    default: 2, null: false
-    t.integer  "num_tes",    default: 1, null: false
+    t.integer  "num_qb",     default: 1, null: false
+    t.integer  "num_rb",     default: 2, null: false
+    t.integer  "num_wr",     default: 2, null: false
+    t.integer  "num_te",     default: 1, null: false
     t.integer  "num_flex",   default: 1, null: false
     t.integer  "num_dst",    default: 1, null: false
     t.integer  "num_k",      default: 0, null: false

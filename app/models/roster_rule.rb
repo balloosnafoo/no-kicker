@@ -1,14 +1,14 @@
 class RosterRule < ActiveRecord::Base
-  validates :num_qbs, :num_rbs, :num_wrs, :num_tes, :num_flex,
+  validates :num_qb, :num_rb, :num_wr, :num_te, :num_flex,
             :num_dst, :num_k, :num_bench, presence: true
 
   belongs_to :league
 
   POSITIONS = {
-    num_qbs: :qb,
-    num_rbs: :rb,
-    num_wrs: :wr,
-    num_tes: :te,
+    num_qb: :qb,
+    num_rb: :rb,
+    num_wr: :wr,
+    num_te: :te,
     num_flex: :flex,
     num_dst: :dst,
     num_k: :k,
@@ -16,7 +16,7 @@ class RosterRule < ActiveRecord::Base
   }
 
   def total_slots
-    num_qbs + num_rbs + num_wrs + num_tes + num_flex + num_dst +
+    num_qb + num_rb + num_wr + num_te + num_flex + num_dst +
       num_k + num_bench
   end
 
