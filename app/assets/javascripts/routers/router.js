@@ -84,7 +84,6 @@ NoKicker.Routers.Router = Backbone.Router.extend({
   },
 
   addPlayer: function (league_id, player_id) {
-    // debugger;
     var league = this.leagues.getOrFetch(league_id, { user_team: true });
     var player = this.players.getOrFetch(player_id);
     var addView = new NoKicker.Views.TeamAddDrop({

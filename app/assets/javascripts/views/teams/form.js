@@ -31,7 +31,7 @@ NoKicker.Views.TeamForm = Backbone.View.extend({
         );
       }.bind(this),
       error: function (object, response) {
-        // debugger;
+        debugger;
       }
     });
   }

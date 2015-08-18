@@ -11,7 +11,8 @@ NoKicker.Views.LeagueNav = Backbone.View.extend({
 
   render: function () {
     var renderedContent = this.template({
-      league: this.model
+      league: this.model,
+      leagues: this.collection
     });
 
     this.$el.html(renderedContent);

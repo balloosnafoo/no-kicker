@@ -10,7 +10,6 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    debugger
     this.listenTo(this.model.roster_slots(), "add", this.addItem);
   },
 

@@ -22,7 +22,6 @@ NoKicker.Models.Team = Backbone.Model.extend({
     }
 
     if (response.roster_slots) {
-      debugger;
       this.roster_slots().set(response.roster_slots, { parse: true });
       delete response.roster_slots;
     }
