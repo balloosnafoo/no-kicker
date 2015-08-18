@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :teams
     resources :score_rules, only: [:edit, :update]
     resources :roster_rules, only: [:edit, :update]
+    resources :roster_slots, only: [:update]
     resources :players, only: [:index, :show]
     resources :player_contracts, only: [:create, :destroy]
     resources :matchups, only: [:create, :index]

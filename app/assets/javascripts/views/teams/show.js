@@ -4,7 +4,8 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   className: "container team-show",
 
   events: {
-    "change .action-selection": "updateActions"
+    "change .action-selection": "updateActions",
+    "click .roster-change-button": "substitutePlayers"
   },
 
   initialize: function () {
@@ -70,7 +71,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     var result = true;
     var benchHash = this.subsPositionHash(this.toBench());
     var startHash = this.subsPositionHash(this.toStart());
-    
+
     Object.keys(benchHash).forEach( function (key) {
       if (benchHash[key] !== startHash[key]) {
         result = false;
@@ -78,6 +79,19 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     }.bind(this));
 
     return result;
+  },
+
+  getMatchingSubs: function () {
+    var toBench = this.toBench().pop();
+    for (var i = 0; i < this.toStart().length; i++) {
+      var toStartPos = this.toStart()[i].player().escape("position").toLowerCase();
+      if (toStartPos === toBench.escape("position")) {
+        var toStart = this.toStart()[i]
+        this.toStart().splice(i, 1);
+        break;
+      }
+    }
+    return {toBench: toBench, toStart: toStart};
   },
 
   subsPositionHash: function (subs) {
@@ -123,6 +137,29 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     } else if (slotPosition === "bench") {
       this.toStart().push(rosterSlot);
     }
-    debugger;
+  },
+
+  substitutePlayers: function (event) {
+    event.preventDefault();
+    if (!this.subsMatch()) {
+      return;
+    }
+    while (this.toBench().length > 0) {
+      subs = this.getMatchingSubs();
+      this.swapSubs(subs);
+    }
+  },
+
+  swapSubs: function (subs) {
+    tempData = subs.toBench.attributes;
+    tempPlayer = subs.toBench.player();
+
+    subs.toBench.set(subs.toStart.attributes);
+    // subs.toBench.player() = subs.toStart.player();
+    subs.toStart.set(tempData);
+    // subs.toStart.player() = tempPlayer;
+
+    subs.toBench.save();
+    subs.toStart.save();
   }
 });
