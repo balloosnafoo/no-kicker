@@ -47,7 +47,7 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     $.ajax({
       url: "/session/",
       type: "DELETE",
-      success: function (widgetData) {
+      success: function () {
         window.location = "/";
       }
     });
