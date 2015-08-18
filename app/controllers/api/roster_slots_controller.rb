@@ -11,6 +11,6 @@ class Api::RosterSlotsController < ApplicationController
 
   private
   def roster_slot_params
-    params.require(:roster_slot).permit(:player_id, :order)
+    params.require(:roster_slot).permit(:player_id, :order, :position)
   end
 end

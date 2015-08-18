@@ -14,6 +14,10 @@ if @roster_slots
       end
     end
   end
+  json.roster_rule do
+    json.extract! @team.roster_rule, :num_qb, :num_wr, :num_rb, :num_te, :num_flex,
+                                    :num_dst, :num_k, :num_bench
+  end
 else
   json.extract! @team, :id, :league_id, :manager_id, :name
   json.players do

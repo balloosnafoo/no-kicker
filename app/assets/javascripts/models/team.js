@@ -15,6 +15,14 @@ NoKicker.Models.Team = Backbone.Model.extend({
     return this._roster_slots;
   },
 
+  rosterRule: function () {
+    if (!this._rosterRule) {
+      this._rosterRule = new NoKicker.Models.RosterRule();
+    }
+
+    return this._rosterRule
+  },
+
   parse: function (response) {
     if (response.players) {
       this.players().set(response.players, { parse: true });
@@ -24,6 +32,11 @@ NoKicker.Models.Team = Backbone.Model.extend({
     if (response.roster_slots) {
       this.roster_slots().set(response.roster_slots, { parse: true });
       delete response.roster_slots;
+    }
+
+    if (response.roster_rule) {
+      this.rosterRule().set(response.roster_rule);
+      delete response.roster_rule;
     }
 
     return response;

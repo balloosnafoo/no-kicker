@@ -19,7 +19,7 @@ class Api::TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.includes(:players).find(params[:id])
+    @team = Team.includes(:players, :roster_rule).find(params[:id])
     @roster_slots = true #if params[:roster_slots]
     render :show
   end

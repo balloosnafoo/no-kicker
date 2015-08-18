@@ -10,7 +10,7 @@ class RosterSlot < ActiveRecord::Base
     count = team.roster_slots.where(roster_slots: { position: position }).count
     limit = team.league.roster_rule.send("num_#{position}")
     unless count < limit || position == "bench"
-      errors[:roster] << "is already filled at this position"
+      errors[:roster] << "is already filled at the #{position} position"
     end
   end
 end

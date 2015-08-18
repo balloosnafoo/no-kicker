@@ -21,6 +21,8 @@ class Team < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_one :roster_rule, through: :league, source: :roster_rule
+
   belongs_to :league
   belongs_to(
     :manager,
