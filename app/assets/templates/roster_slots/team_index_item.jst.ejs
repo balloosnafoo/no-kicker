@@ -25,12 +25,14 @@
       <li><a href="#">Trade</a></li>
     </ul>
   </div> -->
-  <select class="action-selection" name="">
+  <select class="action-selection" data-roster-slot-id="<%= roster_slot.id %>" name="">
     <option value="<%= roster_slot.escape("position") %>">
       <%= roster_slot.escape("position") %>
     </option>
-    <option value="bench">
-      Bench
-    </option>
+    <% if (roster_slot.escape("position") !== "bench") { %>
+      <option value="bench">
+        bench
+      </option>
+    <% } %>
   </select>
 </td>

@@ -3,6 +3,10 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
   className: "container team-show",
 
+  events: {
+    "change .action-selection": "updateActions"
+  },
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.roster_slots(), "add", this.addItem);
@@ -15,11 +19,11 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
     this._rendered_bench = false;
     this.$el.html(renderedContent);
-    this.renderPlayersRS();
+    this.renderPlayers();
     return this;
   },
 
-  renderPlayersRS: function () {
+  renderPlayers: function () {
     this.model.roster_slots().each(this.addItem.bind(this));
   },
 
@@ -37,4 +41,27 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
     this.addSubview('.roster-table', playersView);
   },
+
+  updateActions: function (event) {
+    var rosterSlotId = $(event.currentTarget).data().rosterSlotId;
+    var rosterSlot = this.model.roster_slots().get(rosterSlotId)
+    var slotPosition = rosterSlot.escape("position");
+    var moveTo = $(event.currentTarget).val()
+    debugger;
+    if (moveTo === "bench") {
+      this.model.roster_slots().each( function (roster_slot) {
+        if (
+          roster_slot.escape("position") === "bench" &&
+          roster_slot.player().escape("position").toLowerCase() === slotPosition
+        ) {
+          selection = this.$('*[data-roster-slot-id="' + roster_slot.id + '"]');
+          selection.append(
+            "<option value='" + slotPosition + "'>" + slotPosition + "</option>"
+          )
+        }
+      }.bind(this));
+    } else {
+      
+    }
+  }
 });
