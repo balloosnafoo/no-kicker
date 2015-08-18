@@ -22,6 +22,13 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :authored_messages,
+    class_name: "Message",
+    foreign_key: :author_id,
+    primary_key: :id
+  )
+
   ##### Auth stuff #####
 
   def self.find_by_credentials(username, password)

@@ -48,7 +48,6 @@ File.foreach("./python/weekly_stats.csv") do |line|
   receiving_yds = line[15]
   player = Player.find_by_fname_and_lname_and_position(fname, lname, pos)
   if player
-    p player.lname
     player.weekly_stats.create(
       rushing_att: rushing_att,
       rushing_tds: rushing_tds,
