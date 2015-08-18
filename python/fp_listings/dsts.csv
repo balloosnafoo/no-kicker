@@ -1,0 +1,38 @@
+,,,,,,,
+FantasyPros.com , ,,,,,,
+Week 2 - DST Rankings , ,,,,,,
+Expert Consensus Rankings (ECR) , ,,,,,,
+,,,,,,,
+ Rank , Player Name ,Team , Matchup ,Best Rank , Worst Rank , Avg Rank , Std Dev 
+1,Seattle Seahawks,SEA,  at  SD,1,1,1,0
+2,Carolina Panthers,CAR,  vs.  DET,2,8,3,1.8090680675
+3,New England Patriots,NE,  at  MIN,3,11,5,2.0889318715
+4,Denver Broncos,DEN,  vs.  KC,3,11,5.2727272727,2.2599641627
+5,St. Louis Rams,STL,  at  TB,2,12,5.5454545455,3.0855568634
+6,San Francisco 49ers,SF,  vs.  CHI,2,12,6.6363636364,2.6379305688
+7,Houston Texans,HOU,  at  OAK,2,20,8.1818181818,4.5089442791
+8,Arizona Cardinals,ARI,  at  NYG,5,15,8.5454545455,2.4257571026
+9,Cincinnati Bengals,CIN,  vs.  ATL,2,11,6.8,3.3406586177
+10,New Orleans Saints,NO,  at  CLE,6,17,10.1818181818,3.9038019188
+11,Baltimore Ravens,BAL,  vs.  PIT,8,14,11.1818181818,1.7486712783
+12,Buffalo Bills,BUF,  vs.  MIA,9,16,11.7272727273,2.1780270092
+13,Tampa Bay Buccaneers,TB,  vs.  STL,10,18,13.1818181818,1.9455395054
+14,Kansas City Chiefs,KC,  at  DEN,6,17,12.9,3.4770677301
+15,Pittsburgh Steelers,PIT,  at  BAL,9,22,15.7272727273,3.5442888527
+16,Green Bay Packers,GB,  vs.  NYJ,10,23,16.7272727273,2.9569919941
+17,Cleveland Browns,CLE,  vs.  NO,11,19,15.6,2.8
+18,Chicago Bears,CHI,  at  SF,14,27,18.1818181818,3.3795691446
+19,Detroit Lions,DET,  at  CAR,6,25,17.9,4.5265881191
+20,Philadelphia Eagles,PHI,  at  IND,14,22,18.7,2.6095976701
+21,Miami Dolphins,MIA,  at  BUF,13,22,19.2,3.1874754901
+22,New York Jets,NYJ,  at  GB,16,22,19.2,2.1354156504
+23,Tennessee Titans,TEN,  vs.  DAL,16,23,19.8,2.9257477677
+24,Indianapolis Colts,IND,  vs.  PHI,18,27,23.75,3.4186985828
+25,New York Giants,NYG,  vs.  ARI,19,28,23.75,3.1917863337
+26,Washington Redskins,WAS,  vs.  JAC,15,30,26,6.3639610307
+27,Minnesota Vikings,MIN,  vs.  NE,24,26,25,0.8164965809
+28,San Diego Chargers,SD,  vs.  SEA,23,28,26.3333333333,2.357022604
+29,Oakland Raiders,OAK,  vs.  HOU,24,31,28.5,2.6925824036
+30,Jacksonville Jaguars,JAC,  at  WAS,26,29,27,1.4142135624
+31,Atlanta Falcons,ATL,  at  CIN,27,31,29.6666666667,1.8856180832
+32,Dallas Cowboys,DAL,  at  TEN,32,32,32,0

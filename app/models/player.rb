@@ -4,6 +4,7 @@ class Player < ActiveRecord::Base
   has_many :player_contracts, dependent: :destroy
   has_many :teams, through: :player_contracts, source: :team
   has_many :roster_slots
+  has_many :weekly_stats
 
   def self.with_league_contracts(league_id)
     self.find_by_sql([<<-SQL, league_id])

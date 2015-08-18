@@ -9,7 +9,9 @@ NoKicker.Models.RosterSlot = Backbone.Model.extend({
   },
 
   parse: function (response) {
+    debugger;
     if (response.player) {
+      // never gets here
       this.player().set(response.player);
       delete response.player;
     }
