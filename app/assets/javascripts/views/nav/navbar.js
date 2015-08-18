@@ -26,7 +26,7 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     this.$el.find("." + routeName).addClass("active");
 
     if (this.LEAGUE_ROUTES[routeName]) {
-      var league = this.collection.getOrFetch(params[0]);
+      var league = this.collection.getOrFetch(params[0], {user_team: true});
       this.subnav = new NoKicker.Views.LeagueNav({
         collection: this.collection,
         model: league

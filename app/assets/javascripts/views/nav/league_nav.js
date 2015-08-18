@@ -5,6 +5,10 @@ NoKicker.Views.LeagueNav = Backbone.View.extend({
 
   className: "nav navbar-nav",
 
+  initialize: function () {
+    this.listenTo(this.model, "sync", this.render);
+  },
+
   render: function () {
     var renderedContent = this.template({
       league: this.model
