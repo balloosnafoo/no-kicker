@@ -1,6 +1,10 @@
 NoKicker.Views.Navbar = Backbone.View.extend({
   template: JST["nav/nav"],
 
+  events: {
+    "click .logout": "logout"
+  },
+
   initialize: function (options) {
     this.router = options.router;
     this.collection = options.leagues;
@@ -36,7 +40,18 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     return this;
+  },
+
+  logout: function () {
+    $.ajax({
+      url: "/session/",
+      type: "DELETE",
+      success: function (widgetData) {
+        window.location = "/";
+      }
+    });
   }
+
 });
 
 
