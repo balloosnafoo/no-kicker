@@ -45,7 +45,8 @@ class Team < ActiveRecord::Base
       starting_slots[0].update(player_id: player.id)
     else
       bench_slots = find_bench_slot
-      bench_slots[0].update(player_id: player.id)
+      bench_slot = bench_slots[0] || new_bench_slot
+      bench_slot.update(player_id: player.id)
     end
   end
 
@@ -98,6 +99,14 @@ class Team < ActiveRecord::Base
         position: "bench",
         player_id: nil
       }
+    )
+  end
+
+  def new_bench_slot
+    RosterSlot.new(
+      position: "bench",
+      team_id: id,
+      order: 700
     )
   end
 end

@@ -72,7 +72,10 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     this.model.roster_slots().each( function (roster_slot) {
       if (
         roster_slot.escape("position") === "bench" &&
-        roster_slot.player().escape("position").toLowerCase() === slotPosition
+        (
+          roster_slot.player().escape("position").toLowerCase() === slotPosition ||
+          ["rb", "wr", "te"].indexOf(roster_slot.player().escape("position").toLowerCase()) !== -1
+        )
       ) {
         selection = this.$('*[data-roster-slot-id="' + roster_slot.id + '"]');
         selection.append(
@@ -112,7 +115,9 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
         error: function () {debugger}.bind(this)
       });
     } else if (slotPosition === "bench") {
-      var toPosition = rosterSlot.player().escape("position").toLowerCase();
+      // debugger;
+      // var toPosition = rosterSlot.player().escape("position").toLowerCase();
+      var toPosition = moveTo;
       rosterSlot.set({
         position: toPosition,
         order: this.POSITIONAL_VALUES[toPosition]

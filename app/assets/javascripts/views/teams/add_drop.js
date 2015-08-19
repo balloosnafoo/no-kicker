@@ -53,6 +53,7 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
   // There are some buggy things going on here.
   makeRequest: function (event) {
     event.preventDefault();
+    debugger;
     // Drop request must be made first to pass validation checks
     var toDropId = $(event.currentTarget).serializeJSON().to_drop_id
     var toDropPlayer = this.collection.get(toDropId);
