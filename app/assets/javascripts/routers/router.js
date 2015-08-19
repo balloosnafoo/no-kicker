@@ -1,9 +1,10 @@
 NoKicker.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
-    this.leagues = options.leagues;
-    this.players = new NoKicker.Collections.Players();
+    this.leagues  = options.leagues;
+    this.$rootEl  = options.$rootEl;
+    this.players  = new NoKicker.Collections.Players();
+    this.teams    = new NoKicker.Collections.Teams();
     this.messages = new NoKicker.Collections.Messages();
-    this.$rootEl = options.$rootEl;
   },
 
   routes: {
@@ -20,7 +21,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     "leagues/:league_id/messages/:message_id": "messageShow",
     "leagues/:league_id/trades": "tradeIndex",
     "leagues/:league_id/trades/new": "tradeNew",
-    "leagues/:league_id/trades/new/:partner_id": "tradeNew"
+    "leagues/:league_id/trades/:partner_id": "tradeCustomize"
   },
 
   userLeagueIndex: function () {
@@ -152,6 +153,18 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     var league = this.leagues.getOrFetch(league_id);
     var tradeView = new NoKicker.Views.TradeOfferPartnerSelect({
       league: league,
+    });
+
+    this._swapView(tradeView);
+  },
+
+  tradeCustomize: function (league_id, partner_id) {
+    var league = this.leagues.getOrFetch(league_id, { user_team: true });
+    var partner = this.teams.getOrFetch(partner_id);
+
+    var tradeView = new NoKicker.Views.TradeOfferItemsSelect({
+      partner: partner,
+      league: league
     });
 
     this._swapView(tradeView);
