@@ -37,7 +37,6 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   },
 
   renderPlayers: function () {
-    debugger;
     this.model.roster_slots().sort();
     this.model.roster_slots().each(this.addItem.bind(this));
   },
@@ -87,7 +86,6 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   openPositions: function () {
     var positions = ["qb", "wr", "rb", "te", "flex"]
     counts = this.startingPositionCounts(this.model.roster_slots());
-    debugger;
     positions.forEach( function (pos) {
       if (!counts[pos] || counts[pos] < this.model.rosterRule().escape("num_" + pos)){
         this.addOptions(pos);
@@ -188,7 +186,6 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     var moveTo = $(event.currentTarget).val();
 
     if (moveTo === "bench" && this.firstToBench(rosterSlot)) {
-      this.toBench().push(rosterSlot);
       rosterSlot.set({
         position: "bench",
         order: this.POSITIONAL_VALUES["bench"]
@@ -198,7 +195,15 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
         error: function () {debugger}.bind(this)
       });
     } else if (slotPosition === "bench") {
-      this.toStart().push(rosterSlot);
+      var toPosition = rosterSlot.player().escape("position").toLowerCase();
+      rosterSlot.set({
+        position: toPosition,
+        order: this.POSITIONAL_VALUES[toPosition]
+      });
+      rosterSlot.save({}, {
+        success: this.render.bind(this),
+        error: function () { debugger }.bind(this)
+      });
     }
   },
 
@@ -212,17 +217,4 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
       this.swapSubs(subs);
     }
   },
-
-  swapSubs: function (subs) {
-    tempData = subs.toBench.attributes;
-    tempPlayer = subs.toBench.player();
-
-    subs.toBench.set(subs.toStart.attributes);
-    // subs.toBench.player() = subs.toStart.player();
-    subs.toStart.set(tempData);
-    // subs.toStart.player() = tempPlayer;
-
-    subs.toBench.save();
-    subs.toStart.save();
-  }
 });
