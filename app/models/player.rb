@@ -9,12 +9,15 @@ class Player < ActiveRecord::Base
   def self.with_league_contracts(league_id)
     self.find_by_sql([<<-SQL, league_id])
       SELECT
-        players.*, league_contracts.id AS contract_id, league_contracts.manager_id AS contract_owner_id
+        players.*,
+        league_contracts.id AS contract_id,
+        league_contracts.manager_id AS contract_owner_id,
+        league_contracts.manager_username AS contract_owner_username
       FROM
         players
       LEFT OUTER JOIN (
         SELECT
-          player_contracts.*, users.id AS manager_id
+          player_contracts.*, users.id AS manager_id, users.username AS manager_username
         FROM
           player_contracts
         JOIN
@@ -25,9 +28,5 @@ class Player < ActiveRecord::Base
           teams.league_id = ?
       ) AS league_contracts ON players.id = league_contracts.player_id
     SQL
-  end
-
-  def players_with_ownership(league_id)
-    Player.all.includes()
   end
 end

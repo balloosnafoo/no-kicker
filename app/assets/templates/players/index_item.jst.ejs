@@ -9,7 +9,13 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td>
+  <% if ( player.isContracted() ) { %>
+    <a href="#/leagues/<%= league.id %>/teams/<%= player.contract().escape("contract_owner_id") %>">
+      <%= player.contract().escape("contract_owner_username") %>
+    </a>
+  <% } %>
+</td>
 <td></td>
 <td>
   <% if ( player.isContracted() && player.contract().escape('user_player') ) { %>
