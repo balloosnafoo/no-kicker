@@ -1,33 +1,42 @@
-<h1><%= team.escape("name") %></h1>
+<div class="row">
+  <div class="col-md-2">
+    <div class="panel panel-default">
+      <h5>This is the sidebar</h5>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <h1><%= team.escape("name") %></h1>
 
-<table class="table roster-table">
-  <tr>
-    <th colspan="4">Name</th>
-    <th colspan="1">Opp</th>
-    <th colspan="2">Rank</th>
-    <th colspan="1">2015 Stats</th>
-    <th colspan="2">Fantasy</th>
-    <th colspan="1">Availability</th>
-  </tr>
-  <tr>
-    <th>Name</th>
-    <th>Pos</th>
-    <th>Team</th>
-    <th>Bye</th>
+    <table class="table table-hover table-striped roster-table">
+      <tr>
+        <th colspan="4">Name</th>
+        <th colspan="1">Opp</th>
+        <th colspan="2">Rank</th>
+        <th colspan="1">2015 Stats</th>
+        <th colspan="2">Fantasy</th>
+        <th colspan="1">Availability</th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>Pos</th>
+        <th>Team</th>
+        <th>Bye</th>
 
-    <th>Week 1</th>
+        <th>Week 1</th>
 
-    <th>Draft</th>
-    <th>Pos</th>
+        <th>Draft</th>
+        <th>Pos</th>
 
-    <th>Summary</th>
+        <th>Summary</th>
 
-    <th>Total</th>
+        <th>Total</th>
 
-    <th>Average</th>
+        <th>Average</th>
 
-    <th>Status</th>
-  </tr>
-</table>
+        <th>Status</th>
+      </tr>
+    </table>
 
-<button type="button" class="roster-change-button">Set Lineup</button>
+    <button type="button" class="roster-change-button">Set Lineup</button>
+  </div>
+</div>

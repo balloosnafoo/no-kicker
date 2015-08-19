@@ -1,5 +1,7 @@
 if @roster_slots
   json.extract! @team, :id, :league_id, :manager_id, :name
+  belongs_to_user = current_user.id == @team.id
+  json.belongs_to_user belongs_to_user
   json.roster_slots do
     positions = ["qb", "rb", "wr", "te", "flex", "dst", "k", "bench"]
     positions.each do |pos|

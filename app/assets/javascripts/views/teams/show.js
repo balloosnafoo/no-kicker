@@ -1,10 +1,10 @@
 NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   template: JST['teams/show'],
 
-  className: "container team-show",
+  className: "container-fluid team-show",
 
   events: {
-    "change .action-selection": "updateActions",
+    "change .roster-change-select": "updateActions",
     "click .roster-change-button": "substitutePlayers"
   },
 
@@ -43,8 +43,10 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
   addItem: function (roster_slot) {
     if (roster_slot.escape("position") === "bench" && !this._rendered_bench) {
-      // render line break
-      this.$('.roster-table').append("<tr><td colspan='12'><h3>Bench</h3></td></tr>")
+      // render table separator
+      this.$('.roster-table').append(
+        "<tr><th class='vertical-spacer table-heading' colspan='12'><h3>Bench</h3></th></tr>"
+      )
       this._rendered_bench = true;
     }
 

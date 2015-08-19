@@ -1,4 +1,21 @@
 
-roster-dropdown {
+div.dropdown.roster-dropdown {
   display: inline-block;
+}
+
+.roster-change-select {
+  width: 100px;
+}
+
+.roster-position-indicator {
+  display: inline-block;
+  text-align: center;
+  color: white;
+  background-color: #d9534f;
+  border-radius: 5px;
+  width: 75px;
+}
+
+.roster-position-indicator.starting-slot {
+  background-color: #5cb85c;
 }
