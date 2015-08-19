@@ -30,3 +30,6 @@ class Player < ActiveRecord::Base
     SQL
   end
 end
+
+# sq = PlayerContract.select("player_contracts.*, users.*").joins(:team, :manager).where(teams: {league_id: 1})
+# Player.select("players.*, player_contracts.*, users.*").from(sq)

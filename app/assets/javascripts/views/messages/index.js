@@ -4,7 +4,7 @@ NoKicker.Views.MessageIndex = Backbone.CompositeView.extend({
   className: "container messages-index",
 
   events: {
-    "submit .new-message-form": "newMessage"
+    "click .new-message-button": "newMessage"
   },
 
   initialize: function (options) {
@@ -40,13 +40,9 @@ NoKicker.Views.MessageIndex = Backbone.CompositeView.extend({
 
   newMessage: function (event) {
     event.preventDefault();
-    var formData = $(event.currentTarget).serializeJSON();
-    var message = new NoKicker.Models.Message(formData.message);
-    message.set({ league_id: this.league.id });
-    message.save({}, {
-      success: function () {
-        this.collection.add(message);
-      }.bind(this)
-    })
+    Backbone.history.navigate(
+      "leagues/" + this.league.id + "/messages/new",
+      { trigger: true }
+    );
   }
 });
