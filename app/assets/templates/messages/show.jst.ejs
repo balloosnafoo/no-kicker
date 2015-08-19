@@ -3,8 +3,10 @@
   <%= message.escape("body") %>
 </p>
 
-<form class="new-comment-form">
-  <input type="text" name="name" value="">
+<form class="form new-comment-form">
+  <input type="text" name="comment[body]" class="form-control" value="">
+
+  <input type="submit" value="OK">
 </form>
 
-<ul class="comments-list"></ul>
+<ul class="comments-index"></ul>

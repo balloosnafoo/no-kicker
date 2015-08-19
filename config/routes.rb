@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     resources :player_contracts, only: [:create, :destroy]
     resources :matchups, only: [:create, :index]
     resources :messages, only: [:create, :index, :show]
+    resources :comments, only: [:create, :destroy]
   end
 end

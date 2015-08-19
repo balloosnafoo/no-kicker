@@ -11,8 +11,8 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find(params[:id])
-    render json: @message # this is going to have to be a jbuilder later
+    @message = Message.includes(:comments).find(params[:id])
+    render :show
   end
 
   private
