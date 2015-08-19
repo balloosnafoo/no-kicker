@@ -3,8 +3,11 @@ NoKicker.Views.TradeOfferIndex = Backbone.CompositeView.extend({
 
   className: "container",
 
+  events: {
+    "click .new-trade-button": "newTrade"
+  },
+
   initialize: function (options) {
-    debugger;
     this.league = options.league
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addItem);
@@ -16,6 +19,7 @@ NoKicker.Views.TradeOfferIndex = Backbone.CompositeView.extend({
     });
 
     this.$el.html(renderedContent);
+    this.renderTrades();
     return this;
   },
 
@@ -29,6 +33,14 @@ NoKicker.Views.TradeOfferIndex = Backbone.CompositeView.extend({
   },
 
   renderTrades: function () {
-    this.collection.models.each(this.addTrade.bind(this));
+    this.collection.each(this.addTrade.bind(this));
+  },
+
+  newTrade: function () {
+    event.preventDefault();
+    Backbone.history.navigate(
+      "leagues/" + this.league.id + "/trades/new",
+      { trigger: true }
+    );
   }
 })

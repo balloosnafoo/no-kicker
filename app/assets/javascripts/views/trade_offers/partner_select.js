@@ -1,10 +1,17 @@
 NoKicker.Views.TradeOfferPartnerSelect = Backbone.CompositeView.extend({
   template: JST['trade_offers/partner_select'],
 
+  className: "container",
+
+  events: {
+    "submit .partner-select-form": "choosePlayers"
+  },
+
   initialize: function (options) {
-    debugger;
     this.league = options.league;
     this.teams = this.league.teams();
+
+    this.listenTo(this.league, "sync", this.render);
   },
 
   render: function () {
@@ -14,5 +21,15 @@ NoKicker.Views.TradeOfferPartnerSelect = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  choosePlayers: function (event) {
+    event.preventDefault();
+    debugger;
+    var partnerId = $(event.currentTarget).serializeJSON().tradee_id;
+    Backbone.history.navigate(
+      "leagues/" + this.league.id + "/trades/" + partnerId,
+      { trigger: true }
+    )
   }
 })

@@ -19,7 +19,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     "leagues/:league_id/messages/new": "messageNew",
     "leagues/:league_id/messages/:message_id": "messageShow",
     "leagues/:league_id/trades": "tradeIndex",
-    "leagues/:league_id/trades/new": "tradeNew"
+    "leagues/:league_id/trades/new": "tradeNew",
+    "leagues/:league_id/trades/new/:partner_id": "tradeNew"
   },
 
   userLeagueIndex: function () {
@@ -136,15 +137,19 @@ NoKicker.Routers.Router = Backbone.Router.extend({
 
   tradeIndex: function (league_id) {
     var league = this.leagues.getOrFetch(league_id, { user_team: true });
+    var tradeOffers = new NoKicker.Collections.TradeOffers();
+    tradeOffers.fetch({data: {league_id: league_id}});
+
     var indexView = new NoKicker.Views.TradeOfferIndex({
-      league: league
+      league: league,
+      collection: tradeOffers
     });
 
     this._swapView(indexView);
   },
 
   tradeNew: function (league_id) {
-    var league = this.leagues.getOrFetch(league_id, { user_team: true });
+    var league = this.leagues.getOrFetch(league_id);
     var tradeView = new NoKicker.Views.TradeOfferPartnerSelect({
       league: league,
     });

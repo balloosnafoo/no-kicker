@@ -36,20 +36,6 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many(
-    :trade_offers,
-    class_name: "TradeOffer",
-    foreign_key: :tradee_id,
-    primary_key: :id
-  )
-
-  has_many(
-    :offered_trades,
-    class_name: "TradeOffer",
-    foreign_key: :trader_id,
-    primary_key: :id
-  )
-
   ##### Auth stuff #####
 
   def self.find_by_credentials(username, password)

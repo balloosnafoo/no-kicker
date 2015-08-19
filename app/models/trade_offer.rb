@@ -5,14 +5,14 @@ class TradeOffer < ActiveRecord::Base
 
   belongs_to(
     :trader,
-    class_name: "User",
+    class_name: "Team",
     foreign_key: :trader_id,
     primary_key: :id
   )
 
   belongs_to(
     :tradee,
-    class_name: "User",
+    class_name: "Team",
     foreign_key: :tradee_id,
     primary_key: :id
   )

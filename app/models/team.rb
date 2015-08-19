@@ -21,6 +21,20 @@ class Team < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :trade_offers,
+    class_name: "TradeOffer",
+    foreign_key: :tradee_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :offered_trades,
+    class_name: "TradeOffer",
+    foreign_key: :trader_id,
+    primary_key: :id
+  )
+
   has_one :roster_rule, through: :league, source: :roster_rule
 
   belongs_to :league
@@ -33,6 +47,10 @@ class Team < ActiveRecord::Base
 
   def matchups
     Matchup.where("team_1_id = ? OR team_2_id = ?", id, id)
+  end
+
+  def all_trades
+    TradeOffer.where("trader_id = ? OR tradee_id = ?", id, id)
   end
 
   def is_full?

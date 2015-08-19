@@ -21,6 +21,7 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     "messageIndex": true,
     "messageNew": true,
     "messageShow": true,
+    "tradeIndex": true,
     "tradeNew": true
   },
 

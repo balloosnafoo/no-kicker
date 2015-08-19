@@ -1,0 +1,22 @@
+<h1>Select a Trade Partner</h1>
+
+<form class="partner-select-form">
+  <table class="table">
+    <% for (var i = 0; i < teams.length; i++) { %>
+      <tr class="partner-index-item">
+        <td>
+          <input type="radio"
+                 name="tradee_id"
+                 value="<%= teams.models[i].id %>">
+        </td>
+        <td>
+          <%= teams.models[i] && teams.models[i].escape("name") %>
+        </td>
+        <td>
+          <%= "owner username" %>
+        </td>
+      </tr>
+    <% } %>
+  </table>
+  <input type="submit" value="OK">
+</form>
