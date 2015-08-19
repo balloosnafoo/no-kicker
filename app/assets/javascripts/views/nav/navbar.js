@@ -19,6 +19,8 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     "playerIndex": true,
     "addPlayer": true,
     "messageIndex": true,
+    "messageNew": true,
+    "messageShow": true
   },
 
   handleRoute: function (routeName, params) {

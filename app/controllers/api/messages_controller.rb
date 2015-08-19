@@ -10,6 +10,11 @@ class Api::MessagesController < ApplicationController
     render json: @message
   end
 
+  def show
+    @message = Message.find(params[:id])
+    render json: @message # this is going to have to be a jbuilder later
+  end
+
   private
   def message_params
     params.require(:message).permit(:league_id, :title, :body)

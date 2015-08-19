@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :players, only: [:index, :show]
     resources :player_contracts, only: [:create, :destroy]
     resources :matchups, only: [:create, :index]
-    resources :messages, only: [:create, :index]
+    resources :messages, only: [:create, :index, :show]
   end
 end

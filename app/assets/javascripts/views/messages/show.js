@@ -1,9 +1,7 @@
-NoKicker.Views.MessageIndexItem = Backbone.View.extend({
-  template: JST['messages/index_item'],
+NoKicker.Views.MessageShow = Backbone.View.extend({
+  template: JST['messages/show'],
 
-  tagName: "li",
-
-  class: "message-item",
+  className: "container message-show",
 
   initialize: function (options) {
     this.league = options.league;

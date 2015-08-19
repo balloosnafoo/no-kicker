@@ -16,7 +16,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     "leagues/:league_id/players": "playerIndex",
     "leagues/:league_id/add/:player_id": "addPlayer",
     "leagues/:league_id/messages": "messageIndex",
-    "leagues/:league_id/messages/new": "newMessage"
+    "leagues/:league_id/messages/new": "messageNew",
+    "leagues/:league_id/messages/:message_id": "messageShow"
   },
 
   userLeagueIndex: function () {
@@ -107,7 +108,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     this._swapView(indexView);
   },
 
-  newMessage: function (league_id) {
+  messageNew: function (league_id) {
     var league = this.leagues.getOrFetch(league_id);
     var message = new NoKicker.Models.Message();
     var formView = new NoKicker.Views.MessageForm({
@@ -117,6 +118,18 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(formView);
+  },
+
+  messageShow: function (league_id, message_id) {
+    var league = this.leagues.getOrFetch(league_id);
+    var message = this.messages.getOrFetch(message_id);
+    var showView = new NoKicker.Views.MessageShow({
+      model: message,
+      collection: this.messages,
+      league: league
+    });
+
+    this._swapView(showView);
   },
 
   _swapView: function (view) {
