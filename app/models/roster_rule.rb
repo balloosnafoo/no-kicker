@@ -21,10 +21,12 @@ class RosterRule < ActiveRecord::Base
   end
 
   def generate_roster_slots(team)
+    multiplier = 0
     RosterRule::POSITIONS.each do |method, pos|
       send(method).times do |i|
-        RosterSlot.create(team_id: team.id, position: pos, order: i)
+        RosterSlot.create(team_id: team.id, position: pos, order: multiplier + i)
       end
+      multiplier += 100
     end
   end
 end

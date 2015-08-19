@@ -8,6 +8,17 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     "click .roster-change-button": "substitutePlayers"
   },
 
+  POSITIONAL_VALUES: {
+    "qb": 0,
+    "rb": 100,
+    "wr": 200,
+    "te": 300,
+    "flex": 400,
+    "dst": 500,
+    "k": 600,
+    "bench": 700
+  },
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.roster_slots(), "add", this.addItem);
@@ -26,6 +37,8 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   },
 
   renderPlayers: function () {
+    debugger;
+    this.model.roster_slots().sort();
     this.model.roster_slots().each(this.addItem.bind(this));
   },
 
@@ -74,9 +87,9 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   openPositions: function () {
     var positions = ["qb", "wr", "rb", "te", "flex"]
     counts = this.startingPositionCounts(this.model.roster_slots());
-    // debugger;
+    debugger;
     positions.forEach( function (pos) {
-      if (!counts[pos] || counts[pos] < this.model.rosterRule().escape("num" + pos)){
+      if (!counts[pos] || counts[pos] < this.model.rosterRule().escape("num_" + pos)){
         this.addOptions(pos);
       }
     }.bind(this));
@@ -96,6 +109,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     }.bind(this));
   },
 
+  // to be phased out
   subsMatch: function () {
     var result = true;
     var benchHash = this.subsPositionHash(this.toBench());
@@ -124,6 +138,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     return {toBench: toBench, toStart: toStart};
   },
 
+  // to be phased out
   subsPositionHash: function (subs) {
     var counts = {};
     subs.forEach( function (sub) {
@@ -174,23 +189,14 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
     if (moveTo === "bench" && this.firstToBench(rosterSlot)) {
       this.toBench().push(rosterSlot);
-      rosterSlot.set({ position: "bench" });
+      rosterSlot.set({
+        position: "bench",
+        order: this.POSITIONAL_VALUES["bench"]
+      });
       rosterSlot.save({}, {
         success: this.render.bind(this),
         error: function () {debugger}.bind(this)
       });
-
-      this.model.roster_slots().each( function (roster_slot) {
-        if (
-          roster_slot.escape("position") === "bench" &&
-          roster_slot.player().escape("position").toLowerCase() === slotPosition
-        ) {
-          selection = this.$('*[data-roster-slot-id="' + roster_slot.id + '"]');
-          selection.append(
-            "<option value='" + slotPosition + "'>" + slotPosition + "</option>"
-          )
-        }
-      }.bind(this));
     } else if (slotPosition === "bench") {
       this.toStart().push(rosterSlot);
     }

@@ -5,7 +5,7 @@ if @roster_slots
     positions.each do |pos|
       slots = @team.roster_slots.where(roster_slots: { position: pos })
       json.array! slots do |slot|
-        json.extract! slot, :id, :position, :team_id
+        json.extract! slot, :id, :position, :team_id, :order
         if slot.player
           json.player do
             json.extract! slot.player, :fname, :lname, :position, :id, :team_name
