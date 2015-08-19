@@ -159,7 +159,10 @@ NoKicker.Routers.Router = Backbone.Router.extend({
   },
 
   tradeCustomize: function (league_id, partner_id) {
-    var league = this.leagues.getOrFetch(league_id, { user_team: true });
+    var league = this.leagues.getOrFetch(league_id, {
+      user_team: true,
+      roster_slots: true
+    });
     var partner = this.teams.getOrFetch(partner_id);
 
     var tradeView = new NoKicker.Views.TradeOfferItemsSelect({

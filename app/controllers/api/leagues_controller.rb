@@ -34,6 +34,7 @@ class Api::LeaguesController < ApplicationController
   def show
     @league = League.find(params[:id])
     @team = current_user.team_in_league(params[:id]) if params[:user_team] # Maybe add parameter to allow for prefetching players
+    @as_roster_slots = true if params[:roster_slots]
     if @league
       render :show
     else

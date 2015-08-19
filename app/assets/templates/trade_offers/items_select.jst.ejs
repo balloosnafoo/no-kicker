@@ -1,1 +1,15 @@
-<h1>this is the items selection page</h1>
+<h1>Select Players</h1>
+
+<form class="trade-item-select">
+  <tr>
+    <th colspan="13">
+      <h3>Requested Players</h3>
+    </th>
+  </tr>
+  <table class="table trade-item-table">
+    <%= JST['players/_header_row']({
+          col1: "radio"
+        }) %>
+  </table>
+  <input type="submit" value="OK">
+</form>

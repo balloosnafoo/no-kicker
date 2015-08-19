@@ -23,7 +23,7 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     "messageShow": true,
     "tradeIndex": true,
     "tradeNew": true,
-    "tradeNew": true
+    "tradeCustomize": true
   },
 
   handleRoute: function (routeName, params) {
@@ -59,7 +59,3 @@ NoKicker.Views.Navbar = Backbone.View.extend({
   }
 
 });
-
-
-
-// On logout set window.location = "/"

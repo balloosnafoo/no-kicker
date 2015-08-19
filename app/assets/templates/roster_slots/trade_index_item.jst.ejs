@@ -1,0 +1,29 @@
+<% if (player) { %>
+  <td><%= player.escape("fname") + ". " + player.escape("lname") %></td>
+  <td><%= player.escape("position") %></td>
+  <td><%= player.escape("team_name") %></td>
+  <td>Bye</td>
+
+  <td>Week 1</td>
+
+  <td>Draft</td>
+  <td>Pos</td>
+
+  <td>Summary</td>
+
+  <td>Total</td>
+
+  <td>Average</td>
+
+  <td>
+    <% if ( roster_slot.escape("position") === "bench" ) { %>
+      <div class="roster-position-indicator">
+        <%= roster_slot.escape("position") %>
+      </div>
+    <% } else { %>
+      <div class="roster-position-indicator starting-slot">
+        <%= roster_slot.escape("position") %>
+      </div>
+    <% } %>
+  </td>
+<% } %>
