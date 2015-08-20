@@ -6,7 +6,8 @@ class League < ActiveRecord::Base
 
   has_many :teams
   has_many :members, through: :teams, source: :manager
-  has_many :player_contracts, through: :teams, source: :player_contracts
+  has_many :player_contracts
+  # has_many :player_contracts, through: :teams, source: :player_contracts
   has_many :matchups
   has_many :messages
 
@@ -35,6 +36,7 @@ class League < ActiveRecord::Base
         .where(teams: { manager_id: id })
   end
 
+  # Maybe made obsolete by adding league_id to player_contracts
   def player_contract(player_id)
     player_contracts.find do |contract|
       contract.id if contract.player_id == player_id

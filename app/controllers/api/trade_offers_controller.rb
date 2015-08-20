@@ -25,12 +25,40 @@ class Api::TradeOffersController < ApplicationController
   end
 
   def update
-    fail
+    @trade_offer = TradeOffer.includes(:trader, :tradee).find(params[:id])
+    if @trade_offer.update(trade_offer_params)
+      given_ids    = @trade_offer.trade_items
+                          .where(trade_items: { owner_id: current_user.id })
+                          .pluck(:player_id)
+      received_ids = @trade_offer.trade_items
+                          .where.not(trade_items: { owner_id: current_user.id })
+                          .pluck(:player_id)
+      @trade_offer.players.includes(:player_contracts)
+             .where(player_contracts: {league_id: params[:league_id]})
+             .each do |player|
+        if given_ids.include?(player.id)
+          player.player_contracts.first.destroy()
+          @trade_offer.tradee.player_contracts.create(
+            player_id: player.id,
+            league_id: params[:league_id]
+          )
+        else
+          player.player_contracts.first.destroy()
+          @trade_offer.trader.player_contracts.create(
+            player_id: player.id,
+            league_id: params[:league_id]
+          )
+        end
+      end
+      render json: @trade_offer
+    else
+      render json: @trade_offer.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   private
   def trade_offer_params
-    params.require(:trade_offer).permit(:league_id, :tradee_id)
+    params.require(:trade_offer).permit(:league_id, :tradee_id, :pending)
   end
 end
 

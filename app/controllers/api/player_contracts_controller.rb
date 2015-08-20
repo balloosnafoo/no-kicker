@@ -3,6 +3,7 @@ class Api::PlayerContractsController < ApplicationController
     @player_contract = PlayerContract.new(player_contract_params)
     team = current_user.team_in_league(params[:league_id])
     @player_contract.team_id = team.id
+    @player_contract.league_id = params[:league_id]
     if @player_contract.save
       team.assign_or_create_roster_slot(@player_contract.player)
       render json: @player_contract

@@ -19,9 +19,13 @@
   </ul>
 </li>
 
-<% if ( tradeOffer.escape("made_offer") ) { %>
-  <button type="button" class="accept-button">Accept</button>
-  <button type="button" class="reject-button">Reject</button>
+<% if ( tradeOffer.escape("pending") === "true" ) { %>
+  <% if ( tradeOffer.escape("made_offer") === "false" ) { %>
+    <button type="button" class="accept-button">Accept</button>
+    <button type="button" class="reject-button">Reject</button>
+  <% } else { %>
+    <button type="button" class="cancel-button">Cancel</button>
+  <% } %>
 <% } else { %>
-  <button type="button" class="accept-button">Cancel</button>
+  Accepted
 <% } %>

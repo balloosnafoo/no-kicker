@@ -1,10 +1,11 @@
 class PlayerContract < ActiveRecord::Base
-  validates :team, :player, presence: true
+  validates :team, :player, :league, presence: true
   validate :team_has_space
 
   belongs_to :team
   belongs_to :player
-  has_one :league, through: :team, source: :league
+  belongs_to :league
+  # has_one :league, through: :team, source: :league
   has_one :manager, through: :team, source: :manager
 
   def team_has_space

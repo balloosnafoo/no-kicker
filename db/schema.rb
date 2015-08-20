@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20150819180008) do
   create_table "player_contracts", force: :cascade do |t|
     t.integer  "team_id",    null: false
     t.integer  "player_id",  null: false
+    t.integer  "league_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

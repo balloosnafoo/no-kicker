@@ -7,7 +7,8 @@ NoKicker.Views.TradeOfferIndexItem = Backbone.CompositeView.extend({
 
   events: {
     "click .accept-button": "acceptTrade",
-    "click .reject-button": "rejectTrade"
+    "click .reject-button": "rejectTrade",
+    "click .cancel-button": "cancelTrade"
   },
 
   initialize: function (options) {
@@ -43,11 +44,15 @@ NoKicker.Views.TradeOfferIndexItem = Backbone.CompositeView.extend({
 
   cancelTrade: function (event) {
     event.preventDefault();
-    debugger;
+    this.model.destroy();
+    this.model.clear();
+    Backbone.history.navigate(
+      "leagues/" + this.league.id + "/trades",
+      { trigger: true }
+    );
   },
 
   rejectTrade: function (event) {
-    debugger;
     event.preventDefault();
     this.model.destroy();
     this.model.clear();
