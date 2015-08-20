@@ -45,7 +45,6 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
 
   makeTradeOffer: function (event) {
     event.preventDefault();
-    debugger;
     var formData = $(event.currentTarget).serializeJSON().trade;
     var toGiveIds = formData.toGive;
     var toReceiveIds = formData.toReceive;
@@ -69,7 +68,6 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
   },
 
   createItems: function (ids, ownerTeam, tradeId) {
-    debugger;
     for (var i = 0; i < ids.length; i++) {
       var tradeItem = new NoKicker.Models.TradeItem({
         player_id: ids[i],

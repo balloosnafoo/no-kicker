@@ -1,9 +1,9 @@
 NoKicker.Views.TradeOfferIndexItem = Backbone.CompositeView.extend({
   template: JST['trade_offers/index_item'],
 
-  tagName: "li",
+  tagName: "div",
 
-  className: "trades-index-item",
+  className: "trades-index-item list-group-item clearfix",
 
   events: {
     "click .accept-button": "acceptTrade",

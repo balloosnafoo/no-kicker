@@ -3,7 +3,7 @@ NoKicker.Views.MessageIndexItem = Backbone.View.extend({
 
   tagName: "li",
 
-  class: "message-item",
+  className: "message-item list-group-item",
 
   initialize: function (options) {
     this.league = options.league;

@@ -1,3 +1,6 @@
+body {
+  font-family: "Exo 2" !important;
+}
 
 div.dropdown.roster-dropdown {
   display: inline-block;
@@ -22,8 +25,55 @@ div.dropdown.roster-dropdown {
 
 nav.navbar.navbar-inverse {
   border-radius: 0px;
+  background-image: linear-gradient(to bottom,#3c3c3c 0%,#222222 100%);
 }
 
 table.teams-table th {
   text-align: center;
+}
+
+list-group-item {
+  border: 1px black;
+}
+
+.btn.btn-success {
+  background-image: linear-gradient(to bottom,#5cb85c 0%,#419641 100%);
+  border-color: #3e8f3e;
+}
+
+.btn.btn-danger {
+  background-image: linear-gradient(to bottom,#d9534f 0%,#c12e2a 100%);
+  border-color: #b92c28;
+}
+
+span.list-item-link {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+
+  z-index: 1;
+
+  background-image: url('empty.gif');
+}
+
+span.trade-buttons {
+  display: inline-block;
+}
+
+ul.trade-offer-details {
+  display: inline-block;
+}
+
+
+
+.navbar.navbar-inverse .navbar-brand, .navbar-inverse .navbar-brand,
+.navbar.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > li > a {
+  color: #adb8c4;
+}
+
+.navbar.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus,
+.navbar.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #f89406;
 }

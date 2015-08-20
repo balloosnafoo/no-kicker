@@ -1,6 +1,9 @@
 <h5><%= message.escape("title") %></h5>
+<a href="#/leagues/<%= league.id %>/messages/<%= this.model.id %>">
+  <span class="list-item-link"></span>
+</a>
 
-<p>
+<div class="item-text">
   <%= message.escape("body") %>
-</p>
-<a href="#/leagues/<%= league.id %>/messages/<%= this.model.id %>">Comments</a>
+  <span class="pull-right label label-default">Comments</span>
+</div>

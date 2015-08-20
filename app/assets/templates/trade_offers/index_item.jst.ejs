@@ -1,31 +1,35 @@
-<li>
-  <%= trader.escape("name") %> recive:
-  <ul>
-    <% for (var i = 0; i < receivedItems.models.length; i++) { %>
-      <li>
-        <%= receivedItems.models[i].escape("fname") + ". " + receivedItems.models[i].escape("lname") %>
-      </li>
-    <% } %>
-  </ul>
-</li>
-<li>
-  <%= tradee.escape("name") %> receive:
-  <ul>
-    <% for (var i = 0; i < receivedItems.models.length; i++) { %>
-      <li>
-        <%= givenItems.models[i].escape("fname") + ". " + givenItems.models[i].escape("lname") %>
-      </li>
-    <% } %>
-  </ul>
-</li>
+<ul class="trade-offer-details">
+  <li>
+    <%= trader.escape("name") %> recive:
+    <ul>
+      <% for (var i = 0; i < receivedItems.models.length; i++) { %>
+        <li>
+          <%= receivedItems.models[i].escape("fname") + ". " + receivedItems.models[i].escape("lname") %>
+        </li>
+      <% } %>
+    </ul>
+  </li>
+  <li>
+    <%= tradee.escape("name") %> receive:
+    <ul>
+      <% for (var i = 0; i < receivedItems.models.length; i++) { %>
+        <li>
+          <%= givenItems.models[i].escape("fname") + ". " + givenItems.models[i].escape("lname") %>
+        </li>
+      <% } %>
+    </ul>
+  </li>
+</ul>
 
-<% if ( tradeOffer.escape("pending") === "true" ) { %>
-  <% if ( tradeOffer.escape("made_offer") === "false" ) { %>
-    <button type="button" class="accept-button">Accept</button>
-    <button type="button" class="reject-button">Reject</button>
+<span class="pull-right trade-buttons">
+  <% if ( tradeOffer.escape("pending") === "true" ) { %>
+    <% if ( tradeOffer.escape("made_offer") === "false" ) { %>
+      <button type="button" class="btn btn-success accept-button">Accept</button>
+      <button type="button" class="btn btn-danger reject-button">Reject</button>
+    <% } else { %>
+      <button type="button" class="btn btn-danger cancel-button">Cancel</button>
+    <% } %>
   <% } else { %>
-    <button type="button" class="cancel-button">Cancel</button>
+    Accepted
   <% } %>
-<% } else { %>
-  Accepted
-<% } %>
+</span>
