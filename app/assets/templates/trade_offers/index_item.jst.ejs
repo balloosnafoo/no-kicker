@@ -1,2 +1,23 @@
+<li>
+  <%= trader.escape("name") %> recive:
+  <ul>
+    <% for (var i = 0; i < receivedItems.models.length; i++) { %>
+      <li>
+        <%= receivedItems.models[i].escape("fname") + ". " + receivedItems.models[i].escape("lname") %>
+      </li>
+    <% } %>
+  </ul>
+</li>
+<li>
+  <%= tradee.escape("name") %> receive:
+  <ul>
+    <% for (var i = 0; i < receivedItems.models.length; i++) { %>
+      <li>
+        <%= givenItems.models[i].escape("fname") + ". " + givenItems.models[i].escape("lname") %>
+      </li>
+    <% } %>
+  </ul>
+</li>
 
-this is trade number <%= tradeOffer.id %>
+<button type="button" name="button">Accept</button>
+<button type="button" name="button">Reject</button>
