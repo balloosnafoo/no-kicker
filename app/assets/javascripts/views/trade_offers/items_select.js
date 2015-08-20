@@ -59,6 +59,10 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
       success: function () {
         this.createItems(toGiveIds, this.user_team, tradeOffer.id);
         this.createItems(toReceiveIds, this.partnerTeam, tradeOffer.id);
+        Backbone.history.navigate(
+          "leagues/" + this.league.id + "/trades",
+          { trigger: true }
+        )
       }.bind(this),
       error: function () { debugger }.bind(this)
     });
