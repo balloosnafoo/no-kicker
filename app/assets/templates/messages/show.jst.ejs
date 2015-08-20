@@ -4,9 +4,13 @@
 </p>
 
 <form class="form new-comment-form">
-  <input type="text" name="comment[body]" class="form-control" value="">
+  <div class="input-group">
+    <input type="text" name="comment[body]" class="form-control" value="">
+    <span class="input-group-btn">
+      <input type="submit" class="btn btn-primary" value="OK">
+    </span>
+  </div>
 
-  <input type="submit" value="OK">
 </form>
 
-<ul class="comments-index"></ul>
+<ul class="comments-index list-group"></ul>

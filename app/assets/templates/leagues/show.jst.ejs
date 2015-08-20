@@ -1,8 +1,16 @@
 <div class="row">
   <div class="col-md-2">
-    <div class="panel panel-default">
-      <div class="container">
-        <%= league.escape("name") %>
+    <div class="panel panel-default league-info">
+      <div class="panel-body">
+        <h5><%= league.escape("name") %></h5>
+        <dl class="league-description">
+          <dt>Lifetime</dt>
+          <dd><%= league.escape("redraft") === "true" ? "Redraft" : "Keeper" %></dd>
+          <dt>Type</dt>
+          <dd><%= league.escape("match_type") %></dd>
+          <dt>Membership</dt>
+          <dd><%= league.escape("public") === "true" ? "Public" : "Private" %></dd>
+        </dl>
       </div>
     </div>
   </div>

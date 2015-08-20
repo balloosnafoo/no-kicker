@@ -1,7 +1,7 @@
 json.extract!(
   @league,
   :id, :name, :num_divisions, :redraft, :public,
-  :num_teams, :commissioner_id, :redraft
+  :num_teams, :commissioner_id, :match_type
 )
 
 # TODO: Eliminate the first branch of this condional and the few functions

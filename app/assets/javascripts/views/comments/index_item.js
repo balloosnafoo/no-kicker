@@ -3,7 +3,7 @@ NoKicker.Views.CommentIndexItem = Backbone.View.extend({
 
   tagName: "li",
 
-  className: "comment-index-item",
+  className: "comment-index-item list-group-item",
 
   initialize: function (options) {
     this.message = options.message;

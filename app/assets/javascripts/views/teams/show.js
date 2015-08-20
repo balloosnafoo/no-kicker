@@ -61,6 +61,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   openPositions: function () {
     var positions = ["qb", "wr", "rb", "te", "flex"]
     counts = this.startingPositionCounts(this.model.roster_slots());
+    debugger;
     positions.forEach( function (pos) {
       if (!counts[pos] || counts[pos] < this.model.rosterRule().escape("num_" + pos)){
         this.addOptions(pos);

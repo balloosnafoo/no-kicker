@@ -18,12 +18,12 @@
 </td>
 <td></td>
 <td>
-  <% if ( player.isContracted() && player.contract().escape('user_player') ) { %>
+  <% if ( player.isContracted() && player.contract().escape('user_player') === "true" ) { %>
     <button type="button" class="btn btn-xs btn-block btn-danger drop-button" name="button">
       Drop
     </button>
   <% } else if ( player.isContracted() ) { %>
-    <button type="button" class="trade-button" name="button">
+    <button type="button" class="btn btn-xs btn-block btn-primary trade-button" name="button">
       Trade
     </button>
   <% } else { %>
