@@ -14,6 +14,7 @@ class Team < ActiveRecord::Base
     foreign_key: :team_1_id,
     primary_key: :id
   )
+  
   has_many(
     :away_matchups,
     class_name: "Matchup",

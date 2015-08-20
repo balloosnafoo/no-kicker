@@ -19,5 +19,9 @@
   </ul>
 </li>
 
-<button type="button" name="button">Accept</button>
-<button type="button" name="button">Reject</button>
+<% if ( tradeOffer.escape("made_offer") ) { %>
+  <button type="button" class="accept-button">Accept</button>
+  <button type="button" class="reject-button">Reject</button>
+<% } else { %>
+  <button type="button" class="accept-button">Cancel</button>
+<% } %>

@@ -1,6 +1,8 @@
 json.array! @trade_offers do |trade_offer|
   json.extract! trade_offer, :id, :trader_id, :tradee_id, :league_id
 
+  json.made_offer @trader == trade_offer.trader
+
   json.trader do
     json.extract! trade_offer.trader, :id, :name
   end

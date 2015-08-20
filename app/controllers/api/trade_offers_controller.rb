@@ -1,7 +1,7 @@
 class Api::TradeOffersController < ApplicationController
   def index
-    team = current_user.team_in_league(params[:league_id])
-    @trade_offers = team.all_trades.includes(:trade_items, :players, :tradee, :trader)
+    @team = current_user.team_in_league(params[:league_id])
+    @trade_offers = @team.all_trades.includes(:trade_items, :players, :tradee, :trader)
     render :index
   end
 
@@ -13,6 +13,19 @@ class Api::TradeOffersController < ApplicationController
     else
       render json: @trade_offer.errors.full_messages, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @trade_offer = TradeOffer.find(params[:id])
+    if @trade_offer.destroy
+      render json: @trade_offer
+    else
+      render json: @trade_offer.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    fail
   end
 
   private

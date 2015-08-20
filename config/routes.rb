@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     resources :matchups, only: [:create, :index]
     resources :messages, only: [:create, :index, :show]
     resources :comments, only: [:create, :destroy]
-    resources :trade_offers, only: [:create, :destroy, :index]
+    resources :trade_offers, only: [:create, :destroy, :index, :update]
     resources :trade_items, only: [:create, :destroy, :index]
   end
+
 end

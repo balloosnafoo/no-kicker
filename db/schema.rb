@@ -154,11 +154,12 @@ ActiveRecord::Schema.define(version: 20150819180008) do
   end
 
   create_table "trade_offers", force: :cascade do |t|
-    t.integer  "league_id",  null: false
-    t.integer  "trader_id",  null: false
-    t.integer  "tradee_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "league_id",                 null: false
+    t.integer  "trader_id",                 null: false
+    t.integer  "tradee_id",                 null: false
+    t.boolean  "pending",    default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|

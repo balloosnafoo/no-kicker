@@ -59,5 +59,5 @@ NoKicker.Models.TradeOffer = Backbone.Model.extend({
     }
 
     return response;
-  }
-})
+  },
+});

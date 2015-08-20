@@ -17,6 +17,6 @@ class TradeOffer < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many :trade_items
+  has_many :trade_items, dependent: :destroy
   has_many :players, through: :trade_items, source: :player
 end
