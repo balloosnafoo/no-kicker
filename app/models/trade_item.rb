@@ -1,5 +1,5 @@
 class TradeItem < ActiveRecord::Base
-  validates :player, :owner, :trade_offer, presence: true
+  validates :player_id, :owner_id, :trade_offer, presence: true
 
   belongs_to :trade_offer
 end

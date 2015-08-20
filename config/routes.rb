@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :index, :show]
     resources :comments, only: [:create, :destroy]
     resources :trade_offers, only: [:create, :destroy, :index]
+    resources :trade_items, only: [:create, :destroy, :index]
   end
 end

@@ -6,7 +6,6 @@ NoKicker.Views.RosterSlotTradeIndexItem = Backbone.View.extend({
   className: "trade-selection-item",
 
   initialize: function (options) {
-    if (options.team !== options.user_team){ debugger };
     this.team = options.team;
     this.user_team = options.user_team;
   },

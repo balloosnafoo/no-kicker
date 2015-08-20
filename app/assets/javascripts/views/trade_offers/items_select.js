@@ -26,7 +26,6 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
 
   // ownerTeam not yet in use, was an attempt to get owners username
   addPlayer: function (ownerTeam, rosterSlot) {
-    // debugger
     var playerView = new NoKicker.Views.RosterSlotTradeIndexItem({
       model: rosterSlot,
       team: ownerTeam,
@@ -47,5 +46,36 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
   makeTradeOffer: function (event) {
     event.preventDefault();
     debugger;
+    var formData = $(event.currentTarget).serializeJSON().trade;
+    var toGiveIds = formData.toGive;
+    var toReceiveIds = formData.toReceive;
+
+    var tradeOffer = new NoKicker.Models.TradeOffer({
+      league_id: this.league.id,
+      tradee_id: this.partnerTeam.id
+    });
+
+    tradeOffer.save({}, {
+      success: function () {
+        this.createItems(toGiveIds, this.user_team, tradeOffer.id);
+        this.createItems(toReceiveIds, this.partnerTeam, tradeOffer.id);
+      }.bind(this),
+      error: function () { debugger }.bind(this)
+    });
+  },
+
+  createItems: function (ids, ownerTeam, tradeId) {
+    debugger;
+    for (var i = 0; i < ids.length; i++) {
+      var tradeItem = new NoKicker.Models.TradeItem({
+        player_id: ids[i],
+        owner_id: ownerTeam.id,
+        trade_offer_id: tradeId
+      });
+      tradeItem.save({}, {
+        error: function () { debugger }.bind(this)
+      });
+    }
   }
+
 });

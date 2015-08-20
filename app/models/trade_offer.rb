@@ -16,4 +16,6 @@ class TradeOffer < ActiveRecord::Base
     foreign_key: :tradee_id,
     primary_key: :id
   )
+
+  has_many :trade_items
 end
