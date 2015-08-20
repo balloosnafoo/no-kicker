@@ -3,8 +3,12 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
 
   className: "container",
 
+  events: {
+    "submit .trade-item-form": "makeTradeOffer"
+  },
+
   initialize: function (options) {
-    this.partner_team = options.partner;
+    this.partnerTeam = options.partner;
     this.league = options.league;
     this.user_team = this.league.user_team();
 
@@ -20,21 +24,28 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
     return this;
   },
 
-  addPlayer: function (rosterSlot) {
+  // ownerTeam not yet in use, was an attempt to get owners username
+  addPlayer: function (ownerTeam, rosterSlot) {
+    // debugger
     var playerView = new NoKicker.Views.RosterSlotTradeIndexItem({
       model: rosterSlot,
-      team: this.model
+      team: ownerTeam,
+      user_team: this.user_team
     });
 
     this.addSubview('.trade-item-table', playerView);
   },
 
   renderPlayers: function () {
-    debugger
-    this.partner_team.roster_slots().each(this.addPlayer.bind(this));
+    this.partnerTeam.roster_slots().each(this.addPlayer.bind(this, this.partnerTeam));
     this.$('.trade-item-table').append(
       "<tr><th class='vertical-spacer table-heading' colspan='12'><h3>Offered Players</h3></th></tr>"
     )
-    this.user_team.roster_slots().each(this.addPlayer.bind(this));
+    this.user_team.roster_slots().each(this.addPlayer.bind(this, this.user_team));
   },
+
+  makeTradeOffer: function (event) {
+    event.preventDefault();
+    debugger;
+  }
 });

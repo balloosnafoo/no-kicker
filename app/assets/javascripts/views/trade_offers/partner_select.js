@@ -25,7 +25,6 @@ NoKicker.Views.TradeOfferPartnerSelect = Backbone.CompositeView.extend({
 
   choosePlayers: function (event) {
     event.preventDefault();
-    debugger;
     var partnerId = $(event.currentTarget).serializeJSON().tradee_id;
     Backbone.history.navigate(
       "leagues/" + this.league.id + "/trades/" + partnerId,

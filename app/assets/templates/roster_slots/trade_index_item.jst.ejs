@@ -1,8 +1,14 @@
-<% if (player) { %>
+<% if (player.escape("lname")) { %>
+  <td>
+    <% if (team.id !== user_team.id) { %>
+      <input type="checkbox" name="trade[toReceive][]" value="<%= player.id %>">
+    <% } else { %>
+      <input type="checkbox" name="trade[toGive][]" value="<%= player.id %>">
+    <% } %>
+  </td>
   <td><%= player.escape("fname") + ". " + player.escape("lname") %></td>
   <td><%= player.escape("position") %></td>
   <td><%= player.escape("team_name") %></td>
-  <td>Bye</td>
 
   <td>Week 1</td>
 
@@ -14,6 +20,7 @@
   <td>Total</td>
 
   <td>Average</td>
+  <td>%Own</td>
 
   <td>
     <% if ( roster_slot.escape("position") === "bench" ) { %>
