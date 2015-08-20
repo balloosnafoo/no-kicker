@@ -19,16 +19,16 @@
 <td></td>
 <td>
   <% if ( player.isContracted() && player.contract().escape('user_player') ) { %>
-    <button type="button" class="drop-button" name="button">
-      Drop Player
+    <button type="button" class="btn btn-xs btn-block btn-danger drop-button" name="button">
+      Drop
     </button>
   <% } else if ( player.isContracted() ) { %>
     <button type="button" class="trade-button" name="button">
       Trade
     </button>
   <% } else { %>
-    <button type="button" class="add-button" name="button">
-      Add Player
+    <button type="button" class="btn btn-xs btn-block btn-success add-button" name="button">
+      Add
     </button>
   <% } %>
 </td>

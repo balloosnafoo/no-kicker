@@ -1,7 +1,7 @@
 NoKicker.Views.LeagueShow = Backbone.CompositeView.extend({
   template: JST['leagues/show'],
 
-  className: "container",
+  className: "container-fluid",
 
   events: {
     "click .join-league": "newTeam"

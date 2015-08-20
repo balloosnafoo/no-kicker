@@ -1,33 +1,42 @@
-<h1><%= league.escape("name") %></h1>
+<div class="row">
+  <div class="col-md-2">
+    <div class="panel panel-default">
+      <div class="container">
+        <%= league.escape("name") %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <table class="table teams-table table-condensed table-striped table-hover table-bordered">
+      <tr>
+        <th colspan="2">Fantasy</th>
+        <th colspan="6">Standings</th>
+        <th colspan="4">Stats</th>
+        <th colspan="2">Misc</th>
+        <th colspan="2">Games</th>
+      </tr>
+      <tr>
+        <th>Team</th>
+        <th>Owner</th>
 
-<table class="table teams-table">
-  <tr>
-    <th colspan="2">Fantasy</th>
-    <th colspan="6">Standings</th>
-    <th colspan="4">Stats</th>
-    <th colspan="2">Misc</th>
-    <th colspan="2">Games</th>
-  </tr>
-  <tr>
-    <th>Team</th>
-    <th>Owner</th>
+        <th>W</th>
+        <th>L</th>
+        <th>%</th>
+        <th>GB</th>
+        <th>Div</th>
+        <th>Strk</th>
 
-    <th>W</th>
-    <th>L</th>
-    <th>%</th>
-    <th>GB</th>
-    <th>Div</th>
-    <th>Strk</th>
+        <th>PF</th>
+        <th>Avg</th>
+        <th>PA</th>
+        <th>Avg</th>
 
-    <th>PF</th>
-    <th>Avg</th>
-    <th>PA</th>
-    <th>Avg</th>
+        <th>Rank</th>
+        <th>Draft</th>
 
-    <th>Rank</th>
-    <th>Draft</th>
-
-    <th>Previous</th>
-    <th>Current</th>
-  </tr>
-</table>
+        <th>Previous</th>
+        <th>Current</th>
+      </tr>
+    </table>
+  </div>
+</div>

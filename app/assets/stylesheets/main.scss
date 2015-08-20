@@ -4,7 +4,7 @@ div.dropdown.roster-dropdown {
 }
 
 .roster-change-select {
-  width: 100px;
+  width: 75px;
 }
 
 .roster-position-indicator {
@@ -22,4 +22,8 @@ div.dropdown.roster-dropdown {
 
 nav.navbar.navbar-inverse {
   border-radius: 0px;
+}
+
+table.teams-table th {
+  text-align: center;
 }

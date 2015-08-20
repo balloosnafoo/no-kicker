@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+SAMPLE_TEAM_NAMES = File.readlines("db/sample_team_names.txt")
+
 names = {}
 File.foreach("./python/players.csv") do |line|
   name, team, pos = line.chomp.split(",")
@@ -67,7 +69,7 @@ File.foreach("./python/weekly_stats.csv") do |line|
 end
 
 
-User.create(username: "baloo", password: "password", email: "baloo@butts.com")
+User.create(username: "baloo", password: "password", email: "baloo@gmail.com")
 league = League.create(
   commissioner_id: 1,
   num_teams: 12,
@@ -96,7 +98,7 @@ Team.create(
     league_id: 1,
     division: 1,
     manager_id: i + 2,
-    name: Faker::Team.name
+    name: SAMPLE_TEAM_NAMES.sample
   )
 end
 

@@ -14,7 +14,7 @@ No Kicker is a clone of Flea Flicker built on Rails on Backbone. Users can:
 - [ ] See player stats
 - [ ] Search for players by name/position/points
 - [X] Determine starting lineups
-- [ ] Create and respond to trade offers
+- [X] Create and respond to trade offers
 - [X] Create and comment on threads in their leagues
 
 ## Design Docs
