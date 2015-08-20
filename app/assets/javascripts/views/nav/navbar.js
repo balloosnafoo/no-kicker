@@ -31,6 +31,14 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     this.$el.find("." + routeName).addClass("active");
 
     if (this.LEAGUE_ROUTES[routeName]) {
+
+      // Change the color of the navbar
+      var navbar = this.$('nav.navbar');
+      if (navbar.length) {
+        navbar.removeClass("navbar-default");
+        navbar.addClass("navbar-inverse");
+      }
+
       var league = this.collection.getOrFetch(params[0], {user_team: true});
       this.subnav = new NoKicker.Views.LeagueNav({
         collection: this.collection,
@@ -39,6 +47,13 @@ NoKicker.Views.Navbar = Backbone.View.extend({
       this.$(".page-specific-links").html(this.subnav.render().$el);
     } else {
       this.subnav && this.subnav.remove();
+
+      // Change the color of the navbar
+      var navbar = this.$('nav.navbar');
+      if (navbar.length) {
+        navbar.removeClass("navbar-inverse");
+        navbar.addClass("navbar-default");
+      }
     }
   },
 
