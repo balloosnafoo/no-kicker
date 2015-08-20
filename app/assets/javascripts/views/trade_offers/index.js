@@ -8,7 +8,8 @@ NoKicker.Views.TradeOfferIndex = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.league = options.league
+    this.league = options.league;
+    
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addItem);
   },

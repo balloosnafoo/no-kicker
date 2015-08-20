@@ -18,4 +18,5 @@ class TradeOffer < ActiveRecord::Base
   )
 
   has_many :trade_items
+  has_many :players, through: :trade_items, source: :player
 end

@@ -1,7 +1,7 @@
 class Api::TradeOffersController < ApplicationController
   def index
     team = current_user.team_in_league(params[:league_id])
-    @trade_offers = team.all_trades.includes(:trade_items)
+    @trade_offers = team.all_trades.includes(:trade_items, :players, :tradee, :trader)
     render :index
   end
 
@@ -20,3 +20,10 @@ class Api::TradeOffersController < ApplicationController
     params.require(:trade_offer).permit(:league_id, :tradee_id)
   end
 end
+
+
+# This grabs the total rushing yds and ids of all players
+# WeeklyStat.select("SUM(weekly_stats.rushing_yds) as sum_rushing_yds")
+#           .joins(:player).select(:player_id)
+#           .group(:player_id)
+#           .order("SUM(weekly_stats.rushing_yds) DESC")
