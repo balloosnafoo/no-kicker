@@ -11,7 +11,7 @@ class Matchup < ActiveRecord::Base
   belongs_to(
     :team_2,
     class_name: "Team",
-    foreign_key: :team_1_id,
+    foreign_key: :team_2_id,
     primary_key: :id
   )
 end

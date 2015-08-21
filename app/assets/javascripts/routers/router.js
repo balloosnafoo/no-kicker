@@ -21,7 +21,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     "leagues/:league_id/messages/:message_id": "messageShow",
     "leagues/:league_id/trades": "tradeIndex",
     "leagues/:league_id/trades/new": "tradeNew",
-    "leagues/:league_id/trades/:partner_id": "tradeCustomize"
+    "leagues/:league_id/trades/:partner_id": "tradeCustomize",
+    "leagues/:league_id/matchups": "matchupIndex"
   },
 
   userLeagueIndex: function () {
@@ -172,6 +173,19 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(tradeView);
+  },
+
+  matchupIndex: function (league_id) {
+    var league = this.leagues.getOrFetch(league_id);
+    var matchups = new NoKicker.Collections.Matchups();
+    matchups.fetch({ league_id: league_id });
+
+    var indexView = new NoKicker.Views.MatchupIndex({
+      league: league,
+      collection: matchups
+    });
+
+    this._swapView(indexView);
   },
 
   _swapView: function (view) {
