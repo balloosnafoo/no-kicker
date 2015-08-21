@@ -62,7 +62,7 @@ class Player < ActiveRecord::Base
 
   def self.with_stats_and_contracts(league_id)
     week = Week.current_week
-    self.find_by_sql([<<-SQL, league_id, week])
+    self.find_by_sql([<<-SQL, league_id, week, week])
       SELECT
         players.*,
         league_contracts.id               AS contract_id,
@@ -77,7 +77,6 @@ class Player < ActiveRecord::Base
         seasonal_stats.receiving_rec      AS receiving_rec,
         seasonal_stats.receiving_tds      AS receiving_tds,
         seasonal_stats.receiving_yds      AS receiving_yds,
-
         (seasonal_stats.rushing_tds * 600) +
         (seasonal_stats.rushing_yds * 10) +
         (seasonal_stats.fumbles_lost * -200) +
@@ -86,7 +85,9 @@ class Player < ActiveRecord::Base
         (seasonal_stats.passing_yds * 5) +
         (seasonal_stats.receiving_rec * 0) +
         (seasonal_stats.receiving_tds * 600) +
-        (seasonal_stats.receiving_yds * 10) AS fantasy_points
+        (seasonal_stats.receiving_yds * 10) AS fantasy_points,
+        week_nflgames.home_team,
+        week_nflgames.away_team
 
       FROM
         players
@@ -123,6 +124,14 @@ class Player < ActiveRecord::Base
         GROUP BY
           players.id
       ) AS seasonal_stats ON players.id = seasonal_stats.id
+      LEFT OUTER JOIN (
+        SELECT
+          nflgames.*
+        FROM
+          nflgames
+        WHERE
+          nflgames.week = ?
+      ) AS week_nflgames ON week_nflgames.home_team = players.team_name OR week_nflgames.away_team = players.team_name
       ORDER BY
         seasonal_stats.rushing_yds + seasonal_stats.receiving_yds + (seasonal_stats.passing_yds / 3) DESC
     SQL

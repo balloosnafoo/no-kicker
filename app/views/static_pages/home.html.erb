@@ -9,6 +9,8 @@
       id: "<%= current_user.id %>"
     };
 
+    NoKicker.currentWeek = <%= Week.current_week %>;
+
     // You could also do something like this (careful, the ERB tag has been escaped):
     // BackboneDemo.CURRENT_USER = JSON.parse("<%%= current_user.to_json %>");
 

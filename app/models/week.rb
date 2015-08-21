@@ -6,4 +6,8 @@ class Week < ActiveRecord::Base
   def self.current_week
     Week.first.current_week
   end
+
+  def self.to_next_week!
+    
+  end
 end

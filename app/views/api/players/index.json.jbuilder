@@ -14,6 +14,7 @@ json.array! @players do |player|
     fpoints_s = "#{fpoints_s[0..-3]}.#{fpoints_s[-3..-2]}"
     ave_fpoints_s = (player.fantasy_points / (Week.current_week)).to_s
     ave_fpoints_s = "#{ave_fpoints_s[0..-3]}.#{ave_fpoints_s[-3..-2]}"
+
     json.stats do
       json.rushing_tds player.rushing_tds
       json.rushing_yds player.rushing_yds
@@ -26,6 +27,11 @@ json.array! @players do |player|
       json.receiving_yds player.receiving_yds
       json.fantasy_points fpoints_s
       json.ave_fantasy_points ave_fpoints_s
+    end
+
+    next_opp = player.home_team == player.team_name ? "vs#{player.away_team}" : "@#{player.home_team}"
+    json.info do
+      json.next_opp next_opp
     end
   end
 
