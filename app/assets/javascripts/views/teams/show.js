@@ -5,7 +5,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
 
   events: {
     "change .roster-change-select": "updateActions",
-    "click .roster-change-button": "substitutePlayers"
+    "click .roster-change-button": "upload"
   },
 
   POSITIONAL_VALUES: {
@@ -128,4 +128,17 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
       });
     }
   },
+
+  upload: function () {
+    filepicker.pick(function(blob) {
+      var newImage = new NoKicker.Models.Image({
+        filepicker_url: blob.url
+      });
+      newImage.save({}, {
+        success: function () {
+          alert('Image saved!');
+        }
+      })
+    });
+  }
 });

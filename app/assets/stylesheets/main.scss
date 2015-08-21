@@ -101,12 +101,16 @@ table th{
 .jumbotron.splash-jumbo {
   text-align: center;
   background: transparent;
+  margin-top: 200px;
 }
 
-.jumbotron.splash-big-jumbo {
+.jumbotron#splash-big-jumbo {
   padding-top: 0px;
   text-align: center;
-  background: transparent;
+  background-image: url(https://www.filepicker.io/api/file/ktomC6YSUC6iMWllb01H);
+  height: 900px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .jumbotron.splash-jumbo .panel-footer {

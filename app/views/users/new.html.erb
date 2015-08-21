@@ -10,14 +10,14 @@
   </div>
 </nav>
 
-<div class="jumbotron splash-big-jumbo">
-  <div class="row">
+<div class="jumbotron" id="splash-big-jumbo">
+  <div class="container">
     <div class="jumbotron splash-jumbo">
-      <h1>Kicker Free Fantasy Football</h1>
-      <h3 class="text-muted">Who really needs kickers anyway?</h3>
       <form class="form-inline" action="<%= new_user_url %>" method="post">
         <%= auth_token %>
         <div class="panel panel-default">
+      <h1 class="splash">Kicker Free Fantasy Football</h1>
+      <h3 class="text-muted">Who really needs kickers anyway?</h3>
           <div class="panel-body">
             <div class="form-group">
               <input type="text" name="user[email]" id="email" placeholder="E-mail" class="form-control input-lg">

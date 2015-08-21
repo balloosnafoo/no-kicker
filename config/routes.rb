@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :trade_offers, only: [:create, :destroy, :index, :update]
     resources :trade_items, only: [:create, :destroy, :index]
+    resources :images, only: [:create, :update, :destroy]
   end
 
 end

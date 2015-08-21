@@ -14,6 +14,7 @@ gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'newrelic_rpm'
 gem 'faker'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
