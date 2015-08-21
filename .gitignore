@@ -14,3 +14,9 @@
 
 # Ignore images... they are going on cloudinary anyway
 *.jpg
+
+# Ignore python compile files
+*.pyc
+
+# Ignore Mac DS_Store
+.DS_Store

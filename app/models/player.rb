@@ -30,6 +30,25 @@ class Player < ActiveRecord::Base
       ) AS league_contracts ON players.id = league_contracts.player_id
     SQL
   end
+
+  # super unfinished
+  def self.with_seasonal_stats
+    week = Week.current_week
+    self.find_by_sql([<<-SQL, week])
+      SELECT
+        players.*,
+        SUM(weekly_stats.rushing_tds) AS rushing_tds,
+        SUM(weekly_stats.rushing_yds) AS rushing_yds
+      FROM
+        players
+      JOIN
+        weekly_stats ON weekly_stats.player_id = players.id
+      WHERE
+        weekly_stats.week <= ?
+      GROUP BY
+        players.id
+    SQL
+  end
 end
 
 # sq = PlayerContract.select("player_contracts.*, users.*").joins(:team, :manager).where(teams: {league_id: 1})

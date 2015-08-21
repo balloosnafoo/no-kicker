@@ -9,6 +9,17 @@
 SAMPLE_TEAM_NAMES = File.readlines("db/sample_team_names.txt")
 SAMPLE_LEAGUE_NAMES = File.readlines("db/sample_league_names.txt")
 
+File.foreach("./python/nfl_schedule.csv") do |game|
+  home_team, away_team, home_score, away_score, week = game.chomp.split(",")
+  Nflgame.create(
+    home_team: home_team,
+    away_team: away_team,
+    home_score: home_score,
+    away_score: away_score,
+    week: week
+  )
+end
+
 names = {}
 File.foreach("./python/players.csv") do |line|
   name, team, pos = line.chomp.split(",")
@@ -64,7 +75,8 @@ File.foreach("./python/weekly_stats.csv") do |line|
       receiving_tar: receiving_tar,
       receiving_tds: receiving_tds,
       receiving_yds: receiving_yds,
-      player_id: player.id
+      player_id: player.id,
+      week: week
     )
   end
 end

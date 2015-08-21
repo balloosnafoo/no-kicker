@@ -2,6 +2,7 @@ class CreateWeeklyStats < ActiveRecord::Migration
   def change
     create_table :weekly_stats do |t|
       t.integer :player_id, null: false
+      t.integer :week, null: false
 
       t.integer :rushing_att, default: 0
       t.integer :rushing_tds, default: 0

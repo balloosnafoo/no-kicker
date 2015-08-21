@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821033527) do
+ActiveRecord::Schema.define(version: 20150821162658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20150821033527) do
     t.integer  "league_id",  null: false
     t.string   "title",      null: false
     t.text     "body",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nflgames", force: :cascade do |t|
+    t.string   "home_team",  null: false
+    t.string   "away_team",  null: false
+    t.integer  "home_score", null: false
+    t.integer  "away_score", null: false
+    t.integer  "week",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -174,6 +184,7 @@ ActiveRecord::Schema.define(version: 20150821033527) do
 
   create_table "weekly_stats", force: :cascade do |t|
     t.integer  "player_id",                 null: false
+    t.integer  "week",                      null: false
     t.integer  "rushing_att",   default: 0
     t.integer  "rushing_tds",   default: 0
     t.integer  "rushing_yds",   default: 0

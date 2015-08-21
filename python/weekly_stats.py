@@ -1,49 +1,31 @@
 import nflgame as nfl
+write_file = open('python/weekly_stats.csv', 'w')
 
-POSITIONS = [
-    "qb",
-    "wr",
-    "rb",
-    "te",
-    "dst",
-    "k"
-]
+for i in range(1, 17):
+    games = nfl.games(2014, week=i)
+    players = nfl.combine(games)
 
-def pull_players(pos):
-    read_file = open(pos + "s.csv", "r")
-    for i in range(6):
-        f.readline()
-    for line in read_file:
-        data = line.strip().split(",")
-        name, team = data[1], data[2]
-    for i in range(1,16):
+    for player in players:
+        if player.guess_position in ["RB", "WR", "TE", "QB"]:
+            weekly_stats = [
+                str(player.name),
+                str(player.team),
+                str(player.guess_position),
+                str(i),
+                str(player.rushing_att),
+                str(player.rushing_tds),
+                str(player.rushing_yds),
+                str(player.fumbles_lost),
+                str(player.passing_att),
+                str(player.passing_int),
+                str(player.passing_tds),
+                str(player.passing_yds),
+                str(player.receiving_rec),
+                str(player.receiving_tar),
+                str(player.receiving_tds),
+                str(player.receiving_yds)
+            ]
 
+            write_file.write(",".join(weekly_stats) + "\n")
 
-def get_player_object(name, pos):
-    for p in nfl.find(name):
-        if team == p.pos:
-            player = p
-    return player
-
-def get_player_stats(player):
-
-    team = player.team
-    weeks = range(1, week)
-
-    stats = []
-    stats.append(HEADERS[player.position])
-
-    for w in weeks:
-        try:
-            game = nfl.games(year, w, home=team, away=team)
-            players = nfl.combine(game)
-            player_game_stats = players.name(player.gsis_name)
-            if not player_game_stats:
-                player_game_stats = "DNP"
-        except:
-            player_game_stats = "BYE"
-        stats.append(STAT_FUNCTIONS[player.position](player_game_stats))
-        stats[-1].append(score_player(player_game_stats, player.position))
-
-    return stats
-    
+write_file.close()
