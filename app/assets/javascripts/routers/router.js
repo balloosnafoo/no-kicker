@@ -178,7 +178,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
   matchupIndex: function (league_id) {
     var league = this.leagues.getOrFetch(league_id);
     var matchups = new NoKicker.Collections.Matchups();
-    matchups.fetch({ league_id: league_id });
+    matchups.fetch({ data: { league_id: league_id } });
 
     var indexView = new NoKicker.Views.MatchupIndex({
       league: league,
