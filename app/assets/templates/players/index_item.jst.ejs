@@ -6,14 +6,30 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+  <% if ( player.escape("position") === "RB" ) { %>
+    <%= stats.rushing_yds %>yds <%= stats.rushing_tds %>tds
+  <% } else if (["TE", "WR"].indexOf(player.escape("position")) !== -1 ) { %>
+    <%= stats.receiving_yds %>yds <%= stats.receiving_tds %>tds
+  <% } else if (player.escape("position") === "QB") { %>
+    <%= stats.passing_yds %>yds <%= stats.passing_tds %>tds
+  <% } else { %>
+    ---
+  <% } %>
+</td>
+<td>
+  <%= stats.fantasy_points %>
+</td>
+<td>
+  <%= stats.ave_fantasy_points %>
+</td>
 <td>
   <% if ( player.isContracted() ) { %>
     <a href="#/leagues/<%= league.id %>/teams/<%= player.contract().escape("contract_owner_id") %>">
       <%= player.contract().escape("contract_owner_username") %>
     </a>
+  <% } else { %>
+    ---
   <% } %>
 </td>
 <td></td>

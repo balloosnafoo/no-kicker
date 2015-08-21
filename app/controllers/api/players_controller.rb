@@ -1,7 +1,8 @@
 class Api::PlayersController < ApplicationController
   def index
     if params[:league_id]
-      @players = Player.with_league_contracts(params[:league_id])
+      # @players = Player.with_league_contracts(params[:league_id])
+      @players = Player.with_stats_and_contracts(params[:league_id])
       @league_specific = true
     else
       @players = Player.all

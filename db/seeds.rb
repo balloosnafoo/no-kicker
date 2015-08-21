@@ -124,4 +124,4 @@ end
 
 League.first.generate_matchups
 
-Week.create
+Week.create(week: 3)
