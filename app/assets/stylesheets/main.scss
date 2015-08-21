@@ -51,6 +51,10 @@ list-group-item {
   border-color: #ccc;
 }
 
+nav .btn {
+  top-padding: 5px;
+}
+
 span.list-item-link {
   position:absolute;
   width:100%;
@@ -92,4 +96,25 @@ table{
 table td,
 table th{
   padding: 0; /* 'cellpadding' equivalent */
+}
+
+.jumbotron.splash-jumbo {
+  text-align: center;
+  background: transparent;
+}
+
+.jumbotron.splash-big-jumbo {
+  padding-top: 0px;
+  text-align: center;
+  background: transparent;
+}
+
+.jumbotron.splash-jumbo .panel-footer {
+  margin-top: 20px;
+  background: transparent;
+  border-top: none;
+}
+
+nav.splash.navbar {
+  margin-bottom: 0px;
 }

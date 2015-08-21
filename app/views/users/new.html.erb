@@ -1,19 +1,24 @@
-<div class="container">
-  <div class="jumbotron row">
-    <div class="col-xs-6">
-      <h1>Sign Up</h1>
-
-      <%= render partial: "shared/user_form",
-                 locals: {
-                   target_url: users_url,
-                   user: @user,
-                   submit_verb: "Sign up!",
-                   patch: false,
-                   new_user: true
-                 } %>
-    </div>
-    <div class="col-xs-6">
-
+<div class="jumbotron splash-big-jumbo">
+  <div class="row">
+    <div class="jumbotron splash-jumbo">
+      <h1>Kicker Free Fantasy Football</h1>
+      <h3 class="text-muted">Who really needs kickers anyway?</h3>
+      <form class="form-inline" action="<%= new_user_url %>" method="post">
+        <%= auth_token %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <input type="text" name="user[email]" id="email" placeholder="E-mail" class="form-control input-lg">
+              <input type="password" name="user[password]" id="password" placeholder="Password" class="form-control input-lg">
+              <input type="text" name="user[username]" id="username" placeholder="Username" class="form-control input-lg">
+            </div>
+            <div class="panel-footer">
+              <input type="submit" class="btn btn-success btn-lg" value="Start Playing">
+              <%= link_to "Members Log In", new_session_url %>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
