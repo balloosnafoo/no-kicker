@@ -48,7 +48,7 @@ class League < ActiveRecord::Base
   end
 
   def generate_matchups
-    return if matchups
+    return unless matchups.empty?
     team_id_arr = team_ids
     a1 = team_id_arr[0...num_teams / 2]
     a2 = team_id_arr[num_teams / 2...num_teams].reverse

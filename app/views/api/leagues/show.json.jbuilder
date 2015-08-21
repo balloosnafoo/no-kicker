@@ -45,6 +45,9 @@ elsif @team && @as_roster_slots
   end
 else
   json.teams do
-    json.array! @league.teams, :name, :id
+    json.array! @league.teams do |team|
+      json.extract! team, :name, :id
+      json.manager_username team.manager.username
+    end
   end
 end

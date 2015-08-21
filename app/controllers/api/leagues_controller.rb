@@ -32,7 +32,7 @@ class Api::LeaguesController < ApplicationController
   end
 
   def show
-    @league = League.find(params[:id])
+    @league = League.includes(:teams, :members).find(params[:id])
     @team = current_user.team_in_league(params[:id]) if params[:user_team] # Maybe add parameter to allow for prefetching players
     @as_roster_slots = true if params[:roster_slots]
     if @league

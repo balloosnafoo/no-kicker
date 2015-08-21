@@ -4,6 +4,9 @@
       <%= team.escape("name") %>
     </a>
   </td>
+  <td>
+    <%= team.escape("manager_username") %>
+  </td>
 <% } else { %>
   <td>
     <button type="button" class="join-league">
@@ -11,7 +14,6 @@
     </button>
   </td>
 <% } %>
-<td></td>
 
 <td></td>
 <td></td>

@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 SAMPLE_TEAM_NAMES = File.readlines("db/sample_team_names.txt")
+SAMPLE_LEAGUE_NAMES = File.readlines("db/sample_league_names.txt")
 
 names = {}
 File.foreach("./python/players.csv") do |line|
@@ -70,39 +71,41 @@ end
 
 
 User.create(username: "baloo", password: "password", email: "baloo@gmail.com")
-league = League.create(
-  commissioner_id: 1,
-  num_teams: 12,
-  num_divisions: 1,
-  public: true,
-  redraft: true,
-  match_type: "h2h",
-  name: "Doge Leauge"
-)
-league.score_rule = ScoreRule.new
-league.roster_rule = RosterRule.new
-Team.create(
-  league_id: 1,
-  division: 1,
-  manager_id: 1,
-  name: "Straight Cache Homey"
-)
-11.times do |i|
-  User.create(
-    username: Faker::Internet.user_name,
-    password: "password",
-    email: Faker::Internet.free_email
+10.times do |league_num| # For later when I want to generate a bunch of leagues.
+  league = League.create(
+    commissioner_id: 1,
+    num_teams: 12,
+    num_divisions: 1,
+    public: true,
+    redraft: true,
+    match_type: "h2h",
+    name: SAMPLE_LEAGUE_NAMES.sample.chomp
   )
-
-  User.find(i + 2).teams.create(
-    league_id: 1,
+  league.score_rule = ScoreRule.new
+  league.roster_rule = RosterRule.new
+  Team.create(
+    league_id: 1 + league_num,
     division: 1,
-    manager_id: i + 2,
-    name: SAMPLE_TEAM_NAMES.sample
+    manager_id: 1,
+    name: SAMPLE_TEAM_NAMES.sample.chomp
   )
+  11.times do |i|
+    User.create(
+      username: Faker::Internet.user_name,
+      password: "password",
+      email: Faker::Internet.free_email
+    )
+
+    User.find(i + 2).teams.create(
+      league_id: 1 + league_num,
+      division: 1,
+      manager_id: i + 2,
+      name: SAMPLE_TEAM_NAMES.sample.chomp
+    )
+  end
 end
 
-12.times do |i|
+120.times do |i| # This is hard coded, because I know how many times baloo's team repeats
   t = Team.find(i + 1)
   t.league.generate_roster_slots(t)
 end

@@ -46,6 +46,11 @@ list-group-item {
   border-color: #b92c28;
 }
 
+.btn.btn-default {
+  background-image: linear-gradient(to bottom,#ffffff 0%,#e0e0e0 100%);
+  border-color: #ccc;
+}
+
 span.list-item-link {
   position:absolute;
   width:100%;
@@ -66,8 +71,6 @@ ul.trade-offer-details {
   display: inline-block;
 }
 
-
-
 .navbar.navbar-inverse .navbar-brand, .navbar-inverse .navbar-brand,
 .navbar.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > li > a {
   color: #adb8c4;
@@ -80,4 +83,13 @@ ul.trade-offer-details {
 
 .panel.league-info dl dd {
   margin-left: 15px;
+}
+
+table{
+  border-collapse: collapse; /* 'cellspacing' equivalent */
+}
+
+table td,
+table th{
+  padding: 0; /* 'cellpadding' equivalent */
 }
