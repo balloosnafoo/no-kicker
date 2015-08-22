@@ -7,6 +7,8 @@ class Team < ActiveRecord::Base
   has_many :player_contracts, dependent: :destroy
   has_many :players, through: :player_contracts, source: :player
   has_many :roster_slots
+  has_many :weekly_stats, through: :players, source: :weekly_stats
+  # has_many :next_opponents, through: :players, source: :next_game
 
   has_many(
     :home_matchups,
@@ -14,7 +16,7 @@ class Team < ActiveRecord::Base
     foreign_key: :team_1_id,
     primary_key: :id
   )
-  
+
   has_many(
     :away_matchups,
     class_name: "Matchup",
@@ -36,7 +38,6 @@ class Team < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_one :roster_rule, through: :league, source: :roster_rule
 
   belongs_to :league
   belongs_to(
@@ -45,6 +46,9 @@ class Team < ActiveRecord::Base
     foreign_key: :manager_id,
     primary_key: :id
   )
+
+  has_one :roster_rule, through: :league, source: :roster_rule
+  has_one :score_rule, through: :league, source: :score_rule
 
   def matchups
     Matchup.where("team_1_id = ? OR team_2_id = ?", id, id)

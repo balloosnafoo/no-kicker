@@ -8,7 +8,17 @@
 <td>Draft</td>
 <td>Pos</td>
 
-<td>Summary</td>
+<td>
+  <% if ( player.escape("position") === "RB" ) { %>
+    <%= stats.rushing_yds %>yds <%= stats.rushing_tds %>tds
+  <% } else if (["TE", "WR"].indexOf(player.escape("position")) !== -1 ) { %>
+    <%= stats.receiving_yds %>yds <%= stats.receiving_tds %>tds
+  <% } else if (player.escape("position") === "QB") { %>
+    <%= stats.passing_yds %>yds <%= stats.passing_tds %>tds
+  <% } else { %>
+    ---
+  <% } %>
+</td>
 
 <td>Total</td>
 

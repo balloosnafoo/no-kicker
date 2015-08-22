@@ -115,8 +115,6 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
         error: function () {debugger}.bind(this)
       });
     } else if (slotPosition === "bench") {
-      // debugger;
-      // var toPosition = rosterSlot.player().escape("position").toLowerCase();
       var toPosition = moveTo;
       rosterSlot.set({
         position: toPosition,

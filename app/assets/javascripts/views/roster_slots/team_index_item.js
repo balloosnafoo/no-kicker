@@ -13,7 +13,8 @@ NoKicker.Views.RosterSlotTeamIndexItem = Backbone.View.extend({
     var renderedContent = this.template({
       player: this.model.player(),
       roster_slot: this.model,
-      team: this.team
+      team: this.team,
+      stats: this.model.player().get("stats")
     });
 
     this.$el.html(renderedContent);

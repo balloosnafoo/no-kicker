@@ -5,7 +5,8 @@ NoKicker.Views.PlayerTeamIndexItem = Backbone.View.extend({
 
   render: function () {
     var renderedContent = this.template({
-      player: this.model
+      player: this.model,
+      stats: this.model.stats()
     });
 
     this.$el.html(renderedContent);

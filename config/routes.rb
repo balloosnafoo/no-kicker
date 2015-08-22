@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root :to => "static_pages#home"
+  get "guest_session" => "session#guest"
 
   resources :users
   resource :session, only: [:new, :create, :destroy]

@@ -136,6 +136,20 @@ class Player < ActiveRecord::Base
         seasonal_stats.rushing_yds + seasonal_stats.receiving_yds + (seasonal_stats.passing_yds / 3) DESC
     SQL
   end
+
+  def next_game
+    Nflgame.where(
+      "nflgames.home_team = :team_name OR nflgames.away_team = :team_name",
+      team_name: team_name
+    ).where("nflgames.week = ?", Week.current_week)
+  end
+
+  def total(stat)
+    ws = weekly_stats[0...Week.current_week]
+    ws.inject(0) do |accum, week|
+      accum += week.send(stat)
+    end
+  end
 end
 
 # sq = PlayerContract.select("player_contracts.*, users.*").joins(:team, :manager).where(teams: {league_id: 1})

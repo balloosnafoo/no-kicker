@@ -19,8 +19,13 @@ class Api::TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.includes(:players, :roster_rule).find(params[:id])
-    @roster_slots = true #if params[:roster_slots]
+    # @team = Team.includes(:players, :roster_rule).find(params[:id])
+    @team = Team
+      .includes(:players, :roster_slots, :player_contracts, :weekly_stats, :roster_rule)
+      .find(params[:id])
+      # .where(weekly_stats: {week: (1...Week.current_week)})
+    @roster_slots = @team.roster_slots
+    @as_roster_slots = true #if params[:roster_slots]
     render :show
   end
 

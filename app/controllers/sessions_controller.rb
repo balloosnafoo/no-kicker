@@ -24,4 +24,10 @@ class SessionsController < ApplicationController
     # redirect_to new_session_url
     render json: @user
   end
+
+  def guest
+    @user = User.find_by_credentials(
+      "baloo", "password"
+    )
+  end
 end
