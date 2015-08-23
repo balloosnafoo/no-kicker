@@ -117,11 +117,87 @@ User.create(username: "baloo", password: "password", email: "baloo@gmail.com")
   end
 end
 
-120.times do |i| # This is hard coded, because I know how many times baloo's team repeats
+120.times do |i|
   t = Team.find(i + 1)
   t.league.generate_roster_slots(t)
 end
 
 League.first.generate_matchups
 
-Week.create(week: 3)
+1.times do |league_num|
+  league = League.find(league_num + 1)
+  team_ids = league.teams.pluck(:id)
+  roster_rule = league.roster_rule
+  ["QB", "RB", "WR", "TE"].each do |pos|
+    roster_rule.send("num_#{pos.downcase}").times do |n|
+      team_ids.each do |team_id|
+        player = Player.select("player_contracts.*, players.*")
+              .joins("LEFT OUTER JOIN player_contracts ON players.id = player_contracts.player_id")
+              .joins(:weekly_stats)
+              .where(player_contracts: {player_id: nil})
+              .find_by(position: pos)
+        team = Team.find(team_id)
+        team.player_contracts.create(
+          player_id: player.id,
+          team_id: 1,
+          league_id: league_num + 1
+        )
+        team.assign_or_create_roster_slot(player)
+      end
+    end
+  end
+end
+
+# Player.select("player_contracts.*, players.*").joins("LEFT OUTER JOIN player_contracts ON players.id = player_contracts.player_id").includes(:weekly_stats).where(player_contracts: {player_id: nil}).find_by(position: "RB")
+
+Message.create(
+  author_id: 1,
+  league_id: 1,
+  title: "Hey guys, welcome to the league",
+  body: "If anyone has any question let me know. I'm looking forward to beating one of you in the championship this year"
+)
+
+Comment.create(
+  author_id: 2,
+  message_id: 1,
+  body: "Haha yeah right man, there's no way you even make it to the playoffs... have you seen your team?"
+)
+
+Comment.create(
+  author_id: 5,
+  message_id: 1,
+  body: "What did you even finish at last year"
+)
+
+Comment.create(
+  author_id: 1,
+  message_id: 1,
+  body: "Hey now... how could I have foreseen those injuries? This year is my year"
+)
+
+Message.create(
+  author_id: 2,
+  league_id: 1,
+  title: "Hey if anyone's looking for some help at RB hit me up",
+  body: "I could use some improvement at WR and nobody's helping my team by sitting on the bench"
+)
+
+Comment.create(
+  author_id: 3,
+  message_id: 2,
+  body: "I might be able to help. Are you going to be at Jay's tomorrow night"
+)
+
+Comment.create(
+  author_id: 2,
+  message_id: 2,
+  body: "Yeah I think so, talk there?"
+)
+
+Comment.create(
+  author_id: 3,
+  message_id: 2,
+  body: "Sounds good."
+)
+
+Week.create(current_week: 3)
