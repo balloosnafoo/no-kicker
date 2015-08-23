@@ -14,4 +14,6 @@ class Matchup < ActiveRecord::Base
     foreign_key: :team_2_id,
     primary_key: :id
   )
+
+  has_one :league, through: :team_1, source: :league
 end

@@ -4,21 +4,21 @@ class CreateScoreRules < ActiveRecord::Migration
       t.integer :league_id, null: false
 
       # Rushing points
-      t.integer :rush_ppy, null: false, default: 10
-      t.integer :rush_td, null: false, default: 800
+      t.integer :rushing_yds, null: false, default: 10
+      t.integer :rushing_tds, null: false, default: 800
 
       # Recieving points
-      t.integer :rec_ppy, null: false, default: 10
-      t.integer :rec_td, null: false, default: 800
-      t.integer :ppr, null: false, default: 0
+      t.integer :receiving_yds, null: false, default: 10
+      t.integer :receiving_tds, null: false, default: 800
+      t.integer :receiving_rec, null: false, default: 0
 
       # Passing points
-      t.integer :pass_yds, null: false, default: 5
-      t.integer :pass_tds, null: false, default: 600
-      t.integer :pass_int, null: false, default: -200
+      t.integer :passing_yds, null: false, default: 5
+      t.integer :passing_tds, null: false, default: 600
+      t.integer :passing_int, null: false, default: -200
 
       # General Offense
-      t.integer :fumble, null: false, default: -200
+      t.integer :fumbles_lost, null: false, default: -200
 
       # Defense
       t.integer :sack, null: false, default: 100

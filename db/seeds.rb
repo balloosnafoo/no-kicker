@@ -200,4 +200,7 @@ Comment.create(
   body: "Sounds good."
 )
 
-Week.create(current_week: 3)
+Week.create
+Week.to_next_week!
+Week.to_next_week!
+Week.to_next_week!

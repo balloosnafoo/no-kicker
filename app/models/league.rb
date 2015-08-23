@@ -73,4 +73,26 @@ class League < ActiveRecord::Base
   def generate_roster_slots(team)
     roster_rule.generate_roster_slots(team)
   end
+
+  def score_player(player)
+    player_stats = player.weekly_stats.find_by(week: Week.current_week + 1)
+    return 0 unless player_stats
+    total = 0
+    stats = [
+      "rushing_tds",
+      "rushing_yds",
+      "fumbles_lost",
+      "passing_int",
+      "passing_tds",
+      "passing_yds",
+      "receiving_rec",
+      "receiving_tds",
+      "receiving_yds"
+    ]
+    stats.each do |stat|
+      # debugger
+      total += player_stats.send(stat) * score_rule.send(stat)
+    end
+    return total
+  end
 end

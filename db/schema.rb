@@ -128,33 +128,33 @@ ActiveRecord::Schema.define(version: 20150821220834) do
   end
 
   create_table "score_rules", force: :cascade do |t|
-    t.integer  "league_id",                   null: false
-    t.integer  "rush_ppy",     default: 10,   null: false
-    t.integer  "rush_td",      default: 800,  null: false
-    t.integer  "rec_ppy",      default: 10,   null: false
-    t.integer  "rec_td",       default: 800,  null: false
-    t.integer  "ppr",          default: 0,    null: false
-    t.integer  "pass_yds",     default: 5,    null: false
-    t.integer  "pass_tds",     default: 600,  null: false
-    t.integer  "pass_int",     default: -200, null: false
-    t.integer  "fumble",       default: -200, null: false
-    t.integer  "sack",         default: 100,  null: false
-    t.integer  "def_int",      default: 200,  null: false
-    t.integer  "fumble_rec",   default: 200,  null: false
-    t.integer  "def_td",       default: 600,  null: false
-    t.integer  "safety",       default: 200,  null: false
-    t.integer  "block_kick",   default: 200,  null: false
-    t.integer  "ret_td",       default: 600,  null: false
-    t.integer  "fourth_stops", default: 200,  null: false
-    t.integer  "pts_allow1",   default: 1000, null: false
-    t.integer  "pts_allow2",   default: 700,  null: false
-    t.integer  "pts_allow3",   default: 400,  null: false
-    t.integer  "pts_allow4",   default: 100,  null: false
-    t.integer  "pts_allow5",   default: 0,    null: false
-    t.integer  "pts_allow6",   default: 0,    null: false
-    t.integer  "pts_allow7",   default: -300, null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "league_id",                    null: false
+    t.integer  "rushing_yds",   default: 10,   null: false
+    t.integer  "rushing_tds",   default: 800,  null: false
+    t.integer  "receiving_yds", default: 10,   null: false
+    t.integer  "receiving_tds", default: 800,  null: false
+    t.integer  "receiving_rec", default: 0,    null: false
+    t.integer  "passing_yds",   default: 5,    null: false
+    t.integer  "passing_tds",   default: 600,  null: false
+    t.integer  "passing_int",   default: -200, null: false
+    t.integer  "fumbles_lost",  default: -200, null: false
+    t.integer  "sack",          default: 100,  null: false
+    t.integer  "def_int",       default: 200,  null: false
+    t.integer  "fumble_rec",    default: 200,  null: false
+    t.integer  "def_td",        default: 600,  null: false
+    t.integer  "safety",        default: 200,  null: false
+    t.integer  "block_kick",    default: 200,  null: false
+    t.integer  "ret_td",        default: 600,  null: false
+    t.integer  "fourth_stops",  default: 200,  null: false
+    t.integer  "pts_allow1",    default: 1000, null: false
+    t.integer  "pts_allow2",    default: 700,  null: false
+    t.integer  "pts_allow3",    default: 400,  null: false
+    t.integer  "pts_allow4",    default: 100,  null: false
+    t.integer  "pts_allow5",    default: 0,    null: false
+    t.integer  "pts_allow6",    default: 0,    null: false
+    t.integer  "pts_allow7",    default: -300, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "teams", force: :cascade do |t|
