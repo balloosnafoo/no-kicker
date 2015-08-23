@@ -141,7 +141,7 @@ class Player < ActiveRecord::Base
     Nflgame.where(
       "nflgames.home_team = :team_name OR nflgames.away_team = :team_name",
       team_name: team_name
-    ).where("nflgames.week = ?", Week.current_week)
+    ).where("nflgames.week = ?", Week.current_week).first
   end
 
   def total(stat)

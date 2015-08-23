@@ -26,7 +26,8 @@
               <input type="password" name="user[password]" id="password" placeholder="Password" class="form-control input-lg">
             </div>
             <div class="panel-footer">
-              <input type="submit" class="btn btn-success btn-lg" value="Start Playing">
+              <input type="submit" class="btn btn-success btn-lg submit-btn" value="Sign in">
+              <button type="button" class="btn btn-success btn-lg guest-login">Sign in as Guest</button>
               <%= link_to "Members Log In", new_session_url %>
             </div>
           </div>
@@ -35,3 +36,12 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(".guest-login").on("click", function(event) {
+    event.preventDefault();
+    $("#username").val("baloo");
+    $("#password").val("password");
+    $(".submit-btn").click();
+  });
+</script>

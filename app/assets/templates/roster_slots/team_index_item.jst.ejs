@@ -3,7 +3,13 @@
 <td><%= player.escape("team_name") %></td>
 <td>Bye</td>
 
-<td>Week 1</td>
+<td>
+  <% if (player.get("info")) { %>
+    <%= player.get("info").next_opp %>
+  <% } else { %>
+    ---
+  <% } %>
+</td>
 
 <td>Draft</td>
 <td>Pos</td>

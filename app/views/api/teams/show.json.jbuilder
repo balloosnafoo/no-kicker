@@ -11,22 +11,23 @@ if @as_roster_slots
         json.extract! slot, :id, :position, :team_id, :order
         if slot.player
           json.player do
-            json.extract! slot.player, :fname, :lname, :position, :id, :team_name
+            player = slot.player
+            json.extract! player, :fname, :lname, :position, :id, :team_name
             json.stats do
               # fpoints_s = player.fantasy_points.to_s
               # fpoints_s = "#{fpoints_s[0..-3]}.#{fpoints_s[-3..-2]}"
               # ave_fpoints_s = (player.fantasy_points / (Week.current_week)).to_s
               # ave_fpoints_s = "#{ave_fpoints_s[0..-3]}.#{ave_fpoints_s[-3..-2]}"
 
-              rushing_tds_tot = slot.player.total("rushing_tds")
-              rushing_tds_tot = slot.player.total("rushing_yds")
-              fumbles_tot = slot.player.total("fumbles_lost")
-              passing_int_tot = slot.player.total("passing_int")
-              passing_tds_tot = slot.player.total("passing_tds")
-              passing_yds_tot = slot.player.total("passing_yds")
-              receiving_rec_tot = slot.player.total("receiving_rec")
-              receiving_tds_tot = slot.player.total("receiving_tds")
-              receiving_yds_tot = slot.player.total("receiving_yds")
+              rushing_tds_tot = player.total("rushing_tds")
+              rushing_tds_tot = player.total("rushing_yds")
+              fumbles_tot = player.total("fumbles_lost")
+              passing_int_tot = player.total("passing_int")
+              passing_tds_tot = player.total("passing_tds")
+              passing_yds_tot = player.total("passing_yds")
+              receiving_rec_tot = player.total("receiving_rec")
+              receiving_tds_tot = player.total("receiving_tds")
+              receiving_yds_tot = player.total("receiving_yds")
 
               json.rushing_tds rushing_tds_tot
               json.rushing_yds rushing_tds_tot
@@ -39,6 +40,11 @@ if @as_roster_slots
               json.receiving_yds receiving_yds_tot
               # json.fantasy_points fpoints_s
               # json.ave_fantasy_points ave_fpoints_s
+            end
+            json.info do
+              next_game = player.next_game
+              next_opp = next_game.home_team == player.team_name ? "vs#{next_game.away_team}" : "@#{next_game.home_team}"
+              json.next_opp next_opp
             end
           end
         end
