@@ -15,7 +15,6 @@ NoKicker.Views.TeamIndexItem = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     if (this.model.escape("manager_username") === NoKicker.CURRENT_USER.username) {
-      debugger;
       this.$el.addClass("warning");
     }
     return this;

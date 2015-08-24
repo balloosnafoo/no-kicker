@@ -38,17 +38,19 @@
 
 
 <td>
-  <div class="dropdown roster-dropdown">
-    <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <span class="glyphicon glyphicon-cog"></span>
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li><a href="#" class="cut-player">Cut</a></li>
-      <li><a href="#/leagues/<%= team.escape("league_id") %>/trades/new">Trade</a></li>
-    </ul>
-  </div>
-  <% if (team.escape("belongs_to_user") && !!player.escape("lname")) { %>
+  <% if (team.get("belongs_to_user")) { %>
+    <div class="dropdown roster-dropdown">
+      <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <span class="glyphicon glyphicon-cog"></span>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#" class="cut-player">Cut</a></li>
+        <li><a href="#/leagues/<%= team.escape("league_id") %>/trades/new">Trade</a></li>
+      </ul>
+    </div>
+  <% } %>
+  <% if (team.get("belongs_to_user") && !!player.escape("lname")) { %>
     <select class="roster-change-select" data-roster-slot-id="<%= roster_slot.id %>" name="">
       <option value="<%= roster_slot.escape("position") %>">
         <%= roster_slot.escape("position") %>

@@ -60,6 +60,14 @@ else
       json.loss_count loss_count
       json.win_percent win_percent
       json.games_behind @best_record - win_count
+
+      tot_points = team.total_points
+      json.total_points_for tot_points / 100.0
+      json.ave_points_for ((tot_points / 100.0) / week).round(2)
+
+      tot_points_against = team.total_points_against
+      json.total_points_against tot_points_against / 100.0
+      json.ave_points_against ((tot_points_against / 100.0) / week).round(2)
     end
   end
 end

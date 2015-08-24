@@ -90,6 +90,30 @@ class Team < ActiveRecord::Base
     return win_count
   end
 
+  def total_points
+    total = 0
+    matchups.includes(:team_1, :team_2).each do |matchup|
+      if matchup.team_1.id == id
+        total += matchup.team_1_score
+      else
+        total += matchup.team_2_score
+      end
+    end
+    total
+  end
+
+  def total_points_against
+    total = 0
+    matchups.includes(:team_1, :team_2).each do |matchup|
+      if matchup.team_1.id != id
+        total += matchup.team_1_score
+      else
+        total += matchup.team_2_score
+      end
+    end
+    total
+  end
+
   private
   def user_invited_or_public
     return if league.public || league.commissioner == manager

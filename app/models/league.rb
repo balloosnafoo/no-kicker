@@ -57,7 +57,7 @@ class League < ActiveRecord::Base
         Matchup.create!(
           team_1_id: a1[idx],
           team_2_id: a2[idx],
-          week: week,
+          week: week + 1,
           league_id: id
         )
       end

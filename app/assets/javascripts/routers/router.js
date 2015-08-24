@@ -184,7 +184,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     var indexView = new NoKicker.Views.MatchupIndex({
       league: league,
       collection: matchups,
-      week: NoKicker.currentWeek
+      week: NoKicker.currentWeek + 1
     });
 
     this._swapView(indexView);

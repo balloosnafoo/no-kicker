@@ -19,6 +19,12 @@
   <td>
     <%= team.escape("games_behind") %>
   </td>
+  <td></td>
+  <td></td>
+  <td><%= team.escape("total_points_for") %></td>
+  <td><%= team.escape("ave_points_for") %></td>
+  <td><%= team.escape("total_points_against") %></td>
+  <td><%= team.escape("ave_points_against") %></td>
 <% } else { %>
   <td>
     <button type="button" class="btn btn-success btn-block btn-xs join-league">
@@ -30,18 +36,12 @@
   <td>---</td>
   <td>---</td>
   <td>---</td>
+  <td></td>
+  <td></td>
+  <td>---</td>
+  <td>---</td>
 <% } %>
 
-<td></td>
-<td></td>
-
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-
-<td></td>
-<td></td>
 
 <td></td>
 <td></td>
