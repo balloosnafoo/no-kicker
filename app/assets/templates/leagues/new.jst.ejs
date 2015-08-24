@@ -1,3 +1,11 @@
+<% if (errors) { %>
+  <ul class="alert alert-danger">
+    <% for (var i = 0; i < errors.length; i++) { %>
+      <li class="error-item"><%= errors[i] %></li>
+    <% } %>
+  </ul>
+<% } %>
+
 <div class="jumbotron">
   <form>
     <div class="form-group">

@@ -11,7 +11,8 @@ NoKicker.Views.LeagueNew = Backbone.View.extend({
 
   render: function () {
     var renderedContent = this.template({
-      league: this.model
+      league: this.model,
+      errors: this.errors
     });
 
     this.$el.html(renderedContent);
@@ -28,6 +29,10 @@ NoKicker.Views.LeagueNew = Backbone.View.extend({
         Backbone.history.navigate(
           "leagues/" + this.model.id,
           { trigger: true });
+      }.bind(this),
+      error: function (league, response) {
+        this.errors = JSON.parse(response.responseText);
+        this.render();
       }.bind(this)
     });
   }

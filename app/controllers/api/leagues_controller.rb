@@ -11,7 +11,7 @@ class Api::LeaguesController < ApplicationController
     if @league.save
       render :show
     else
-      render json: @league, status: :uprocessable_entity
+      render json: @league.errors.full_messages, status: :uprocessable_entity
     end
   end
 

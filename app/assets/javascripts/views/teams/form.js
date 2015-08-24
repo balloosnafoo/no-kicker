@@ -9,7 +9,8 @@ NoKicker.Views.TeamForm = Backbone.View.extend({
 
   render: function () {
     var renderedContent = this.template({
-      team: this.model
+      team: this.model,
+      errors: this.errors
     });
 
     this.$el.html(renderedContent);
@@ -31,8 +32,9 @@ NoKicker.Views.TeamForm = Backbone.View.extend({
         );
       }.bind(this),
       error: function (object, response) {
-        debugger;
-      }
+        this.errors = JSON.parse(response.responseText);
+        this.render();
+      }.bind(this)
     });
   }
 });

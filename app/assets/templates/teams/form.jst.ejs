@@ -1,3 +1,11 @@
+<% if (errors) { %>
+  <ul class="alert alert-danger">
+    <% for (var i = 0; i < errors.length; i++) { %>
+      <li class="error-item"><%= errors[i] %></li>
+    <% } %>
+  </ul>
+<% } %>
+
 <form class="new-team" action="index.html" method="post">
   <div class="form-group">
     <label for="team-name">Team Name</label>
@@ -9,5 +17,5 @@
 
   <input type="hidden" name="team[league_id]" value="<%= team.escape("league_id") %>">
 
-  <input type="submit" value="Save">
+  <input type="submit" class="btn btn-success" value="Save">
 </form>
