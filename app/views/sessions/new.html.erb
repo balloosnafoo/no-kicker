@@ -21,6 +21,11 @@
       <h1 class="splash">Kicker Free Fantasy Football</h1>
       <h3 class="text-muted">Who really needs kickers anyway?</h3>
           <div class="panel-body">
+            <% unless flash["errors"].empty? %>
+              <ul class="alert alert-danger">
+                <li class="error-item"><%= flash["errors"] %></li>
+              </ul>
+            <% end %>
             <div class="form-group">
               <input type="text" name="user[username]" id="username" placeholder="Username" class="form-control input-lg">
               <input type="password" name="user[password]" id="password" placeholder="Password" class="form-control input-lg">

@@ -15,12 +15,17 @@
 <div class="jumbotron" id="splash-big-jumbo">
   <div class="container">
     <div class="jumbotron splash-jumbo">
-      <form class="form-inline" action="<%= new_user_url %>" method="post">
+      <form class="form-inline" action="<%= users_url %>" method="post">
         <%= auth_token %>
         <div class="panel panel-default">
       <h1 class="splash">Kicker Free Fantasy Football</h1>
       <h3 class="text-muted">Who really needs kickers anyway?</h3>
           <div class="panel-body">
+            <% unless flash["errors"].empty? %>
+            <ul class="alert alert-danger">
+              <%= flash["errors"].map { |e| "<li class='error-item'>#{e}</li>"}.join.html_safe %>
+            </ul>
+            <% end %>
             <div class="form-group">
               <input type="text" name="user[email]" id="email" placeholder="E-mail" class="form-control input-lg">
               <input type="password" name="user[password]" id="password" placeholder="Password" class="form-control input-lg">

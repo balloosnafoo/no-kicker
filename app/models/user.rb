@@ -40,11 +40,7 @@ class User < ActiveRecord::Base
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
-    if user && user.is_password?(password)
-      user
-    else
-      flash[:errors] = ["Invalid credentials"]
-    end
+    user if user && user.is_password?(password)
   end
 
   def password=(password)
