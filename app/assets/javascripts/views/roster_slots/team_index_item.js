@@ -5,6 +5,10 @@ NoKicker.Views.RosterSlotTeamIndexItem = Backbone.View.extend({
 
   className: "player-row",
 
+  events: {
+    "click .cut-player": "cutPlayer"
+  },
+
   initialize: function (options) {
     this.team = options.team;
   },
@@ -20,4 +24,13 @@ NoKicker.Views.RosterSlotTeamIndexItem = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   },
+
+  cutPlayer: function (event) {
+    event.preventDefault();
+    debugger;
+    this.model.player().contract().destroy();
+    this.model.player().contract().clear();
+    this.model.player().clear();
+    this.render();
+  }
 });

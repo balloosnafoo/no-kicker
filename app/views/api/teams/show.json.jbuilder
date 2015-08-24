@@ -20,7 +20,14 @@ if @as_roster_slots
         if slot.player
           json.player do
             player = slot.player
+            league_contract = player.player_contracts.find_by(league_id: @team.league_id)
+
             json.extract! player, :fname, :lname, :position, :id, :team_name
+
+            json.contract do
+              json.extract! league_contract, :id
+            end
+
             json.stats do
               # fpoints_s = player.fantasy_points.to_s
               # fpoints_s = "#{fpoints_s[0..-3]}.#{fpoints_s[-3..-2]}"

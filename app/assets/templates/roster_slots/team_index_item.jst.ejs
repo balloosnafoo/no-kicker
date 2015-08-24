@@ -44,8 +44,8 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li><a href="#">Cut</a></li>
-      <li><a href="#">Trade</a></li>
+      <li><a href="#" class="cut-player">Cut</a></li>
+      <li><a href="#/leagues/<%= team.escape("league_id") %>/trades/new">Trade</a></li>
     </ul>
   </div>
   <% if (team.escape("belongs_to_user") && !!player.escape("lname")) { %>
