@@ -34,6 +34,7 @@ NoKicker.Views.LeagueShow = Backbone.CompositeView.extend({
   },
 
   renderTeams: function () {
+    this.model.teams().sort();
     this.model.teams().each(this.addTeam.bind(this));
   },
 

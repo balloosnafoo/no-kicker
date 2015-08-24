@@ -3,6 +3,11 @@ NoKicker.Collections.Teams = Backbone.Collection.extend({
 
   model: NoKicker.Models.Team,
 
+  comparator: function (team) {
+    return team.get("games_behind");
+  },
+
+
   getOrFetch: function (id) {
     var collection = this;
     var widget = collection.get(id);
@@ -15,7 +20,7 @@ NoKicker.Collections.Teams = Backbone.Collection.extend({
         success: function () { collection.add(widget); }
       });
     }
-    
+
     return widget;
   }
 });

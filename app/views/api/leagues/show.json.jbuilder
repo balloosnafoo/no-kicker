@@ -30,6 +30,7 @@ elsif @team && @as_roster_slots
     json.extract! @team, :id, :league_id, :manager_id, :name
     belongs_to_user = current_user.id == @team.id
     json.belongs_to_user belongs_to_user
+
     json.roster_slots do
       positions = ["qb", "rb", "wr", "te", "flex", "dst", "k", "bench"]
       positions.each do |pos|
@@ -44,6 +45,7 @@ elsif @team && @as_roster_slots
         end
       end
     end
+
   end
 else
   json.teams do
@@ -57,6 +59,7 @@ else
       json.win_count win_count
       json.loss_count loss_count
       json.win_percent win_percent
+      json.games_behind @best_record - win_count
     end
   end
 end

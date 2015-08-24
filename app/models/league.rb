@@ -95,4 +95,8 @@ class League < ActiveRecord::Base
     end
     return total
   end
+
+  def best_record
+    teams.map { |team| team.win_count }.max
+  end
 end
