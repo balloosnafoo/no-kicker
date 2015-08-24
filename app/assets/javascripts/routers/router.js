@@ -23,7 +23,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     "leagues/:league_id/trades/new": "tradeNew",
     "leagues/:league_id/trades/:partner_id": "tradeCustomize",
     "leagues/:league_id/matchups": "matchupIndex",
-    "leagues/:league_id/week/:week/matchups": "matchupsByWeek"
+    "leagues/:league_id/weeks/:week/matchups": "matchupsByWeek"
   },
 
   userLeagueIndex: function () {
@@ -183,7 +183,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
 
     var indexView = new NoKicker.Views.MatchupIndex({
       league: league,
-      collection: matchups
+      collection: matchups,
+      week: NoKicker.currentWeek
     });
 
     this._swapView(indexView);
@@ -198,7 +199,8 @@ NoKicker.Routers.Router = Backbone.Router.extend({
 
     var indexView = new NoKicker.Views.MatchupIndex({
       league: league,
-      collection: matchups
+      collection: matchups,
+      week: week
     });
 
     this._swapView(indexView);

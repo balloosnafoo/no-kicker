@@ -5,13 +5,14 @@ NoKicker.Views.MatchupIndex = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.league = options.league;
-
+    this.week = options.week;
     this.listenTo(this.collection, "sync", this.render);
   },
 
   render: function () {
     var renderedContent = this.template({
-      league: this.league
+      league: this.league,
+      week: this.week
     });
 
     this.$el.html(renderedContent);

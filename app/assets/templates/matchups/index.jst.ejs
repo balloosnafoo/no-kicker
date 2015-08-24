@@ -9,5 +9,14 @@
       <div class="col-md-6 right-hand-matchups">
       </div>
     </div>
+    <a class="btn btn-primary dropdown-toggle"
+       href="#"
+       data-toggle="dropdown"
+       aria-expanded="true">Week <%= week %></a>
+    <ul class="dropdown-menu" role="menu">
+      <% for (var i = 1; i <= 16; i ++) { %>
+        <a href="#/leagues/<%= league.id %>/weeks/<%= i %>/matchups"><li>Week <%= i %></li></a>
+      <% } %>
+    </ul>
   </div>
 </div>
