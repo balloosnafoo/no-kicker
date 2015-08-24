@@ -12,7 +12,8 @@ NoKicker.Views.MatchupIndex = Backbone.CompositeView.extend({
   render: function () {
     var renderedContent = this.template({
       league: this.league,
-      week: this.week
+      week: this.week,
+      matchups: this.collection
     });
 
     this.$el.html(renderedContent);

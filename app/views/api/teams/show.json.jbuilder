@@ -7,9 +7,13 @@ if @as_roster_slots
   last_update = @team.roster_slots.order(updated_at: :desc).first
   json.last_roster_change time_ago_in_words(last_update.updated_at) + " ago"
 
-  next_matchup = @next_matchup.team_1 == @team ? @next_matchup.team_2 : @next_matchup.team_1
-  json.next_matchup next_matchup.name
-  json.next_matchup_id next_matchup.id
+  if @next_matchup
+    next_matchup = @next_matchup.team_1 == @team ? @next_matchup.team_2 : @next_matchup.team_1
+    json.next_matchup next_matchup.name
+    json.next_matchup_id next_matchup.id
+  else
+    json.next_matchup "Unassigned"
+  end
   json.roster_slots do
     positions = ["qb", "rb", "wr", "te", "flex", "dst", "k", "bench"]
     positions.each do |pos|
