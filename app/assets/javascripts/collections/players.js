@@ -3,7 +3,7 @@ NoKicker.Collections.Players = Backbone.Collection.extend({
 
   model: NoKicker.Models.Player,
 
-  getOrFetch: function (id) {
+  getOrFetch: function (id, dataOptions) {
     var collection = this;
     var widget = collection.get(id);
 
@@ -13,7 +13,8 @@ NoKicker.Collections.Players = Backbone.Collection.extend({
       widget = new collection.model({ id: id });
       collection.add(widget);
       widget.fetch({
-        error: function () { collection.remove(widget); }
+        error: function () { collection.remove(widget); },
+        data: dataOptions
       });
     }
     return widget;

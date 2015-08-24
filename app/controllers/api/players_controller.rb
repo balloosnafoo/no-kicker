@@ -12,7 +12,8 @@ class Api::PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
-    render json: @player
+    @league = League.includes(:score_rule).find(params[:league_id]) if params[:league_id]
+    render :show
   end
 end
 

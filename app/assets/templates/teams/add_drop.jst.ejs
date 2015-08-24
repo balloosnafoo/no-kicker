@@ -5,10 +5,24 @@
         <h3>Added Player</h3>
       </td>
     </tr>
-    <%= JST['players/_header_row']({
-          col1: "radio"
-        }) %>
+    <tr>
+      <th colspan="4">Player</th>
+      <th>Opp</th>
+      <th>Season Stats</th>
+      <th colspan="2">Fantasy</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Pos</th>
+      <th>Team</th>
+      <th>Week <%= 1 + NoKicker.currentWeek %></th>
+      <th>Summary</th>
+      <th>Total</th>
+      <th>Avg</th>
+    </tr>
+
   </table>
 
-  <input type="submit" name="name" value="Submit">
+  <input type="submit" class="btn btn-success" name="name" value="Submit">
 </form>
