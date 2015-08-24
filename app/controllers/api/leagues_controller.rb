@@ -25,6 +25,7 @@ class Api::LeaguesController < ApplicationController
     if params[:user_leagues] && current_user
       @user_leagues = true
       @leagues = League.users_leagues_and_teams(current_user.id)
+      @week = Week.current_week
     else
       @leagues = League.all
     end

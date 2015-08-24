@@ -11,7 +11,7 @@
 <table class="table">
   <tr>
     <th colspan="2">Fantasy</th>
-    <th colspan="6">Standings</th>
+    <th colspan="3">Standings</th>
     <th colspan="2">Games</th>
   </tr>
   <tr>
@@ -19,10 +19,7 @@
     <th>Team</th>
     <th>W</th>
     <th>L</th>
-    <th>T</th>
     <th>%</th>
-    <th>Strk</th>
-    <th>Rank</th>
     <th>Previous</th>
     <th>Current</th>
   </tr>
@@ -35,14 +32,11 @@
         <a href="#leagues/<%= league.id %>/teams/<%= league.user_team().id %>">
           <%= league.user_team().escape("name") %></td>
         </a>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%= league.user_team().escape("wins") %></td>
+      <td><%= league.user_team().escape("losses") %></td>
+      <td><%= league.user_team().escape("win_percent") %></td>
+      <td><%= league.user_team().escape("prev_opp") %></td>
+      <td><%= league.user_team().escape("next_opp") %></td>
     </tr>
   <% }); %>
 </table>

@@ -49,5 +49,14 @@ NoKicker.Views.PlayerIndexItem = Backbone.View.extend({
     event.preventDefault();
     this.model.contract().destroy();
     this.model.contract().clear();
+  },
+
+  tradePlayer: function (event) {
+    event.preventDefault();
+    debugger;
+    Backbone.history.navigate(
+      "leagues/" + this.league.id + "/trades/" + this.model.contract().escape("contract_owner_id"),
+      { trigger: true }
+    );
   }
 });

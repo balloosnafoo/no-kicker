@@ -68,6 +68,17 @@ else
       tot_points_against = team.total_points_against
       json.total_points_against tot_points_against / 100.0
       json.ave_points_against ((tot_points_against / 100.0) / week).round(2)
+
+      prev_matchup = team.prev_matchup
+      prev_opp = prev_matchup.team_1_id != team.id ? prev_matchup.team_1 : prev_matchup.team_2
+
+      next_matchup = team.next_matchup
+      next_opp = next_matchup.team_1_id != team.id ? next_matchup.team_1 : next_matchup.team_2
+
+      json.prev_opp prev_opp.name
+      json.prev_opp_id prev_opp.id
+      json.next_opp next_opp.name
+      json.next_opp_id next_opp.id
     end
   end
 end

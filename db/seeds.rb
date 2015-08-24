@@ -122,24 +122,19 @@ end
   t.league.generate_roster_slots(t)
 end
 
-League.first.generate_matchups
+League.all.each { |league| league.generate_matchups }
 
-1.times do |league_num|
+10.times do |league_num|
   league = League.find(league_num + 1)
-  team_ids = league.teams.pluck(:id)
+  team_ids = league.teams.pluck(:id).shuffle
   roster_rule = league.roster_rule
   ["QB", "RB", "WR", "TE"].each do |pos|
     roster_rule.send("num_#{pos.downcase}").times do |n|
       team_ids.each do |team_id|
-        player = Player.select("player_contracts.*, players.*")
-              .joins("LEFT OUTER JOIN player_contracts ON players.id = player_contracts.player_id")
-              .joins(:weekly_stats)
-              .where(player_contracts: {player_id: nil})
-              .find_by(position: pos)
+        player = Player.first_unsigned_at_pos(pos, league_num + 1)
         team = Team.find(team_id)
         team.player_contracts.create(
           player_id: player.id,
-          team_id: 1,
           league_id: league_num + 1
         )
         team.assign_or_create_roster_slot(player)

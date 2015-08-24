@@ -54,8 +54,13 @@ class Team < ActiveRecord::Base
     Matchup.where("team_1_id = ? OR team_2_id = ?", id, id)
   end
 
-  def matchup
+  def prev_matchup
     Matchup.where("(team_1_id = ? OR team_2_id = ?) AND week = ?", id, id, Week.current_week)
+      .includes(:team_1, :team_2).first
+  end
+
+  def next_matchup
+    Matchup.where("(team_1_id = ? OR team_2_id = ?) AND week = ?", id, id, Week.current_week + 1)
       .includes(:team_1, :team_2).first
   end
 

@@ -150,6 +150,29 @@ class Player < ActiveRecord::Base
       accum += week.send(stat)
     end
   end
+
+  def self.first_unsigned_at_pos(pos, league)
+    Player.find_by_sql([<<-SQL, league, pos]).first
+      SELECT
+        players.*
+      FROM
+        players
+      LEFT OUTER JOIN
+        (
+          SELECT
+            player_contracts.*
+          FROM
+            player_contracts
+          JOIN
+            leagues ON leagues.id = player_contracts.league_id
+          WHERE
+            leagues.id = ?
+        ) AS player_contracts ON player_contracts.player_id = players.id
+      WHERE
+        player_contracts.id IS NULL AND players.position = ?
+      LIMIT 1
+    SQL
+  end
 end
 
 # sq = PlayerContract.select("player_contracts.*, users.*").joins(:team, :manager).where(teams: {league_id: 1})
