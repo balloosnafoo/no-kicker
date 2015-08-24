@@ -24,7 +24,8 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     "tradeIndex": true,
     "tradeNew": true,
     "tradeCustomize": true,
-    "matchupIndex": true
+    "matchupIndex": true,
+    "matchupsByWeek": true
   },
 
   handleRoute: function (routeName, params) {

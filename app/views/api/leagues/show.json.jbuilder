@@ -8,6 +8,8 @@ json.extract!(
 # that depend on it (at least TeamAddDrop does, as it was implemented before
 # roster slots).
 
+week = Week.current_week
+
 if @team && !@as_roster_slots
   json.user_team do
     json.extract! @team, :id, :name
@@ -46,8 +48,15 @@ elsif @team && @as_roster_slots
 else
   json.teams do
     json.array! @league.teams do |team|
+      win_count = team.win_count
+      loss_count = week - win_count
+      win_percent = ((win_count * 1.0) / week).round(2)
+
       json.extract! team, :name, :id
       json.manager_username team.manager.username
+      json.win_count win_count
+      json.loss_count loss_count
+      json.win_percent win_percent
     end
   end
 end

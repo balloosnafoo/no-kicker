@@ -4,15 +4,12 @@
 <td>Bye</td>
 
 <td>
-  <% if (player.get("info")) { %>
+  <% if (player && player.get("info")) { %>
     <%= player.get("info").next_opp %>
   <% } else { %>
     ---
   <% } %>
 </td>
-
-<td>Draft</td>
-<td>Pos</td>
 
 <td>
   <% if ( player.escape("position") === "RB" ) { %>
@@ -26,9 +23,19 @@
   <% } %>
 </td>
 
-<td>Total</td>
+<% if (stats) { %>
+  <td>
+    <%= stats.total_fantasy %>
+  </td>
+  <td>
+    <%= stats.ave_fantasy %>
+  </td>
+<% } else { %>
+  <td>---</td>
+  <td>---</td>
+<% } %>
 
-<td>Average</td>
+
 
 <td>
   <div class="dropdown roster-dropdown">

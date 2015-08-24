@@ -1,8 +1,21 @@
 
 <div class="row">
   <div class="col-md-2">
-    <div class="panel panel-default">
-      <h5>This is the sidebar</h5>
+    <div class="panel panel-default team-info">
+      <div class="panel-body">
+        <dl class="team-description">
+          <dt>Manager</dt>
+          <dd><%= team.escape("manager_username") %></dd>
+          <dt>Next Opponent</dt>
+          <dd>
+            <a href="#/leagues/<%= team.escape("league_id") %>/teams/<%= team.escape("next_matchup_id") %>">
+              <%= team.escape("next_matchup") %>
+            </a>
+          </dd>
+          <dt>Last Lineup Change</dt>
+          <dd><%= team.escape("last_roster_change") %></dd>
+        </dl>
+      </div>
     </div>
   </div>
   <div class="col-md-10">
@@ -12,7 +25,6 @@
       <tr>
         <th colspan="4">Player</th>
         <th colspan="1">Opp</th>
-        <th colspan="2">Rank</th>
         <th colspan="1">2015 Stats</th>
         <th colspan="2">Fantasy</th>
         <th colspan="1">Availability</th>
@@ -24,9 +36,6 @@
         <th>Bye</th>
 
         <th>Week 1</th>
-
-        <th>Draft</th>
-        <th>Pos</th>
 
         <th>Summary</th>
 

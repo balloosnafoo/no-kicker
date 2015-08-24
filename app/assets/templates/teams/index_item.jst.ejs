@@ -7,17 +7,27 @@
   <td>
     <%= team.escape("manager_username") %>
   </td>
+  <td>
+    <%= team.escape("win_count") %>
+  </td>
+  <td>
+    <%= team.escape("loss_count") %>
+  </td>
+  <td>
+    <%= team.escape("win_percent") %>
+  </td>
 <% } else { %>
   <td>
-    <button type="button" class="join-league">
+    <button type="button" class="btn btn-success btn-block btn-xs join-league">
       Join League
     </button>
   </td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
 <% } %>
 
-<td></td>
-<td></td>
-<td></td>
 <td></td>
 <td></td>
 <td></td>

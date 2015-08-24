@@ -54,6 +54,11 @@ class Team < ActiveRecord::Base
     Matchup.where("team_1_id = ? OR team_2_id = ?", id, id)
   end
 
+  def matchup
+    Matchup.where("(team_1_id = ? OR team_2_id = ?) AND week = ?", id, id, Week.current_week)
+      .includes(:team_1, :team_2).first
+  end
+
   def all_trades
     TradeOffer.where("trader_id = ? OR tradee_id = ?", id, id)
   end
@@ -76,6 +81,13 @@ class Team < ActiveRecord::Base
   def remove_player_from_starting_slot(player)
     empty_slot = roster_slots.where(roster_slots: { player_id: player.id })
     empty_slot[0].update({ player_id: nil })
+  end
+
+  def win_count
+    m = matchups
+    win_count =  m.where(team_1_id: id).where("team_1_score > team_2_score").count
+    win_count += m.where(team_2_id: id).where("team_1_score < team_2_score").count
+    return win_count
   end
 
   private
@@ -132,4 +144,5 @@ class Team < ActiveRecord::Base
       order: 700
     )
   end
+
 end

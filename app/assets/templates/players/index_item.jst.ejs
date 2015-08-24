@@ -4,8 +4,6 @@
 <td><%= player.escape("position") %></td>
 <td><%= player.escape("team_name") %></td>
 <td><%= player.get("info").next_opp %></td>
-<td></td>
-<td></td>
 <td>
   <% if ( player.escape("position") === "RB" ) { %>
     <%= stats.rushing_yds %>yds <%= stats.rushing_tds %>tds
