@@ -1,3 +1,6 @@
 <p>
   <%= comment.escape("body") %>
 </p>
+<p style="color: grey">
+  <%= comment.escape("ago_in_words") + comment.escape("author_username") %>
+</p>

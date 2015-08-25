@@ -1,8 +1,8 @@
 class Api::MessagesController < ApplicationController
   def index
     league = League.find(params[:league_id])
-    @messages = league.messages
-    render json: @messages
+    @messages = league.messages.includes(:comments)
+    render :index
   end
 
   def create

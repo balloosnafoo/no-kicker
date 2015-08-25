@@ -1,9 +1,12 @@
-<h5><%= message.escape("title") %></h5>
+<h4><%= message.escape("title") %></h4>
+<p>
+  <%= message.escape("created_at") + " " + message.escape("author_username") %>
+</p>
 <a href="#/leagues/<%= league.id %>/messages/<%= this.model.id %>">
   <span class="list-item-link"></span>
 </a>
 
 <div class="item-text">
   <%= message.escape("body") %>
-  <span class="pull-right label label-default">Comments</span>
+  <span class="pull-right label label-default"> <%= message.escape("comment_count") %> Comments</span>
 </div>
