@@ -1,6 +1,23 @@
 <h1>Players</h1>
 
-<input type="text" class="search-bar" value="<%= searchTerm %>">
+<input type="text" class="search-bar player-filter-tool" value="<%= searchTerm %>">
+<div class="btn-group player-filter-tool">
+  <a class="btn btn-primary btn-xs dropdown-toggle"
+     id="R0B9558"
+     href="#"
+     data-toggle="dropdown"
+     data-target="#"
+     aria-expanded="false">ALL <i class="caret"></i>
+   </a>
+   <ul class="dropdown-menu pull-right" role="menu">
+     <li class="active position-filter-option"><a href="#">ALL</a></li>
+     <li class="position-filter-option"><a href="#">QB</a></li>
+     <li class="position-filter-option"><a href="#">RB</a></li>
+     <li class="position-filter-option"><a href="#">WR</a></li>
+     <li class="position-filter-option"><a href="#">TE</a></li>
+     <li class="position-filter-option"><a href="#">Flex</a></li>
+   </ul>
+ </div>
 <table class="table players-table">
   <tr>
     <th colspan="4">Name</th>

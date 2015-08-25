@@ -4,7 +4,8 @@ NoKicker.Views.PlayerIndex = Backbone.CompositeView.extend({
   className: "container players-index",
 
   events: {
-    "keyup .search-bar": "filterPlayers"
+    "keyup .search-bar": "filterPlayers",
+    "click .position-filter-option": "filterPosition"
   },
 
   initialize: function (options) {
@@ -55,5 +56,20 @@ NoKicker.Views.PlayerIndex = Backbone.CompositeView.extend({
     var tmpStr = this.$(".search-bar").val();
     this.$(".search-bar").val('');
     this.$(".search-bar").val(tmpStr);
+  },
+
+  filterPosition: function (event) {
+    event.preventDefault();
+    var position = $(event.currentTarget).text();
+    this.searchedPlayers = [];
+    this.searchedPlayers = this.collection.filter( function(player) {
+        if ( position === "Flex" ) {
+          return ["RB", "WR", "TE"].indexOf(player.get('position')) !== -1;
+        } else {
+          return position === player.get('position');
+        }
+    }.bind(this));
+    this.render();
+    debugger;
   }
 });
