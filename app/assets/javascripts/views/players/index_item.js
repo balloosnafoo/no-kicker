@@ -53,7 +53,6 @@ NoKicker.Views.PlayerIndexItem = Backbone.View.extend({
 
   tradePlayer: function (event) {
     event.preventDefault();
-    debugger;
     Backbone.history.navigate(
       "leagues/" + this.league.id + "/trades/" + this.model.contract().escape("contract_owner_id"),
       { trigger: true }

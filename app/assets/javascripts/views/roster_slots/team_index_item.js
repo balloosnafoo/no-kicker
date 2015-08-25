@@ -27,7 +27,6 @@ NoKicker.Views.RosterSlotTeamIndexItem = Backbone.View.extend({
 
   cutPlayer: function (event) {
     event.preventDefault();
-    debugger;
     this.model.player().contract().destroy();
     this.model.player().contract().clear();
     this.model.player().clear();

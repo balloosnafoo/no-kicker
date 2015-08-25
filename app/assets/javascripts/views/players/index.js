@@ -70,6 +70,5 @@ NoKicker.Views.PlayerIndex = Backbone.CompositeView.extend({
         }
     }.bind(this));
     this.render();
-    debugger;
   }
 });

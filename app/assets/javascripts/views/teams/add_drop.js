@@ -68,8 +68,7 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     this.toAddPlayer.contract().save({}, {
       success: function () {
         this.collection.add(this.toAddPlayer)
-      }.bind(this),
-      error: function () { debugger; }.bind(this)
+      }.bind(this)
     });
 
     // Redirect doesn't need to wait for success; it can go straight home

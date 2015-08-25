@@ -50,8 +50,7 @@ NoKicker.Views.MessageShow = Backbone.CompositeView.extend({
       success: function () {
         this.model.comments().add(comment, { merge: true });
         this.render();
-      }.bind(this),
-      error: function () {debugger}.bind(this)
+      }.bind(this)
     });
   }
 });

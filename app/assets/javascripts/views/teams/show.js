@@ -91,7 +91,6 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   startingPositionCounts: function (slots) {
     var counts = {};
     slots.forEach( function (slot) {
-      // debugger;
       var pos = slot.escape("position")
       if (slot.player().escape("lname")) {
         if (!counts[pos]) {
@@ -124,8 +123,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
         order: this.POSITIONAL_VALUES["bench"]
       });
       rosterSlot.save({}, {
-        success: this.render.bind(this),
-        error: function () {debugger}.bind(this)
+        success: this.render.bind(this)
       });
     } else if (slotPosition === "bench") {
       var toPosition = moveTo;
@@ -134,8 +132,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
         order: this.POSITIONAL_VALUES[toPosition]
       });
       rosterSlot.save({}, {
-        success: this.render.bind(this),
-        error: function () { debugger }.bind(this)
+        success: this.render.bind(this)
       });
     }
   },

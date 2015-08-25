@@ -88,7 +88,7 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
         trade_offer_id: tradeId
       });
       tradeItem.save({}, {
-        error: function () { debugger }.bind(this)
+        error: function () { }.bind(this)
       });
     }
   }

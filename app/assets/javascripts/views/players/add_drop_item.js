@@ -6,7 +6,6 @@ NoKicker.Views.PlayerAddDropItem = Backbone.View.extend({
   className: 'add-drop-item',
 
   render: function () {
-    // debugger;
     var renderedContent = this.template({
       player: this.model
     });
