@@ -33,16 +33,19 @@ class Api::TradeOffersController < ApplicationController
       received_ids = @trade_offer.trade_items
                           .where.not(trade_items: { owner_id: current_user.id })
                           .pluck(:player_id)
-      @trade_offer.players.includes(:player_contracts)
+      players = @trade_offer.players.includes(:player_contracts)
              .where(player_contracts: {league_id: params[:league_id]})
-             .each do |player|
+      players.each do |player|
+        player.player_contracts.first.destroy()
+      end
+
+      players.each do |player|
         if given_ids.include?(player.id)
           (@trade_offer.tradee.all_trades).each do |trade|
             if trade.players.pluck(:id).include?(player.id) && trade != @trade_offer
               trade.destroy()
             end
           end
-          player.player_contracts.first.destroy()
           @trade_offer.tradee.remove_player_from_starting_slot(player)
           @trade_offer.trader.player_contracts.create(
             player_id: player.id,
@@ -55,7 +58,6 @@ class Api::TradeOffersController < ApplicationController
               trade.destroy()
             end
           end
-          player.player_contracts.first.destroy()
           @trade_offer.trader.remove_player_from_starting_slot(player)
           @trade_offer.tradee.player_contracts.create(
             player_id: player.id,
