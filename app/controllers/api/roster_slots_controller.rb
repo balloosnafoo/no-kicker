@@ -9,6 +9,12 @@ class Api::RosterSlotsController < ApplicationController
     end
   end
 
+  def destroy
+    @roster_slot = RosterSlot.find(params[:id])
+    @roster_slot.destroy()
+    render json: @roster_slot
+  end
+
   private
   def roster_slot_params
     params.require(:roster_slot).permit(:player_id, :order, :position)

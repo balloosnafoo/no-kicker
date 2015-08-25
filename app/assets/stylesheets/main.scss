@@ -89,6 +89,10 @@ ul.trade-offer-details {
   margin-left: 15px;
 }
 
+.panel.team-info, .panel.league-info {
+  margin-top: 100px;
+}
+
 table{
   border-collapse: collapse; /* 'cellspacing' equivalent */
 }
@@ -134,4 +138,10 @@ li.error-item {
 
 .player-filter-tool {
   display: inline-block;
+}
+
+tr#bench-header, tr#bench-header:hover {
+  border-left: none;
+  border-right: none;
+  background: transparent;
 }

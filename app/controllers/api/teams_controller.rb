@@ -3,6 +3,9 @@ class Api::TeamsController < ApplicationController
     @team = current_user.teams.new(team_params)
     if @team && @team.save
       @team.league.generate_roster_slots(@team)
+      if @team.league.teams.count == @team.league.num_teams
+        @team.league.generate_matchups
+      end
       render json: @team
     else
       render json: @team.errors.full_messages, status: :unprocessable_entity

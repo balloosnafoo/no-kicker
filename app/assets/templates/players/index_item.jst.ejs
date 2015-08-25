@@ -1,5 +1,4 @@
 
-<td></td>
 <td><%= player.escape("fname") + ". " + player.escape("lname") %></td>
 <td><%= player.escape("position") %></td>
 <td><%= player.escape("team_name") %></td>
@@ -30,7 +29,6 @@
     ---
   <% } %>
 </td>
-<td></td>
 <td>
   <% if ( player.isContracted() && player.contract().escape('user_player') === "true" ) { %>
     <button type="button" class="btn btn-xs btn-block btn-danger drop-button" name="button">

@@ -45,7 +45,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     if (roster_slot.escape("position") === "bench" && !this._rendered_bench) {
       // render table separator
       this.$('.roster-table').append(
-        "<tr><th class='vertical-spacer table-heading' colspan='12'><h3>Bench</h3></th></tr>"
+        "<tr id='bench-header'><th class='vertical-spacer table-heading' colspan='12'><h3>Bench</h3></th></tr>"
       )
       this._rendered_bench = true;
     }
@@ -74,7 +74,10 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
         roster_slot.escape("position") === "bench" &&
         (
           roster_slot.player().escape("position").toLowerCase() === slotPosition ||
-          ["rb", "wr", "te"].indexOf(roster_slot.player().escape("position").toLowerCase()) !== -1
+          (
+            ["rb", "wr", "te"].indexOf(roster_slot.player().escape("position").toLowerCase()) !== -1 &&
+            slotPosition === "flex"
+          )
         )
       ) {
         selection = this.$('*[data-roster-slot-id="' + roster_slot.id + '"]');
@@ -88,11 +91,21 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   startingPositionCounts: function (slots) {
     var counts = {};
     slots.forEach( function (slot) {
+      // debugger;
       var pos = slot.escape("position")
-      if (!counts[pos]) {
-        counts[pos] =  1;
-      } else {
-        counts[pos] += 1;
+      if (slot.player().escape("lname")) {
+        if (!counts[pos]) {
+          counts[pos] =  1;
+        } else {
+          counts[pos] += 1;
+        }
+        if (counts[pos] == this.model.rosterRule().get("num_" + pos)) {
+          slots.forEach(function (slot) {
+            if (!slot.player().escape("lname")) {
+              slot.destroy();
+            }
+          }.bind(this))
+        }
       }
     }.bind(this));
 
