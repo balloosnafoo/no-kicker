@@ -21,7 +21,7 @@
       <h1 class="splash">Kicker Free Fantasy Football</h1>
       <h3 class="text-muted">Who really needs kickers anyway?</h3>
           <div class="panel-body">
-            <% unless flash["errors"].empty? %>
+            <% if flash["errors"] %>
             <ul class="alert alert-danger">
               <%= flash["errors"].map { |e| "<li class='error-item'>#{e}</li>"}.join.html_safe %>
             </ul>

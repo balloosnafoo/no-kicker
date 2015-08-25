@@ -7,7 +7,7 @@ class CreateRosterRules < ActiveRecord::Migration
       t.integer :num_wr, null: false, default: 2
       t.integer :num_te, null: false, default: 1
       t.integer :num_flex, null: false, default: 1
-      t.integer :num_dst, null: false, default: 1
+      t.integer :num_dst, null: false, default: 0
       t.integer :num_k, null: false, default: 0
       t.integer :num_bench, null: false, default: 6
 

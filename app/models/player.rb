@@ -168,8 +168,23 @@ class Player < ActiveRecord::Base
           WHERE
             leagues.id = ?
         ) AS player_contracts ON player_contracts.player_id = players.id
+      JOIN (
+        SELECT
+          players.id,
+          SUM(weekly_stats.rushing_yds)   AS rushing_yds,
+          SUM(weekly_stats.passing_yds)   AS passing_yds,
+          SUM(weekly_stats.receiving_yds) AS receiving_yds
+        FROM
+          players
+        JOIN
+          weekly_stats ON weekly_stats.player_id = players.id
+        GROUP BY
+          players.id
+      ) AS seasonal_stats ON players.id = seasonal_stats.id
       WHERE
         player_contracts.id IS NULL AND players.position = ?
+      ORDER BY
+        seasonal_stats.rushing_yds + seasonal_stats.receiving_yds + (seasonal_stats.passing_yds / 3) DESC
       LIMIT 1
     SQL
   end

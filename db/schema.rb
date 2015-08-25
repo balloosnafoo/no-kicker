@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20150821220834) do
     t.integer  "num_wr",     default: 2, null: false
     t.integer  "num_te",     default: 1, null: false
     t.integer  "num_flex",   default: 1, null: false
-    t.integer  "num_dst",    default: 1, null: false
+    t.integer  "num_dst",    default: 0, null: false
     t.integer  "num_k",      default: 0, null: false
     t.integer  "num_bench",  default: 6, null: false
     t.datetime "created_at",             null: false

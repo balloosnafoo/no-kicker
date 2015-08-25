@@ -65,7 +65,8 @@ NoKicker.Views.Navbar = Backbone.View.extend({
     return this;
   },
 
-  logout: function () {
+  logout: function (event) {
+    event.preventDefault();
     $.ajax({
       url: "/session/",
       type: "DELETE",

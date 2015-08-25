@@ -8,6 +8,7 @@
 
 SAMPLE_TEAM_NAMES = File.readlines("db/sample_team_names.txt")
 SAMPLE_LEAGUE_NAMES = File.readlines("db/sample_league_names.txt")
+NUM_SEED_LEAGUES = 5
 
 File.foreach("./python/nfl_schedule.csv") do |game|
   home_team, away_team, home_score, away_score, week = game.chomp.split(",")
@@ -83,7 +84,7 @@ end
 
 
 User.create(username: "baloo", password: "password", email: "baloo@gmail.com")
-10.times do |league_num| # For later when I want to generate a bunch of leagues.
+NUM_SEED_LEAGUES.times do |league_num| # For later when I want to generate a bunch of leagues.
   league = League.create(
     commissioner_id: 1,
     num_teams: 12,
@@ -117,14 +118,14 @@ User.create(username: "baloo", password: "password", email: "baloo@gmail.com")
   end
 end
 
-120.times do |i|
+(NUM_SEED_LEAGUES * 12).times do |i|
   t = Team.find(i + 1)
   t.league.generate_roster_slots(t)
 end
 
 League.all.each { |league| league.generate_matchups }
 
-10.times do |league_num|
+NUM_SEED_LEAGUES.times do |league_num|
   league = League.find(league_num + 1)
   team_ids = league.teams.pluck(:id).shuffle
   roster_rule = league.roster_rule
@@ -141,6 +142,39 @@ League.all.each { |league| league.generate_matchups }
       end
     end
   end
+  team_ids.each do |team_id|
+    (roster_rule.num_bench + 1).times do |n|
+      pos = ["RB", "WR", "RB", "WR", "RB", "WR", "QB"].sample
+      player = Player.first_unsigned_at_pos(pos, league_num + 1)
+      team = Team.find(team_id)
+      team.player_contracts.create(
+        player_id: player.id,
+        league_id: league_num + 1
+      )
+      team.assign_or_create_roster_slot(player)
+    end
+  end
+end
+
+["QB", "RB", "WR", "TE"].each_with_index do |pos, idx|
+  TradeOffer.create(
+    trader_id: idx + 2,
+    tradee_id: 1,
+    league_id: 1
+  )
+  user_player = Team.find(1).players.find_by(position: pos)
+  Team.first.trade_offers.last.trade_items.create(
+    owner_id: 1,
+    player_id: user_player.id,
+    trade_offer_id: idx + 1
+  )
+
+  other_player = Team.find(idx + 2).players.find_by(position: pos)
+  Team.first.trade_offers.last.trade_items.create(
+    owner_id: idx + 2,
+    player_id: other_player.id,
+    trade_offer_id: idx + 1
+  )
 end
 
 # Player.select("player_contracts.*, players.*").joins("LEFT OUTER JOIN player_contracts ON players.id = player_contracts.player_id").includes(:weekly_stats).where(player_contracts: {player_id: nil}).find_by(position: "RB")
