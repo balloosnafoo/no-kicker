@@ -1,5 +1,13 @@
 <h1>Select Players</h1>
 
+<% if (errors) { %>
+  <ul class="alert alert-danger">
+    <% for (var i = 0; i < errors.length; i++) { %>
+      <li class="error-item"><%= errors[i] %></li>
+    <% } %>
+  </ul>
+<% } %>
+
 <form class="trade-item-form">
   <tr>
     <th colspan="13">

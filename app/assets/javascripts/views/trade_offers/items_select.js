@@ -17,7 +17,9 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var renderedContent = this.template();
+    var renderedContent = this.template({
+      errors: this.errors
+    });
 
     this.$el.html(renderedContent);
     this.renderPlayers();
@@ -54,17 +56,28 @@ NoKicker.Views.TradeOfferItemsSelect = Backbone.CompositeView.extend({
       tradee_id: this.partnerTeam.id
     });
 
-    tradeOffer.save({}, {
-      success: function () {
-        this.createItems(toGiveIds, this.user_team, tradeOffer.id);
-        this.createItems(toReceiveIds, this.partnerTeam, tradeOffer.id);
-        Backbone.history.navigate(
-          "leagues/" + this.league.id + "/trades",
-          { trigger: true }
-        )
-      }.bind(this),
-      error: function () { debugger }.bind(this)
-    });
+    if (toGiveIds.length === toReceiveIds.length) {
+      tradeOffer.save({}, {
+        success: function () {
+          this.createItems(toGiveIds, this.user_team, tradeOffer.id);
+          this.createItems(toReceiveIds, this.partnerTeam, tradeOffer.id);
+          Backbone.history.navigate(
+            "leagues/" + this.league.id + "/trades",
+            { trigger: true }
+          )
+        }.bind(this),
+        error: function (model, response) {
+          this.errors = JSON.parse(response.responseText);
+          this.render();
+        }.bind(this)
+      });
+    } else if (!toGiveIds.length) {
+      this.errors = ["Trades must involve at least one player."]
+      this.render();
+    } else {
+      this.errors = ["Uneven trades are not yet supported."]
+      this.render();
+    }
   },
 
   createItems: function (ids, ownerTeam, tradeId) {

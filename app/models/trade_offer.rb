@@ -27,5 +27,4 @@ class TradeOffer < ActiveRecord::Base
       errors[:trades] << "must involve the same number of players from each team"
     end
   end
-
 end

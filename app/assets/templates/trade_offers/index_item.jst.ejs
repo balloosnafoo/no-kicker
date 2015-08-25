@@ -12,7 +12,7 @@
   <li>
     <%= tradee.escape("name") %> receive:
     <ul>
-      <% for (var i = 0; i < receivedItems.models.length; i++) { %>
+      <% for (var i = 0; i < givenItems.models.length; i++) { %>
         <li>
           <%= givenItems.models[i].escape("fname") + ". " + givenItems.models[i].escape("lname") %>
         </li>
