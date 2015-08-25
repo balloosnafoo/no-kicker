@@ -38,20 +38,20 @@ class Api::TradeOffersController < ApplicationController
              .each do |player|
         if given_ids.include?(player.id)
           player.player_contracts.first.destroy()
-          @trade_offer.trader.remove_player_from_starting_slot(player)
-          @trade_offer.tradee.player_contracts.create(
-            player_id: player.id,
-            league_id: params[:league_id]
-          )
-          @trade_offer.tradee.assign_or_create_roster_slot(player)
-        else
-          player.player_contracts.first.destroy()
           @trade_offer.tradee.remove_player_from_starting_slot(player)
           @trade_offer.trader.player_contracts.create(
             player_id: player.id,
             league_id: params[:league_id]
           )
           @trade_offer.trader.assign_or_create_roster_slot(player)
+        else
+          player.player_contracts.first.destroy()
+          @trade_offer.trader.remove_player_from_starting_slot(player)
+          @trade_offer.tradee.player_contracts.create(
+            player_id: player.id,
+            league_id: params[:league_id]
+          )
+          @trade_offer.tradee.assign_or_create_roster_slot(player)
         end
       end
       render json: @trade_offer

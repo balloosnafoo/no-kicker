@@ -1,6 +1,7 @@
 <ul class="trade-offer-details">
   <li>
     <%= trader.escape("name") %> recive:
+    <% if (tradeOffer.get("made_offer")) { %>
     <ul>
       <% for (var i = 0; i < receivedItems.models.length; i++) { %>
         <li>
@@ -8,9 +9,7 @@
         </li>
       <% } %>
     </ul>
-  </li>
-  <li>
-    <%= tradee.escape("name") %> receive:
+    <% } else { %>
     <ul>
       <% for (var i = 0; i < givenItems.models.length; i++) { %>
         <li>
@@ -18,6 +17,27 @@
         </li>
       <% } %>
     </ul>
+    <% } %>
+  </li>
+  <li>
+    <%= tradee.escape("name") %> receive:
+    <% if (tradeOffer.get("made_offer")) { %>
+    <ul>
+      <% for (var i = 0; i < givenItems.models.length; i++) { %>
+        <li>
+          <%= givenItems.models[i].escape("fname") + ". " + givenItems.models[i].escape("lname") %>
+        </li>
+      <% } %>
+    </ul>
+    <% } else { %>
+    <ul>
+      <% for (var i = 0; i < receivedItems.models.length; i++) { %>
+        <li>
+          <%= receivedItems.models[i].escape("fname") + ". " + receivedItems.models[i].escape("lname") %>
+        </li>
+      <% } %>
+    </ul>
+    <% } %>
   </li>
 </ul>
 

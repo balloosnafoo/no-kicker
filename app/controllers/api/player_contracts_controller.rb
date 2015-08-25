@@ -17,6 +17,11 @@ class Api::PlayerContractsController < ApplicationController
     @player_contract = PlayerContract.find(params[:id])
     team = current_user.team_in_league(@player_contract.league)
     team.remove_player_from_starting_slot(@player_contract.player)
+    (team.offered_trades + team.trade_offers).each do |trade|
+      if trade.players.pluck(:id).include?(@player_contract.player_id)
+        trade.destroy()
+      end
+    end
     @player_contract.destroy()
     render json: @player_contract
   end
