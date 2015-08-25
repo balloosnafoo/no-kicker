@@ -37,8 +37,12 @@ NoKicker.Views.TradeOfferIndexItem = Backbone.CompositeView.extend({
   acceptTrade: function () {
     this.model.set({ pending: false });
     this.model.save({}, {
-      success: function () {debugger;}.bind(this),
-      error: function () {debugger;}.bind(this)
+      success: function () {
+        Backbone.history.navigate(
+          "leagues/" + this.league.id + "/teams/" + this.tradee.id,
+          { trigger: true }
+        )
+      }.bind(this)
     });
   },
 
