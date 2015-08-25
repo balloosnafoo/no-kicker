@@ -13,7 +13,7 @@
           <%= teams.models[i] && teams.models[i].escape("name") %>
         </td>
         <td>
-          <%= "owner username" %>
+          <%= teams.models[i].escape("manager_username") %>
         </td>
       </tr>
     <% } %>
