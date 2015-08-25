@@ -54,6 +54,6 @@ lineup and team wins and losses are calculated from these scored.
 
 Users can create and respond to threads in their league message boards.
 
-[Implementation docs](implementation link)
+[Implementation docs](implementation-link)
 
 [implementation-link]: ./docs/implemenation_plan.md
