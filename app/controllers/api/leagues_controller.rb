@@ -35,7 +35,7 @@ class Api::LeaguesController < ApplicationController
   def show
     @league = League.includes(:teams, :members, :score_rule).find(params[:id])
     @score_rule = @league.score_rule
-    @team = current_user.team_in_league(params[:id]) if params[:user_team] # Maybe add parameter to allow for prefetching players
+    @team = current_user.team_in_league(params[:id]) if params[:user_team]
     @as_roster_slots = true if params[:roster_slots]
     @best_record = @league.best_record
     if @league

@@ -8,7 +8,6 @@ class Team < ActiveRecord::Base
   has_many :players, through: :player_contracts, source: :player
   has_many :roster_slots
   has_many :weekly_stats, through: :players, source: :weekly_stats
-  # has_many :next_opponents, through: :players, source: :next_game
 
   has_many(
     :home_matchups,
