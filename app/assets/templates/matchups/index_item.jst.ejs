@@ -7,7 +7,11 @@
   </th>
 </tr>
 
-<tr>
+<% if (matchup.team1().escape("is_user") === "true") { %>
+  <tr class="warning">
+<% } else { %>
+    <tr>
+  <% } %>
   <td>
     <%= matchup.team1().escape("name") %>
   </td>
@@ -16,7 +20,11 @@
   </td>
 </tr>
 
-<tr>
+<% if (matchup.team2().escape("is_user") === "true") { %>
+  <tr class="warning">
+<% } else { %>
+  <tr>
+<% } %>
   <td>
     <%= matchup.team2().escape("name") %>
   </td>

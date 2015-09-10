@@ -22,11 +22,6 @@ if @team && !@as_roster_slots
           json.id player.player_contracts[0].id
         end
         json.stats do
-          # fpoints_s = player.fantasy_points.to_s
-          # fpoints_s = "#{fpoints_s[0..-3]}.#{fpoints_s[-3..-2]}"
-          # ave_fpoints_s = (player.fantasy_points / (Week.current_week)).to_s
-          # ave_fpoints_s = "#{ave_fpoints_s[0..-3]}.#{ave_fpoints_s[-3..-2]}"
-
           total_points = 0
           rushing_tds_tot = player.total("rushing_tds")
           total_points += rushing_tds_tot * @score_rule.rushing_tds

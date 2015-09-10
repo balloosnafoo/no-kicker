@@ -27,7 +27,8 @@ NoKicker.Views.PlayerIndex = Backbone.CompositeView.extend({
 
   render: function () {
     this.$el.html(this.template({
-      searchTerm: this.searchTerm
+      searchTerm: this.searchTerm,
+      players: this.collection
     }));
     this.renderPlayers();
     return this;

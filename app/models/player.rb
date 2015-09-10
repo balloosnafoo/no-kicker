@@ -96,10 +96,7 @@ class Player < ActiveRecord::Base
   end
 
   def total(stat)
-    ws = weekly_stats[0...Week.current_week]
-    ws.inject(0) do |accum, week|
-      accum += week.send(stat)
-    end
+    ws = weekly_stats.where(weekly_stats: {week: (0..Week.current_week)}).sum(stat)
   end
 
   def self.first_unsigned_at_pos(pos, league)
