@@ -31,11 +31,13 @@ NoKicker.Views.Navbar = Backbone.View.extend({
   handleRoute: function (routeName, params) {
     this.$el.find(".active").removeClass("active");
     this.$el.find("." + routeName).addClass("active");
+    var navbar;
 
     if (this.LEAGUE_ROUTES[routeName]) {
 
-      // Change the color of the navbar
-      var navbar = this.$('nav.navbar');
+      // Change the color of the navbar to black to indicate that user
+      // is within the scope of a particular league.
+      navbar = this.$('nav.navbar');
       if (navbar.length) {
         navbar.removeClass("navbar-default");
         navbar.addClass("navbar-inverse");
@@ -48,10 +50,11 @@ NoKicker.Views.Navbar = Backbone.View.extend({
       });
       this.$(".page-specific-links").html(this.subnav.render().$el);
     } else {
-      this.subnav && this.subnav.remove();
+      if(this.subnav) this.subnav.remove();
 
-      // Change the color of the navbar
-      var navbar = this.$('nav.navbar');
+      // Change the color of the navbar back to white to indicate that
+      // user is outside of league scope.
+      navbar = this.$('nav.navbar');
       if (navbar.length) {
         navbar.removeClass("navbar-inverse");
         navbar.addClass("navbar-default");
