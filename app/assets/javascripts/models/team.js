@@ -20,7 +20,7 @@ NoKicker.Models.Team = Backbone.Model.extend({
       this._rosterRule = new NoKicker.Models.RosterRule();
     }
 
-    return this._rosterRule
+    return this._rosterRule;
   },
 
   parse: function (response) {
@@ -46,4 +46,4 @@ NoKicker.Models.Team = Backbone.Model.extend({
 // For use in partially filled leagues, where rows should still exist
 NoKicker.Models.nullTeam = new NoKicker.Models.Team({
   name: ""
-})
+});

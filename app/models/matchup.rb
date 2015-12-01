@@ -1,5 +1,5 @@
 class Matchup < ActiveRecord::Base
-  validates :team_1_id, :team_2_id, :week, presence: true # not testing that actual teams exist in order to test matchup scheduler.
+  validates :team_1_id, :team_2_id, :week, presence: true
 
   belongs_to(
     :team_1,

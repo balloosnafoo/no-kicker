@@ -95,10 +95,14 @@ class Player < ActiveRecord::Base
     ).where("nflgames.week = ?", Week.current_week).first
   end
 
-  def total(stat)
-    ws = weekly_stats.where(weekly_stats: {week: (0..Week.current_week)}).sum(stat)
+  def total(stat, week=nil)
+    puts week
+    puts lname
+    week = Week.current_week unless week
+    ws = weekly_stats.where(weekly_stats: {week: (0..week)}).sum(stat)
   end
 
+  # Helper function for seed file allows for more realistic seed data.
   def self.first_unsigned_at_pos(pos, league)
     Player.find_by_sql([<<-SQL, league, pos]).first
       SELECT

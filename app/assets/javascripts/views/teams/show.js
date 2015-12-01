@@ -46,7 +46,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
       // render table separator
       this.$('.roster-table').append(
         "<tr id='bench-header'><th class='vertical-spacer table-heading' colspan='12'><h3>Bench</h3></th></tr>"
-      )
+      );
       this._rendered_bench = true;
     }
 
@@ -59,7 +59,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   },
 
   openPositions: function () {
-    var positions = ["qb", "wr", "rb", "te", "flex"]
+    var positions = ["qb", "wr", "rb", "te", "flex"];
     counts = this.startingPositionCounts(this.model.roster_slots());
     positions.forEach( function (pos) {
       if (!counts[pos] || counts[pos] < this.model.rosterRule().escape("num_" + pos)){
@@ -83,7 +83,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
         selection = this.$('*[data-roster-slot-id="' + roster_slot.id + '"]');
         selection.append(
           "<option value='" + slotPosition + "'>" + slotPosition + "</option>"
-        )
+        );
       }
     }.bind(this));
   },
@@ -91,7 +91,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
   startingPositionCounts: function (slots) {
     var counts = {};
     slots.forEach( function (slot) {
-      var pos = slot.escape("position")
+      var pos = slot.escape("position");
       if (slot.player().escape("lname")) {
         if (!counts[pos]) {
           counts[pos] =  1;
@@ -103,7 +103,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
             if (!slot.player().escape("lname")) {
               slot.destroy();
             }
-          }.bind(this))
+          }.bind(this));
         }
       }
     }.bind(this));
@@ -120,7 +120,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
     if (moveTo === "bench") {
       rosterSlot.set({
         position: "bench",
-        order: this.POSITIONAL_VALUES["bench"]
+        order: this.POSITIONAL_VALUES.bench
       });
       rosterSlot.save({}, {
         success: this.render.bind(this)
@@ -146,7 +146,7 @@ NoKicker.Views.TeamShow = Backbone.CompositeView.extend({
         success: function () {
           alert('Image saved!');
         }
-      })
+      });
     });
   }
 });
