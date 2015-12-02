@@ -1,6 +1,6 @@
 
 json.extract! @team, :id, :league_id, :manager_id, :name
-belongs_to_user = current_user.id == @team.id
+belongs_to_user = current_user.id == @team.manager.id
 json.manager_username @team.manager.username
 json.belongs_to_user belongs_to_user
 
@@ -18,7 +18,6 @@ json.roster_slots do
   positions = ["qb", "rb", "wr", "te", "flex", "dst", "k", "bench"]
   positions.each do |pos|
     slots = @roster_slots.where(roster_slots: { position: pos })
-    # slots = @team.roster_slots.where(roster_slots: { position: pos })
     json.array! slots do |slot|
       json.extract! slot, :id, :position, :team_id, :order
       if slot.player
