@@ -96,10 +96,10 @@ class Player < ActiveRecord::Base
   end
 
   def total(stat, week=nil)
-    puts week
-    puts lname
     week = Week.current_week unless week
-    ws = weekly_stats.where(weekly_stats: {week: (0..week)}).sum(stat)
+    ws = weekly_stats.inject(0) do |acc, statline|
+      statline.week < week ? acc + statline[stat] : acc
+    end
   end
 
   # Helper function for seed file allows for more realistic seed data.

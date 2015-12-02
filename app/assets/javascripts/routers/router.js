@@ -73,8 +73,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
   },
 
   teamShow: function (league_id, team_id) {
-    var teams = new NoKicker.Collections.Teams();
-    var team = teams.getOrFetch(team_id);
+    var team = this.teams.getOrFetch(team_id);
     var showView = new NoKicker.Views.TeamShow({
       model: team
     });
@@ -207,7 +206,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
-    this._view && this._view.remove();
+    if (this._view) this._view.remove();
     this._view = view;
     this.$rootEl.html(view.render().$el);
   }

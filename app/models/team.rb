@@ -50,7 +50,7 @@ class Team < ActiveRecord::Base
   has_one :score_rule, through: :league, source: :score_rule
 
   def matchups
-    Matchup.where("team_1_id = ? OR team_2_id = ?", id, id)
+    (home_matchups + away_matchups).sort_by(&:week)
   end
 
   def prev_matchup
@@ -88,32 +88,29 @@ class Team < ActiveRecord::Base
   end
 
   def win_count
-    m = matchups
-    win_count =  m.where(team_1_id: id).where("team_1_score > team_2_score").count
-    win_count += m.where(team_2_id: id).where("team_1_score < team_2_score").count
+    win_count =  home_matchups.where(team_1_id: id).where("team_1_score > team_2_score").count
+    win_count += away_matchups.where(team_2_id: id).where("team_1_score < team_2_score").count
     return win_count
   end
 
   def total_points
     total = 0
-    matchups.includes(:team_1, :team_2).each do |matchup|
-      if matchup.team_1.id == id
-        total += matchup.team_1_score
-      else
-        total += matchup.team_2_score
-      end
+    home_matchups.includes(:team_1, :team_2).each do |m|
+      total += m.team_1_score
+    end
+    away_matchups.includes(:team_1, :team_2).each do |m|
+      total += m.team_2_score
     end
     total
   end
 
   def total_points_against
     total = 0
-    matchups.includes(:team_1, :team_2).each do |matchup|
-      if matchup.team_1.id != id
-        total += matchup.team_1_score
-      else
-        total += matchup.team_2_score
-      end
+    home_matchups.includes(:team_1, :team_2).each do |m|
+      total += m.team_2_score
+    end
+    away_matchups.includes(:team_1, :team_2).each do |m|
+      total += m.team_1_score
     end
     total
   end
