@@ -12,7 +12,7 @@ json.array! @players do |player|
   if @league_specific
     fpoints_s = player.fantasy_points.to_s
     fpoints_s = "#{fpoints_s[0..-3]}.#{fpoints_s[-3..-2]}"
-    ave_fpoints_s = (player.fantasy_points / (Week.current_week)).to_s
+    ave_fpoints_s = (player.fantasy_points / (@week)).to_s
     ave_fpoints_s = "#{ave_fpoints_s[0..-3]}.#{ave_fpoints_s[-3..-2]}"
 
     json.stats do

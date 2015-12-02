@@ -52,7 +52,6 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     }
   },
 
-  // There are some buggy things going on here.
   makeRequest: function (event) {
     event.preventDefault();
 

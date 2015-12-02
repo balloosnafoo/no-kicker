@@ -3,7 +3,6 @@ NoKicker.Collections.Leagues = Backbone.Collection.extend({
 
   model: NoKicker.Models.League,
 
-  // Read about mixins and refactor this out!
   getOrFetch: function (id, dataOptions) {
     var collection = this;
     var widget = collection.get(id);
