@@ -28,6 +28,6 @@ class Api::PlayerContractsController < ApplicationController
 
   private
   def player_contract_params
-    params.require(:player_contract).permit(:player_id)
+    params.require(:player_contract).permit(:player_id, :league_id)
   end
 end

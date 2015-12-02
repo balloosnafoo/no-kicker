@@ -45,19 +45,22 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     this.addPlayerAddDropItem(true, this.toAddPlayer);
     this.$('.add-drop-table')
         .append("<tr><td colspan='13'><h3>Dropped Player</h3></td></tr>");
-    this.collection && this.collection.each( function (player) {
-      this.addPlayerAddDropItem(false, player);
-    }.bind(this));
+    if (this.collection) {
+      this.collection.each( function (player) {
+        this.addPlayerAddDropItem(false, player);
+      }.bind(this));
+    }
   },
 
   // There are some buggy things going on here.
   makeRequest: function (event) {
     event.preventDefault();
+
     // Drop request must be made first to pass validation checks
-    var toDropId = $(event.currentTarget).serializeJSON().to_drop_id
+    var toDropId = $(event.currentTarget).serializeJSON().to_drop_id;
     var toDropPlayer = this.collection.get(toDropId);
     toDropPlayer.contract().destroy();
-    toDropPlayer.contract().clear();
+    toDropPlayer.clear();
 
     // Then add request can be made
     this.toAddPlayer.contract().set({
@@ -67,7 +70,7 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     });
     this.toAddPlayer.contract().save({}, {
       success: function () {
-        this.collection.add(this.toAddPlayer)
+        this.collection.add(this.toAddPlayer);
       }.bind(this)
     });
 

@@ -13,12 +13,10 @@ if !@detail
     json.user_team do
       json.extract! @team, :id, :name
       json.players do
-        json.array! @team.players
-                         .includes(:player_contracts)
-                         .where(player_contracts: { team_id: @team.id }) do |player|
+        json.array! @team.players do |player|
           json.extract! player, :id, :fname, :lname, :team_name, :position
           json.contract do
-            json.id player.player_contracts[0].id
+            json.id @team.player_contracts.find_by(player_id: player.id).id
           end
           json.stats do
             total_points = 0

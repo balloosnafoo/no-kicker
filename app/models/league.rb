@@ -1,7 +1,7 @@
 class League < ActiveRecord::Base
   validates :name, :match_type, presence: true
   validates :public, :redraft, inclusion: { in: [ true, false ] }
-  validates :num_teams, numericality: { greater_than: 8 }
+  validates :num_teams, numericality: { greater_than: 7, less_than: 17 }
   validates :num_divisions, numericality: { less_than: 4 }
 
   has_many :teams
