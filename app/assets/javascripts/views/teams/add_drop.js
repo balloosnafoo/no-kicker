@@ -61,6 +61,7 @@ NoKicker.Views.TeamAddDrop = Backbone.CompositeView.extend({
     var toDropPlayer = this.collection.get(toDropId);
     toDropPlayer.contract().destroy();
     toDropPlayer.contract().clear();
+    this.collection.remove(toDropId);
 
     // Then add request can be made
     this.toAddPlayer.contract().set({
