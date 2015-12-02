@@ -33,11 +33,13 @@ class Api::LeaguesController < ApplicationController
   end
 
   def show
-    @league = League.includes(:teams, :members, :score_rule).find(params[:id])
+    @league = League.includes(:teams, :members, :score_rule, :weekly_stats)
+      .find(params[:id])
     @week = Week.current_week
     @score_rule = @league.score_rule
     @team = current_user.team_in_league(params[:id]) if params[:user_team]
     @as_roster_slots = true if params[:roster_slots]
+    @basic = ( params[:detail] && params[:detail] === "basic" )
     @best_record = @league.best_record
     if @league
       render :show

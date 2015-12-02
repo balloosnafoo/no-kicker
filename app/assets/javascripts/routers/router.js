@@ -86,7 +86,7 @@ NoKicker.Routers.Router = Backbone.Router.extend({
     players.fetch({ data: { league_id: league_id } });
     var indexView = new NoKicker.Views.PlayerIndex({
       collection: players,
-      league: this.leagues.getOrFetch(league_id)
+      league: this.leagues.getOrFetch(league_id, { detail: "basic" })
     });
 
     this._swapView(indexView);

@@ -13,7 +13,7 @@ NoKicker.Views.PlayerIndex = Backbone.CompositeView.extend({
     this.searchTerm = "";
 
     this.listenTo(this.collection, "add", this.addPlayer);
-    this.listenTo(this.collection, "sync remove", this.render)
+    this.listenTo(this.collection, "sync remove", this.render);
   },
 
   addPlayer: function (player) {

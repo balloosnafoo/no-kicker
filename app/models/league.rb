@@ -7,6 +7,8 @@ class League < ActiveRecord::Base
   has_many :teams
   has_many :members, through: :teams, source: :manager
   has_many :player_contracts, through: :teams, source: :player_contracts
+  has_many :signed_players, through: :player_contracts, source: :player
+  has_many :weekly_stats, through: :signed_players, source: :weekly_stats
   has_many :matchups
   has_many :messages
 
