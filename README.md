@@ -1,6 +1,6 @@
 # No Kicker
 
-[nokicker.co](www.nokicker.co)
+[nokicker.co](no-kicker-link)
 
 ## Features
 
@@ -56,4 +56,5 @@ Users can create and respond to threads in their league message boards.
 
 [Implementation docs](implementation-link)
 
-[implementation-link]: ./docs/implemenation_plan.md
+[no-kicker-link]: http://www.nokicker.co
+[implementation-link]: ./docs/implementation_plan.md

@@ -8,7 +8,7 @@ json.extract!(
 # that depend on it (at least TeamAddDrop does, as it was implemented before
 # roster slots).
 
-if !@basic
+# if !@basic
   if @team && !@as_roster_slots
     json.user_team do
       json.extract! @team, :id, :name
@@ -168,4 +168,4 @@ if !@basic
       end
     end
   end
-end
+# end
