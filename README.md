@@ -1,6 +1,6 @@
 # No Kicker
 
-[nokicker.co][no-kicker-link]
+[nokicker.co](http://www.nokicker.co)
 
 ## Features
 
