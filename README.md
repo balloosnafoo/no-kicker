@@ -1,6 +1,6 @@
 # No Kicker
 
-[nokicker.co](no-kicker-link)
+[nokicker.co][no-kicker-link]
 
 ## Features
 
@@ -54,7 +54,7 @@ lineup and team wins and losses are calculated from these scored.
 
 Users can create and respond to threads in their league message boards.
 
-[Implementation docs](implementation-link)
+[Implementation docs][implementation-link]
 
 [no-kicker-link]: http://www.nokicker.co
 [implementation-link]: ./docs/implementation_plan.md
